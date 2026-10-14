@@ -707,13 +707,24 @@ function stage(i){
   fcStatus.className = 'status ' + (fin?'green':'amber live');
   fcStatus.textContent = fin ? (lang==='en'?'Approved':'Disetujui') : 'Review';
 }
+// Plays only while the card is on screen and the tab is visible, then loops after a pause.
+// Reduced-motion users still see the steps advance; CSS just drops the movement.
+const formCard=document.getElementById('formCard');
+const STEP_MS = reduce ? 1600 : 1000, HOLD_MS = 3500;
+let heroVisible=false;
 function restartHero(){
   heroT.forEach(clearTimeout); heroT=[];
-  if(reduce){ stage(tsteps.length); return; }
   stage(0);
-  for(let i=1;i<=tsteps.length;i++) heroT.push(setTimeout(()=>stage(i), 500+i*1000));
+  if(!heroVisible || document.hidden) return;
+  for(let i=1;i<=tsteps.length;i++) heroT.push(setTimeout(()=>stage(i), 400+i*STEP_MS));
+  heroT.push(setTimeout(restartHero, 400+tsteps.length*STEP_MS+HOLD_MS));
 }
-document.getElementById('formCard').onclick=restartHero;
+formCard.onclick=restartHero;
+new IntersectionObserver(es=>{
+  const v=es[0].isIntersecting;
+  if(v!==heroVisible){ heroVisible=v; restartHero(); }
+},{threshold:.5}).observe(formCard);
+document.addEventListener('visibilitychange',restartHero);
 
 /* =================== case tabs =================== */
 document.querySelectorAll('[data-tabs]').forEach(t=>{
