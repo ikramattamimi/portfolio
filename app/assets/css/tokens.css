@@ -1,5 +1,6 @@
 /*
  * Design tokens, dipindah dari situs lama (index.html).
+ * Semua pasangan teks/latar memenuhi kontras WCAG AA (≥ 4,5:1) di kedua tema.
  * Gelap = default. Terang aktif lewat <html data-theme="light"> (diatur @nuxtjs/color-mode).
  */
 
@@ -12,11 +13,14 @@
   --soft-2: #2e2a40;
   --ink: #f4f3f8;
   --ink-2: #b6b3c3;
-  --ink-3: #85819a;
+  --ink-3: #9590a8;
   --line: #2a2739;
-  --red: #e0463d;
-  --red-hover: #c9382f;
-  --red-soft: rgba(224, 70, 61, 0.14);
+  --red: #ec5a50;
+  --red-hover: #f06c63;
+  --red-soft: rgba(236, 90, 80, 0.14);
+  /* Latar merah dengan teks putih (tombol, langkah aktif): lebih gelap supaya kontrasnya cukup. */
+  --red-strong: #c4352d;
+  --red-strong-hover: #ab2d26;
   --green: #3ccf7f;
   --green-soft: rgba(60, 207, 127, 0.13);
   --amber: #f5b03a;
@@ -44,16 +48,18 @@
   --soft-2: #e6dfd4;
   --ink: #1d1c24;
   --ink-2: #55535f;
-  --ink-3: #8b8895;
+  --ink-3: #68656f;
   --line: #e2dbcf;
-  --red: #d93a32;
-  --red-hover: #bf2f28;
+  --red: #c4302a;
+  --red-hover: #a92823;
   --red-soft: #fbe9e7;
-  --green: #1e9455;
+  --red-strong: #c4302a;
+  --red-strong-hover: #a92823;
+  --green: #157244;
   --green-soft: #e3f3ea;
-  --amber: #c9820f;
+  --amber: #8f5b05;
   --amber-soft: #fbf0dc;
-  --blue: #2f6fd0;
+  --blue: #2558a8;
   --blue-soft: #e6eefb;
   --inv: #1d1c24;
   --inv-line: #1d1c24;

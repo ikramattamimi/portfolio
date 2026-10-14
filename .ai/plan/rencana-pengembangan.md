@@ -170,13 +170,18 @@ Bagian bersama: **kontak** (`#contact`, formulir yang membuka WhatsApp/email) da
 
 ### Tahap 7. SEO, aksesibilitas, performa
 
-- [ ] Meta per bahasa: title, description, Open Graph, `hreflang`, canonical.
-- [ ] Pastikan HTML hasil generate memuat konten **kedua mode** (cek `.output/public/index.html` dan `/en/index.html`).
-- [ ] Data terstruktur schema.org untuk `Person`.
-- [ ] Sitemap + robots (bisa lewat `@nuxtjs/seo`, yang toh dipakai lagi di Fase 2).
-- [ ] Audit aksesibilitas: kontras warna di kedua tema, fokus keyboard, label ARIA, `prefers-reduced-motion`.
-- [ ] Lighthouse di mobile: target Performance ≥ 90, SEO dan Accessibility ≥ 95.
-- [ ] Gambar dioptimasi (`@nuxt/image` atau konversi manual ke WebP).
+- [x] Meta per bahasa (`app.vue`, teks di `common.json` → `meta`): title, description, Open Graph, Twitter card. `hreflang`, canonical, dan `og:url` dari `useLocaleHead`.
+  - **Butuh domain:** URL absolut diambil dari `NUXT_PUBLIC_SITE_URL` saat build (mis. `NUXT_PUBLIC_SITE_URL=https://domainmu.com npm run generate`). Tanpa variabel ini, build tetap jalan, tapi canonical/hreflang tidak absolut dan sitemap tidak dibuat.
+- [x] HTML hasil generate memuat konten **kedua mode** (dicek di `index.html` dan `en/index.html`).
+- [x] Data terstruktur schema.org `Person` (JSON-LD).
+- [x] Sitemap + robots lewat `@nuxtjs/sitemap` dan `@nuxtjs/robots` (lebih ringan daripada `@nuxtjs/seo`). Sitemap per bahasa, aktif hanya kalau `NUXT_PUBLIC_SITE_URL` diisi.
+- [x] Audit kontras: semua pasangan teks/latar di kedua tema ≥ 4,5:1. Token disesuaikan: `--ink-3`, `--red`, `--green`, `--amber`, `--blue`, ditambah `--red-strong` untuk latar merah dengan teks putih. Teks di atas hijau terang memakai `--bg`.
+- [x] Fokus keyboard, label ARIA, dan `prefers-reduced-motion` sudah dicek. Lighthouse Accessibility 100.
+- [x] Lighthouse mobile (build statis, server dengan kompresi): Performance 94–95, Accessibility 100, Best Practices 100, SEO 100. LCP 2,4–2,6 dtk, CLS 0. Halaman dengan `?mode=` 92–94.
+  - Perbaikan performa: `nitro.compressPublicAssets` (salinan .gz/.br), preload font Plus Jakarta Sans, prefetch chunk lazy dimatikan, kubus baru dimuat setelah `load` + idle.
+- [x] Gambar dikonversi ke WebP (`npm run images`, `scripts/optimize-images.mjs` dengan sharp): 3,2 MB → 846 KB.
+- [x] Perbaikan hydration: sinkronisasi mode dipindah ke `app:suspense:resolve`, dan `NavSideFlow` dibungkus `<ClientOnly>`.
+- [ ] Gambar Open Graph (pratinjau saat link dibagikan) belum ada.
 
 ### Tahap 8. Pembersihan & persiapan rilis
 

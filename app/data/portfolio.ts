@@ -68,7 +68,7 @@ export const PROJECTS: Project[] = [
 ]
 
 export function galleryImages(p: Project) {
-  return p.gallery.files.map((f) => `/images/${p.gallery.dir}/${f}.png`)
+  return p.gallery.files.map((f) => `/images/${p.gallery.dir}/${f}.webp`)
 }
 
 /* ---------- keahlian ---------- */

@@ -177,8 +177,8 @@ h2 {
   position: absolute;
   right: 20px;
   bottom: 24px;
-  border: 3px solid #1e9455;
-  color: #1e9455;
+  border: 3px solid #157244;
+  color: #157244;
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.12em;

@@ -90,14 +90,14 @@ button {
 }
 
 .btn.red {
-  background: var(--red);
-  border-color: var(--red);
+  background: var(--red-strong);
+  border-color: var(--red-strong);
   color: #fff;
 }
 
 .btn.red:hover {
-  background: var(--red-hover);
-  border-color: var(--red-hover);
+  background: var(--red-strong-hover);
+  border-color: var(--red-strong-hover);
 }
 
 .btn.sm {

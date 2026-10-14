@@ -7,12 +7,15 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "images": "node scripts/optimize-images.mjs"
   },
   "dependencies": {
     "@nuxt/fonts": "^1.0.1",
     "@nuxtjs/color-mode": "^4.0.1",
     "@nuxtjs/i18n": "^10.6.0",
+    "@nuxtjs/robots": "^7.0.2",
+    "@nuxtjs/sitemap": "^9.1.0",
     "@tresjs/core": "^5.9.3",
     "@tresjs/nuxt": "^5.7.3",
     "gsap": "^3.15.0",
@@ -22,6 +25,7 @@
     "vue-router": "^5.4.0"
   },
   "devDependencies": {
-    "@types/three": "^0.186.0"
+    "@types/three": "^0.186.0",
+    "sharp": "^0.35.5"
   }
 }

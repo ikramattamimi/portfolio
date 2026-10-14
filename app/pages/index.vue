@@ -16,7 +16,10 @@ definePageMeta({ gate: true })
     </div>
 
     <!-- Di luar #konten: animasi di #konten tidak boleh ikut menggeser elemen fixed ini. -->
-    <NavSideFlow class="after-gate" />
+    <!-- ClientOnly: navigasi ini murni UI client dan bergantung pada mode, jadi tidak dirender di server. -->
+    <ClientOnly>
+      <NavSideFlow class="after-gate" />
+    </ClientOnly>
   </div>
 </template>
 

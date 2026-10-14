@@ -44,11 +44,11 @@ function openGallery(p: Project) {
             v-if="p.cover !== undefined"
             type="button"
             class="tile-shot"
-            :aria-label="t('gallery.label', { name: t(`projects.${p.id}`) })"
+            :aria-label="`${t('gallery.label', { name: t(`projects.${p.id}`) })}, ${t('client.results.screens', { n: p.gallery.files.length })}`"
             @click="openGallery(p)"
           >
             <img
-              :src="`/images/${p.gallery.dir}/${p.cover}.png`"
+              :src="`/images/${p.gallery.dir}/${p.cover}.webp`"
               :alt="t(`projects.${p.id}`)"
               loading="lazy"
               decoding="async"

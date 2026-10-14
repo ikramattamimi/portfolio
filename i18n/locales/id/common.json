@@ -73,5 +73,11 @@
     "close": "Tutup galeri",
     "prev": "Gambar sebelumnya",
     "next": "Gambar berikutnya"
+  },
+  "meta": {
+    "title": "Ikram Muhammad — Full-Stack Developer (ASP.NET · Vue · Laravel)",
+    "description": "Full-stack developer di Bandung. Saya membangun sistem persetujuan dokumen, pelacakan izin, dan aplikasi internal yang mengubah proses manual jadi otomatis.",
+    "ogLocale": "id_ID",
+    "jobTitle": "Full-Stack Developer"
   }
 }

@@ -127,7 +127,7 @@ a {
 li.done .node {
   background: var(--green);
   border-color: var(--green);
-  color: #fff;
+  color: var(--bg);
 }
 
 li.now .node {

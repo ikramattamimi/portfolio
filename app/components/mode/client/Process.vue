@@ -87,12 +87,14 @@ onMounted(() => {
 }
 
 .step.lit .n i {
-  background: var(--red);
+  background: var(--red-strong);
   color: #fff;
 }
 
 .step.last.lit .n i {
   background: var(--green);
+  /* Hijau tema gelap terlalu terang untuk teks putih. */
+  color: var(--bg);
 }
 
 h3 {

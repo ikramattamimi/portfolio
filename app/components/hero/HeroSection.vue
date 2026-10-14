@@ -1,13 +1,18 @@
 <script setup lang="ts">
 // Hero netral untuk rekruter maupun klien (headline A).
-// Kubus dimuat setelah browser idle supaya teks hero tampil lebih dulu.
+// Kubus (Three.js, ±225 KB gzip) baru dimuat setelah halaman selesai dimuat dan browser idle,
+// supaya tidak berebut bandwidth dengan font dan teks hero (elemen LCP).
 const { t } = useI18n()
 
 const showCubes = ref(false)
 onMounted(() => {
   const load = () => (showCubes.value = true)
-  if ('requestIdleCallback' in window) window.requestIdleCallback(load, { timeout: 1500 })
-  else setTimeout(load, 300)
+  const whenIdle = () => {
+    if ('requestIdleCallback' in window) window.requestIdleCallback(load, { timeout: 4000 })
+    else setTimeout(load, 1000)
+  }
+  if (document.readyState === 'complete') whenIdle()
+  else window.addEventListener('load', whenIdle, { once: true })
 })
 </script>
 
