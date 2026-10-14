@@ -36,6 +36,15 @@ Pembagian konten tiap mode (disetujui):
 | Proyek sebagai studi kasus teknis | Proyek sebagai hasil bisnis |
 | Unduh CV, pendidikan | Testimoni, cara mulai |
 
+### Navigasi "flow" di pinggir
+
+- Di mode rekruter maupun klien ada **flow vertikal di pinggir layar**, seperti stepper alur kerja, yang menunjukkan urutan section dari atas ke bawah.
+- Flow ini sekaligus jadi **navigasi**: klik satu langkah untuk lompat ke section tersebut, dan langkah yang aktif mengikuti posisi scroll.
+- Langkah-langkahnya berbeda per mode, mengikuti section tiap mode.
+- **Posisi:** di sisi **kanan** layar.
+- **Mobile:** diciutkan menjadi **garis progres tipis** (versi awal, bisa dievaluasi lagi).
+- Gaya visual belum ditentukan.
+
 ### Draf headline hero
 
 Kata bertanda `[...]` diberi warna aksen merah, sama seperti "persetujuan" di desain sekarang.
@@ -83,8 +92,26 @@ Paling dekat dengan headline sekarang (kata "persetujuan" dibuat lebih umum), ta
 - **Konten** di JSON/Markdown per mode dan per bahasa.
 - **Deploy:** ditunda. Kemungkinan pakai server dan domain di Hostinger.
 
+## 5. Blog (fase 2)
+
+Tujuannya mendongkrak SEO. Blog **dikerjakan di fase 2**, setelah redesign dual-mode selesai.
+
+- **URL:** `/blog` di domain yang sama, bukan subdomain.
+- **Bahasa:** artikel ditulis dalam **bahasa Indonesia dulu**. Terjemahan EN menyusul untuk artikel tertentu saja.
+- **Topik:** campuran tulisan untuk klien (masalah bisnis, digitalisasi proses) dan untuk rekruter (teknis: ASP.NET, Vue, Laravel).
+- **Fitur awal:** hanya **daftar artikel** dan **halaman baca**. Kategori/tag, komentar, dan newsletter tidak dulu.
+- **Link ke blog:**
+  - **Mobile:** di **sidebar**.
+  - **Desktop:** link teks "Blog" di **topbar**, di sebelah kiri tombol ID/EN. Topbar desktop memang sudah menampilkan semua elemen, jadi satu link teks tidak membuatnya ramai, dan posisinya sama "mudah dilihat"-nya dengan sidebar di mobile.
+  - **Footer:** link "Blog" juga ada di footer, di desktop maupun mobile.
+  - Link baru muncul setelah blog dirilis (fase 2).
+- **Gate mode tidak berlaku di blog.** Gate dan scroll lock hanya ada di beranda, supaya pengunjung dari mesin pencari langsung bisa membaca artikel.
+- **Tidak dirilis kosong:** blog baru ditampilkan setelah ada 3–5 artikel.
+- **Tambahan stack (rencana):** `@nuxt/content` untuk artikel Markdown, `@nuxtjs/seo` untuk sitemap, robots, schema.org, dan gambar OG.
+
 ---
 
 ## Pertanyaan terbuka
 
 - Tombol reset pilihan mode (draf ide, ditunda).
+- Gaya visual navigasi flow di pinggir.
