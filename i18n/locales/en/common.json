@@ -1,4 +1,8 @@
 {
+  "theme": {
+    "toLight": "Switch to light theme",
+    "toDark": "Switch to dark theme"
+  },
   "hero": {
     "headlineBefore": "I turn manual processes into systems that",
     "headlineAccent": "run themselves",

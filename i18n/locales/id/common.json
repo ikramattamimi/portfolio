@@ -1,4 +1,8 @@
 {
+  "theme": {
+    "toLight": "Ganti ke tema terang",
+    "toDark": "Ganti ke tema gelap"
+  },
   "hero": {
     "headlineBefore": "Saya mengubah proses manual jadi sistem yang",
     "headlineAccent": "berjalan sendiri",

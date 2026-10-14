@@ -1,0 +1,64 @@
+/*
+ * Design tokens, dipindah dari situs lama (index.html).
+ * Gelap = default. Terang aktif lewat <html data-theme="light"> (diatur @nuxtjs/color-mode).
+ */
+
+/* Gelap (default): hampir hitam, kartu ungu tua, merah redup */
+:root {
+  color-scheme: dark;
+  --bg: #0f0f0f;
+  --paper: #181624;
+  --soft: #221f31;
+  --soft-2: #2e2a40;
+  --ink: #f4f3f8;
+  --ink-2: #b6b3c3;
+  --ink-3: #85819a;
+  --line: #2a2739;
+  --red: #e0463d;
+  --red-hover: #c9382f;
+  --red-soft: rgba(224, 70, 61, 0.14);
+  --green: #3ccf7f;
+  --green-soft: rgba(60, 207, 127, 0.13);
+  --amber: #f5b03a;
+  --amber-soft: rgba(245, 176, 58, 0.13);
+  --blue: #74a9ff;
+  --blue-soft: rgba(116, 169, 255, 0.13);
+  --inv: #181624;
+  --inv-line: #2e2a40;
+  --nav-bg: rgba(15, 15, 15, 0.85);
+  --rule: rgba(255, 255, 255, 0.025);
+  --stamp-bg: rgba(24, 22, 36, 0.6);
+  --shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.85);
+
+  --sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --r: 18px;
+}
+
+/* Terang: kertas hangat */
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f6f3ee;
+  --paper: #fffdf9;
+  --soft: #efeae2;
+  --soft-2: #e6dfd4;
+  --ink: #1d1c24;
+  --ink-2: #55535f;
+  --ink-3: #8b8895;
+  --line: #e2dbcf;
+  --red: #d93a32;
+  --red-hover: #bf2f28;
+  --red-soft: #fbe9e7;
+  --green: #1e9455;
+  --green-soft: #e3f3ea;
+  --amber: #c9820f;
+  --amber-soft: #fbf0dc;
+  --blue: #2f6fd0;
+  --blue-soft: #e6eefb;
+  --inv: #1d1c24;
+  --inv-line: #1d1c24;
+  --nav-bg: rgba(246, 243, 238, 0.88);
+  --rule: rgba(0, 0, 0, 0.025);
+  --stamp-bg: rgba(255, 253, 249, 0.6);
+  --shadow: 0 24px 50px -28px rgba(29, 28, 36, 0.35);
+}

@@ -72,11 +72,12 @@ public/
 
 **Tujuan:** tampilan dasar (warna, font, tema) sudah sama dengan situs lama.
 
-- [ ] Pindahkan design token dari `index.html` lama ke `tokens.css`, yaitu variabel `--bg`, `--ink`, `--red`, dan lainnya, beserta varian `[data-theme="light"]`.
-- [ ] Font: Plus Jakarta Sans + JetBrains Mono, lewat `@nuxt/fonts` atau Google Fonts. Caveat kemungkinan tidak dipakai lagi karena kartu formulir sudah dihapus.
-- [ ] Toggle tema dark/light: tema gelap default, pilihan disimpan, dan tidak ada kedipan tema saat halaman dimuat (FOUC). Pertimbangkan `@nuxtjs/color-mode`.
-- [ ] Pindahkan `images/` ke `public/images/` dan `doc/CV.pdf` ke `public/doc/`.
-- [ ] Pecah file locale per bagian (`common`, `recruiter`, `client`).
+- [x] Pindahkan design token dari `index.html` lama ke `tokens.css`, yaitu variabel `--bg`, `--ink`, `--red`, dan lainnya, beserta varian `[data-theme="light"]`. Reset dan utilitas ada di `base.css`.
+- [x] Font: Plus Jakarta Sans + JetBrains Mono lewat `@nuxt/fonts` (di-host sendiri). Caveat tidak dipakai lagi.
+- [x] Toggle tema dark/light (`UiThemeToggle`) memakai `@nuxtjs/color-mode`: tema gelap default, disimpan di `localStorage` (`theme`), dan tidak ada kedipan saat halaman dimuat.
+- [x] Salin `images/` ke `public/images/` dan `doc/CV.pdf` ke `public/doc/`. File aslinya dihapus di Tahap 8.
+- [x] Pecah file locale per bagian (`common`, `recruiter`, `client`).
+- [x] Atribut `lang` dan link `hreflang` mengikuti bahasa aktif (`useLocaleHead`).
 
 **Selesai bila:** halaman kosong sudah memakai warna dan font yang benar di kedua tema, dan pergantian tema tidak berkedip.
 
@@ -224,4 +225,3 @@ Cara penerapannya:
 
 - Gaya visual navigasi flow di sisi kanan.
 - Tombol reset pilihan mode (draf ide, ditunda).
-- `@nuxtjs/color-mode` untuk tema: dipakai, atau ditulis sendiri?
