@@ -53,16 +53,24 @@ function sync() {
 }
 sync()
 
-const { onBeforeRender, start, stop } = useLoop()
-
 let renderedStill = false
+const { onBeforeRender, start, stop, isActive } = useLoop()
+
+// Jalankan ulang loop hanya kalau sedang berhenti. TresJS memasang listener `visibilitychange`
+// baru setiap kali start() dipanggil tanpa melepas yang lama; listener yang bocor lalu error
+// ("Cannot read properties of null (reading 'hidden')") setelah loop dihentikan.
+function wake() {
+  renderedStill = false
+  if (!isActive.value) start()
+}
+
 onBeforeRender(({ delta }) => {
   if (props.running) {
     world.step(delta, props.pointer)
     sync()
   } else if (renderedStill) {
     // Diam: cukup satu frame, lalu loop dihentikan.
-    stop()
+    if (isActive.value) stop()
   } else {
     renderedStill = true
   }
@@ -70,10 +78,7 @@ onBeforeRender(({ delta }) => {
 
 watch(
   () => props.running,
-  (run) => {
-    renderedStill = false
-    if (run) start()
-  },
+  wake,
 )
 
 watch(
@@ -82,8 +87,7 @@ watch(
     world.resize(w, h)
     resolution.set(w, h)
     sync()
-    renderedStill = false
-    start()
+    wake()
   },
 )
 
@@ -92,8 +96,7 @@ watch(
   (c) => {
     lineMat.color.set(c.line)
     accentMat.color.set(c.accent)
-    renderedStill = false
-    start()
+    wake()
   },
 )
 
