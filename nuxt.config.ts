@@ -5,7 +5,7 @@ export default defineNuxtConfig({
 
   modules: ['@nuxtjs/i18n', '@nuxtjs/color-mode', '@nuxt/fonts', '@tresjs/nuxt'],
 
-  css: ['~/assets/css/tokens.css', '~/assets/css/base.css'],
+  css: ['~/assets/css/tokens.css', '~/assets/css/base.css', '~/assets/css/mode.css'],
 
   app: {
     head: {

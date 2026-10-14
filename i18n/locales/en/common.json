@@ -24,5 +24,20 @@
     "headlineBefore": "I turn manual processes into systems that",
     "headlineAccent": "run themselves",
     "subtitle": "Full-stack developer (ASP.NET · Vue · Laravel) based in Bandung. I build document approval apps, permit tracking, and internal workflows, from business requirements all the way to production."
+  },
+  "gate": {
+    "kicker": "Choose a path",
+    "title": "What are you looking for?",
+    "subtitle": "Pick one and the page adapts. You can switch anytime from the top bar.",
+    "rekruter": {
+      "kicker": "For recruiters",
+      "title": "Experience & CV",
+      "desc": "Work history, technical skills, case studies, and CV."
+    },
+    "klien": {
+      "kicker": "For clients",
+      "title": "Projects & services",
+      "desc": "Services, how we would work together, and project results."
+    }
   }
 }

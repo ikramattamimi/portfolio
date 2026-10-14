@@ -1,14 +1,20 @@
+<script setup lang="ts">
+// `gate: true`: halaman ini punya gate pilihan mode (footer & link Hubungi ikut terkunci).
+definePageMeta({ gate: true })
+</script>
+
 <template>
   <div>
     <HeroSection />
+    <GateModeGate />
 
-    <!-- Sementara: diganti gate + konten mode (Tahap 4–5). -->
-    <div class="wrap">
-      <section class="placeholder">
-        <p class="mono">Placeholder: gate + konten mode (Tahap 4–5)</p>
-      </section>
+    <!-- Kedua mode selalu dirender; yang tidak aktif disembunyikan lewat CSS (mode.css). -->
+    <div id="konten" class="after-gate" tabindex="-1">
+      <ModeRecruiterView />
+      <ModeClientView />
 
-      <section id="kontak" class="placeholder">
+      <!-- Sementara: diganti ContactSection di Tahap 5. -->
+      <section id="kontak" class="wrap placeholder">
         <p class="mono">Placeholder: kontak (Tahap 5)</p>
         <input type="text" placeholder="Kolom teks untuk tes kursor bawaan">
       </section>
@@ -17,11 +23,15 @@
 </template>
 
 <style scoped>
+#konten {
+  outline: none;
+}
+
 .placeholder {
-  min-height: 70vh;
+  min-height: 50vh;
   border: 1px dashed var(--line);
   border-radius: var(--r);
-  margin-bottom: 40px;
+  margin: 40px auto;
   display: grid;
   place-content: center;
   gap: 16px;

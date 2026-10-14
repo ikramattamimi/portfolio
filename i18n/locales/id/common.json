@@ -24,5 +24,20 @@
     "headlineBefore": "Saya mengubah proses manual jadi sistem yang",
     "headlineAccent": "berjalan sendiri",
     "subtitle": "Full-stack developer (ASP.NET · Vue · Laravel) di Bandung. Saya membangun aplikasi persetujuan dokumen, pelacakan izin, dan alur kerja internal, mulai dari kebutuhan bisnis sampai sistem jalan di produksi."
+  },
+  "gate": {
+    "kicker": "Pilih jalur",
+    "title": "Apa yang Anda cari?",
+    "subtitle": "Pilih salah satu, tampilan halaman akan menyesuaikan. Anda bisa menggantinya kapan saja lewat tombol di bagian atas.",
+    "rekruter": {
+      "kicker": "Untuk rekruter",
+      "title": "Pengalaman & CV",
+      "desc": "Riwayat kerja, keahlian teknis, studi kasus, dan CV."
+    },
+    "klien": {
+      "kicker": "Untuk klien",
+      "title": "Proyek & layanan",
+      "desc": "Layanan, cara kerja sama, dan hasil proyek."
+    }
   }
 }

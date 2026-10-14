@@ -6,6 +6,11 @@ useHead(() => ({
   link: head.value.link,
   meta: head.value.meta,
 }))
+
+// Tentukan mode (rekruter/klien) sebelum halaman digambar. Lihat MODE_INIT_SCRIPT.
+useHead({
+  script: [{ key: 'mode-init', innerHTML: MODE_INIT_SCRIPT, tagPosition: 'head' }],
+})
 </script>
 
 <template>

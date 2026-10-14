@@ -115,14 +115,17 @@ public/
 
 **Tujuan:** alur memilih mode berjalan lengkap.
 
-- [ ] `useMode`:
-  - Urutan prioritas: `?mode=rekruter|klien` → `localStorage` → belum memilih.
-  - Mode dari `?mode` juga disimpan ke `localStorage`.
-- [ ] `ModeGate`: section satu layar penuh dengan dua kartu.
-- [ ] Scroll dikunci di gate sampai pengunjung memilih (`useScrollLock`). Hero tetap bisa dilihat.
-- [ ] Animasi GSAP Flip: kartu yang dipilih berpindah ke posisi `ModeToggle` di topbar, lalu kartu lainnya menghilang.
-- [ ] Kalau mode sudah ada (dari deep link atau `localStorage`), gate tidak ditampilkan dan toggle langsung tampil di topbar.
-- [ ] Gate bisa dipakai dengan keyboard, dan kedua kartu punya label yang jelas.
+- [x] Penentuan mode:
+  - Urutan prioritas: `?mode=rekruter|klien` (alias EN `recruiter|client` juga diterima) → `localStorage` → belum memilih.
+  - Mode dari `?mode` juga disimpan ke `localStorage`, lalu parameternya dihapus dari URL.
+  - Ditentukan oleh **script inline di `<head>`** (`MODE_INIT_SCRIPT`) yang memasang `<html data-mode>` sebelum halaman digambar, jadi tidak ada kedipan. State `useMode` disalin dari atribut itu setelah hydration (`plugins/mode.client.ts`).
+- [x] `GateModeGate`: section satu layar penuh dengan judul "Apa yang Anda cari?" dan dua kartu (Pengalaman & CV / Proyek & layanan).
+- [x] Scroll terkunci di gate: selama belum memilih, semua yang ada di bawah gate (konten mode, kontak, footer) disembunyikan lewat CSS (`mode.css`), jadi halaman berakhir di gate. Cara ini tidak membajak scroll, jadi `useScrollLock` tidak diperlukan.
+- [x] Animasi: salinan kartu (`position: fixed`) diterbangkan dengan `Flip.fit` ke tombol mode di topbar, isi kartu memudar, dan label tombol muncul. Setelah itu toggle tampil, halaman lompat ke awal konten, konten masuk dengan fade, dan fokus pindah ke konten. Tanpa animasi kalau `prefers-reduced-motion`.
+- [x] Kalau mode sudah ada (dari deep link atau `localStorage`), gate tidak ditampilkan dan toggle langsung tampil, dengan tombol aktif yang benar sejak render pertama.
+- [x] Kartu gate berupa `<button>` (bisa dipakai dengan keyboard), dan toggle memakai `aria-pressed`.
+- [x] Link "Hubungi" sebelum mode dipilih mengarah ke gate, karena bagian kontak masih terkunci.
+- [x] GSAP + Flip dimuat lazy saat gate hampir terlihat.
 - [ ] *(Draf ide, belum dikerjakan)* tombol reset pilihan mode.
 
 **Selesai bila:** ketiga jalur sudah dites (kunjungan pertama, `?mode=rekruter`, kunjungan ulang), dan animasinya mulus di desktop maupun mobile.
@@ -145,7 +148,7 @@ Bagian bersama: **kontak** (`#contact`, formulir yang membuka WhatsApp/email) da
 - [ ] Komponen section untuk tiap mode, dengan teks dari file locale.
 - [ ] Teks baru: layanan, cara mulai, dan versi "hasil bisnis" dari tiap proyek, dalam ID dan EN.
 - [ ] Galeri screenshot proyek (Trashclean, Smart Home/Jayandra, Salary Payment, Akuntansi).
-- [ ] **Konten kedua mode dirender di HTML** (SSR/generate). Yang tidak aktif disembunyikan di client (lihat [Keputusan SEO](#keputusan-seo-konten-mode)).
+- [x] **Konten kedua mode dirender di HTML** (SSR/generate). Yang tidak aktif disembunyikan di client (lihat [Keputusan SEO](#keputusan-seo-konten-mode)). Mekanismenya (`mode.css`, `.view-rekruter`/`.view-klien`) sudah dibuat di Tahap 4. Komponen `ModeRecruiterView`/`ModeClientView` masih placeholder.
 - [ ] Animasi pergantian mode: konten lama keluar dan konten baru masuk dari arah berlawanan, ditambah stagger (GSAP). Setelah berganti, scroll kembali ke awal konten.
 - [ ] `ContactSection` + `LayoutFooter` dipakai di kedua mode.
 

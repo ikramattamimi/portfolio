@@ -4,6 +4,7 @@
 const { t } = useI18n()
 const route = useRoute()
 const { open, hide } = useSidebar()
+const onContact = useContactLink()
 
 const panel = ref<HTMLElement | null>(null)
 const closeBtn = ref<HTMLButtonElement | null>(null)
@@ -93,7 +94,7 @@ onBeforeUnmount(() => {
             <UiLangSwitch />
           </div>
 
-          <a href="#kontak" class="btn red contact" @click="hide">{{ t('nav.contact') }}</a>
+          <a href="#kontak" class="btn red contact" @click="(e) => { hide(); onContact(e) }">{{ t('nav.contact') }}</a>
         </aside>
       </div>
     </Transition>

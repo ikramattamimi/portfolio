@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// Toggle mode berupa teks di topbar. Di Tahap 4 jadi target animasi Flip dari kartu gate.
+// Toggle mode berupa teks di topbar. Juga target animasi dari kartu gate (lihat GateModeGate).
 const { t } = useI18n()
 const { mode, setMode } = useMode()
 const modes = MODES
@@ -11,7 +11,7 @@ const modes = MODES
       v-for="m in modes"
       :key="m"
       type="button"
-      :class="{ on: mode === m }"
+      :data-mode-btn="m"
       :aria-pressed="mode === m"
       @click="setMode(m)"
     >
@@ -44,7 +44,9 @@ button:hover {
   color: var(--ink);
 }
 
-button.on {
+/* Tombol aktif dibaca dari <html data-mode>, jadi sudah benar sebelum hydration. */
+:root[data-mode='rekruter'] button[data-mode-btn='rekruter'],
+:root[data-mode='klien'] button[data-mode-btn='klien'] {
   background: var(--paper);
   color: var(--ink);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);

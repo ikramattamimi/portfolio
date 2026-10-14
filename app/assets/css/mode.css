@@ -1,0 +1,34 @@
+/*
+ * Visibilitas berdasarkan mode, diatur lewat atribut di <html> yang dipasang
+ * MODE_INIT_SCRIPT sebelum halaman digambar (jadi tidak ada kedipan).
+ *
+ * - html.js            : JavaScript aktif
+ * - html[data-mode=…]  : mode yang dipilih (rekruter | klien)
+ */
+
+/* Belum memilih: semua yang ada di bawah gate dikunci (halaman berakhir di gate). */
+html.js:not([data-mode]) .after-gate {
+  display: none !important;
+}
+
+/* Sudah memilih: gate disembunyikan. */
+html[data-mode] .gate {
+  display: none !important;
+}
+
+/* Hanya konten mode aktif yang tampil. Keduanya tetap ada di HTML untuk mesin pencari. */
+html[data-mode='rekruter'] .view-klien,
+html[data-mode='klien'] .view-rekruter {
+  display: none !important;
+}
+
+/* Toggle mode baru muncul setelah memilih. */
+html:not([data-mode]) .mode-toggle {
+  visibility: hidden;
+}
+
+/* Tanpa JavaScript: tanpa gate dan toggle, kedua mode tampil berurutan. */
+html:not(.js) .gate,
+html:not(.js) .mode-toggle {
+  display: none !important;
+}

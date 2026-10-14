@@ -3,6 +3,7 @@
 // Mobile: tombol sidebar (kiri), toggle mode (tengah), tema (kanan).
 const { t } = useI18n()
 const { open: sidebarOpen, show: showSidebar } = useSidebar()
+const onContact = useContactLink()
 
 const scrolled = ref(false)
 function onScroll() {
@@ -34,7 +35,7 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
 
       <div class="actions">
         <UiLangSwitch class="desktop-only" />
-        <a href="#kontak" class="btn red sm desktop-only">{{ t('nav.contact') }}</a>
+        <a href="#kontak" class="btn red sm desktop-only" @click="onContact">{{ t('nav.contact') }}</a>
         <UiThemeToggle />
       </div>
     </div>
