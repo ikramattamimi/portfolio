@@ -7,7 +7,7 @@ Live: [ikramattamimi.github.io/portfolio](https://ikramattamimi.github.io/portfo
 
 ## Features
 - **Bilingual (ID / EN)** — toggle in the navbar, choice is remembered per visitor
-- **Dark / light theme** — dark by default (original near-black, deep purple and red palette), warm "paper" light theme on toggle
+- **Dark / light theme** — dark by default (original near-black and deep purple palette), warm "paper" light theme on toggle
 - **Hero request form** — animated approval stepper with an "Approved" stamp
 - **Experience as case studies** — plain-language results first, technical details (problem/solution, diagrams, stack) behind a click
 - **Freelance projects** — bento grid with screenshot galleries and two live mini-demos (Smart Home power monitor, Salary Payment slip sender)
