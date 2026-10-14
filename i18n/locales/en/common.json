@@ -9,7 +9,9 @@
     "menu": "Menu",
     "skip": "Skip to content",
     "contact": "Contact",
-    "language": "Language"
+    "language": "Language",
+    "sections": "Section navigation",
+    "progress": "Reading progress"
   },
   "mode": {
     "label": "View mode",

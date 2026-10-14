@@ -14,6 +14,9 @@ definePageMeta({ gate: true })
       <ModeClientView />
       <SharedContactSection :no="5" />
     </div>
+
+    <!-- Di luar #konten: animasi di #konten tidak boleh ikut menggeser elemen fixed ini. -->
+    <NavSideFlow class="after-gate" />
   </div>
 </template>
 

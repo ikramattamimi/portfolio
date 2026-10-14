@@ -159,9 +159,11 @@ Bagian bersama: **kontak** (`#contact`, formulir yang membuka WhatsApp/email) da
 
 ### Tahap 6. Navigasi flow di sisi kanan
 
-- [ ] `useActiveSection`: menentukan section yang sedang terlihat.
-- [ ] `SideFlow` desktop: stepper vertikal di kanan. Klik satu langkah untuk lompat ke section, dan langkah aktif mengikuti scroll. Isi langkahnya berbeda per mode.
-- [ ] `SideFlow` mobile: garis progres tipis.
+- [x] `useActiveSection`: section aktif adalah yang sudah melewati tengah layar, ditambah progres baca (0–100%) dan status "sedang di dalam konten". Diukur langsung di handler scroll, tanpa `requestAnimationFrame`.
+- [x] `NavSideFlow` (≥ 1280 px): stepper vertikal di kanan dengan langkah per mode (`FLOW` di `data/portfolio.ts`): 5 langkah termasuk Kontak. Gaya langkah persetujuan: lewat = ✓ hijau, aktif = cincin amber, berikutnya = abu-abu. Label muncul saat stepper disentuh atau difokus. Area klik hanya sebesar bulatan, jadi tidak menutupi konten. Klik untuk lompat ke section, dan `aria-current="location"` menandai langkah aktif.
+- [x] `NavSideFlow` (< 1280 px): garis progres merah 3 px tepat di bawah topbar (`role="progressbar"`).
+- [x] Hanya tampil saat sedang membaca konten mode (tersembunyi di hero dan gate), dan ikut berganti saat mode diganti.
+- [ ] Gaya visual final masih perlu ditinjau pemilik.
 - [ ] Gaya visual (keputusan masih terbuka). Usulan awal: dibuat mirip langkah persetujuan (lingkaran bernomor + garis), agar senada dengan tema situs.
 
 **Selesai bila:** navigasi bisa diklik dan dioperasikan dengan keyboard, langkah aktif selalu akurat, dan elemen ini tidak menutupi konten.

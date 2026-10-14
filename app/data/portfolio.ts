@@ -101,3 +101,23 @@ export const CV_STATS = [
 
 /** Ubah ke true kalau sudah ada testimoni sungguhan (teks di client.json → testimonials.items). */
 export const SHOW_TESTIMONIALS = false
+
+/* ---------- navigasi flow (sisi kanan) ---------- */
+
+/** Urutan section per mode untuk navigasi flow: id elemen + kunci label (kicker section). */
+export const FLOW: Record<'rekruter' | 'klien', { id: string, label: string }[]> = {
+  rekruter: [
+    { id: 'pengalaman', label: 'recruiter.experience.kicker' },
+    { id: 'proyek', label: 'recruiter.projects.kicker' },
+    { id: 'keahlian', label: 'recruiter.skills.kicker' },
+    { id: 'cv', label: 'recruiter.cv.kicker' },
+    { id: 'kontak', label: 'contact.kicker' },
+  ],
+  klien: [
+    { id: 'layanan', label: 'client.services.kicker' },
+    { id: 'hasil', label: 'client.results.kicker' },
+    { id: 'alur', label: 'client.process.kicker' },
+    { id: 'mulai', label: 'client.start.kicker' },
+    { id: 'kontak', label: 'contact.kicker' },
+  ],
+}

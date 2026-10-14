@@ -9,7 +9,9 @@
     "menu": "Menu",
     "skip": "Lewati ke konten",
     "contact": "Hubungi",
-    "language": "Bahasa"
+    "language": "Bahasa",
+    "sections": "Navigasi bagian",
+    "progress": "Progres membaca"
   },
   "mode": {
     "label": "Mode tampilan",
