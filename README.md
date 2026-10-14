@@ -1,39 +1,74 @@
 # Ikram Muhammad — Portfolio
 
-Personal portfolio built around a **workflow / approval** theme — the kind of systems I build at work. It serves two audiences: recruiters (experience, case studies, CV) and freelance clients (projects, process, contact).
+Personal portfolio built around a **workflow / approval** theme, the kind of systems I build at work. It serves two audiences, with **completely separate content**:
 
-## Demo
-Live: [ikramattamimi.github.io/portfolio](https://ikramattamimi.github.io/portfolio/)
+- **Recruiters** — experience as case studies, freelance projects (technical view), skills linked to proof, CV.
+- **Clients** — services, project results (business view) with two live mini-demos, how we'd work together, how to start.
+
+Visitors pick a mode on a full-screen gate below the hero; the chosen card flies into the top bar and becomes the mode toggle.
 
 ## Features
-- **Bilingual (ID / EN)** — toggle in the navbar, choice is remembered per visitor
-- **Dark / light theme** — dark by default (original near-black and deep purple palette), warm "paper" light theme on toggle
-- **Hero request form** — animated approval stepper with an "Approved" stamp
-- **Experience as case studies** — plain-language results first, technical details (problem/solution, diagrams, stack) behind a click
-- **Freelance projects** — bento grid with screenshot galleries and two live mini-demos (Smart Home power monitor, Salary Payment slip sender)
-- **Skills linked to proof** — click a technology to see which projects used it
-- **Work-with-me process**, testimonials, CV download, and a contact form that sends via WhatsApp or email
-- Single static HTML file, no build step, responsive down to phone width
+- **Mode gate** — scrolling stops at the gate until a mode is chosen. The choice is remembered (`localStorage`).
+- **Deep links** — `?mode=rekruter` / `?mode=klien` (also `recruiter` / `client`) skip the gate. Use these in job applications.
+- **Both modes are in the HTML** for search engines; the inactive one is hidden with CSS before first paint (no flash).
+- **Hero** — wireframe cubes (Three.js via TresJS) with lightweight custom physics: they collide and get pushed by the mouse; float slowly on touch devices; static with `prefers-reduced-motion`.
+- **Side flow navigation** — approval-style stepper on the right (≥ 1280 px), thin reading-progress line on smaller screens.
+- **Bilingual** — Indonesian at `/`, English at `/en`.
+- **Dark / light theme** — dark by default, no flash on load. All text meets WCAG AA contrast in both themes.
+- Custom square cursor that rotates on interactive elements (mouse only).
+
+## Tech stack
+Nuxt 4 (static generation) · Vue 3 · `@nuxtjs/i18n` · `@nuxtjs/color-mode` · `@nuxt/fonts` · TresJS + Three.js · GSAP (Flip) · `@nuxtjs/sitemap` + `@nuxtjs/robots`.
+
+## Development
+```bash
+npm install
+```
+```bash
+npm run dev
+```
+
+## Build (static)
+```bash
+NUXT_PUBLIC_SITE_URL=https://your-domain.com npm run generate
+```
+The site is written to `.output/public/`; upload its contents to any static host.
+
+`NUXT_PUBLIC_SITE_URL` (no trailing slash) is used for canonical/hreflang links, Open Graph URLs, and the sitemap. Without it the build still works, but URLs stay relative and no sitemap is generated.
+
+Every file is also written as `.gz` and `.br`; serve those if the host supports precompressed files, otherwise enable gzip/brotli on the server.
 
 ## Structure
 ```
-├── index.html     # the whole site (HTML, CSS, JS)
-├── images/        # project screenshots
-└── doc/CV.pdf     # downloadable CV
+app/
+  components/
+    hero/       HeroSection, CubeField (Three.js scene), CubeScene
+    gate/       ModeGate (mode choice), ModeToggle (top bar)
+    mode/       RecruiterView, ClientView + their sections (recruiter/, client/)
+    nav/        SideFlow (stepper / progress line)
+    layout/     Topbar, Sidebar (mobile), Footer
+    shared/     ContactSection
+    ui/         ThemeToggle, LangSwitch, Lightbox, CustomCursor, SectionHead
+  composables/  useMode (mode state, init script, animated switch), useActiveSection, useGallery, …
+  data/         portfolio.ts — structure: jobs, projects, skills, contact, flow steps
+  utils/        cubePhysics.ts, gsap.ts
+  assets/css/   tokens.css (theme colors), base.css, mode.css (mode visibility)
+i18n/locales/{id,en}/
+  common.json · recruiter.json · client.json — all text
+public/
+  images/       project screenshots (WebP)
+  doc/CV.pdf
+scripts/optimize-images.mjs
+.ai/plan/       development plan
+doc/            design decisions
 ```
 
 ## Editing content
-Everything lives in `index.html`:
-- **Text** — Indonesian is the element's content; English is in its `data-en` attribute, side by side.
-- **Testimonials** — hidden for now; set `SHOW_TESTIMONIALS = true` and fill the `TESTIMONIALS` array at the top of the `<script>`. Section numbers renumber automatically.
-- **Skills** — `SKILLS` maps each technology to the project ids that use it; `WHERE` holds the project names.
-- **WhatsApp number** — `WA` constant.
+- **Text** lives in `i18n/locales/{id,en}/*.json`, keyed by the same ids as `app/data/portfolio.ts`.
+- **Structure** (tech chips, galleries, which skill was used where, contact details) lives in `app/data/portfolio.ts`.
+- **Testimonials** are hidden; set `SHOW_TESTIMONIALS = true` in `app/data/portfolio.ts` once there are real quotes.
+- **Screenshots**: add PNGs to `public/images/<project>/`, then run `npm run images` to convert them to WebP.
 
-## Run locally
-Open `index.html` directly in a browser, or serve the folder:
-```bash
-npx http-server -p 8765
-```
-
-## Previous version
-The earlier Bootstrap 5 version is kept on the `legacy-bootstrap` branch.
+## Previous versions
+- The single-file static version is in this repository's history before the Nuxt redesign.
+- The earlier Bootstrap 5 version is kept on the `legacy-bootstrap` branch.

@@ -185,10 +185,10 @@ Bagian bersama: **kontak** (`#contact`, formulir yang membuka WhatsApp/email) da
 
 ### Tahap 8. Pembersihan & persiapan rilis
 
-- [ ] Hapus situs lama (`index.html`, `images/` di root) setelah semua konten dimigrasi.
-- [ ] Perbarui `README.md`: cara menjalankan, build, dan struktur.
-- [ ] Tes manual menyeluruh: Chrome, Firefox, Safari/iOS, Android.
-- [ ] Merge ke `main`.
+- [x] Hapus situs lama (`index.html`, `images/` di root, `doc/CV.pdf` yang sudah ada di `public/doc/`). Versi lama tetap ada di riwayat git.
+- [x] Perbarui `README.md`: fitur, tech stack, cara menjalankan & build (`NUXT_PUBLIC_SITE_URL`), struktur, cara mengubah konten.
+- [ ] Tes manual menyeluruh. Sudah: Chromium (panel browser + Edge headless), viewport 375/768/1440. **Belum:** Firefox, Safari/iOS, perangkat Android sungguhan, dan kelancaran animasi (gate → topbar, ganti mode) di browser biasa.
+- [ ] Merge ke `main`. **Perhatian:** situs lama live di GitHub Pages (`ikramattamimi.github.io/portfolio`) dari `index.html` di `main`. Setelah merge, `main` tidak lagi punya `index.html` siap saji, jadi situs live bisa rusak kecuali deploy diatur dulu (lihat pertanyaan terbuka).
 - [ ] Deploy (ditunda): Hostinger, hosting statis dari `.output/public`.
 
 ---
@@ -236,6 +236,12 @@ Cara penerapannya:
 ---
 
 ## Pertanyaan terbuka
+
+- **Merge ke `main` vs GitHub Pages:** pilih salah satu sebelum merge:
+  (a) merge sekarang dan biarkan GitHub Pages mati sampai pindah ke Hostinger;
+  (b) tambah GitHub Actions yang menjalankan `nuxt generate` dan mendeploy `.output/public` ke Pages (butuh `app.baseURL: '/portfolio/'` karena situs ada di subpath);
+  (c) tunda merge sampai domain Hostinger siap.
+- Gambar Open Graph untuk pratinjau link.
 
 - Gaya visual navigasi flow di sisi kanan.
 - Tombol reset pilihan mode (draf ide, ditunda).
