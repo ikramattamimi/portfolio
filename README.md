@@ -25,7 +25,7 @@ Live: [ikramattamimi.github.io/portfolio](https://ikramattamimi.github.io/portfo
 ## Editing content
 Everything lives in `index.html`:
 - **Text** — Indonesian is the element's content; English is in its `data-en` attribute, side by side.
-- **Testimonials** — fill the `TESTIMONIALS` array at the top of the `<script>`. Cards with an empty quote show as placeholders.
+- **Testimonials** — hidden for now; set `SHOW_TESTIMONIALS = true` and fill the `TESTIMONIALS` array at the top of the `<script>`. Section numbers renumber automatically.
 - **Skills** — `SKILLS` maps each technology to the project ids that use it; `WHERE` holds the project names.
 - **WhatsApp number** — `WA` constant.
 

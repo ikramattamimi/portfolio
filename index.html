@@ -685,6 +685,9 @@ footer{padding:40px 0;text-align:center;font-size:13px;color:var(--ink-3)}
 /* =================== EDITABLE DATA =================== */
 const WA = '6287778328502';
 
+// Ubah ke true untuk menampilkan bagian Testimoni.
+const SHOW_TESTIMONIALS = false;
+
 // Isi testimoni di sini. Kartu dengan `quote` kosong tampil sebagai placeholder.
 const TESTIMONIALS = [
   { name:'', role:'', quote:{ id:'', en:'' } },
@@ -728,7 +731,7 @@ function applyLang(l){
   document.getElementById('rname').placeholder = txt[l].namePh;
   document.getElementById('rmsg').placeholder = txt[l].msgPh;
   document.getElementById('formCard').title = txt[l].replay;
-  renderTesti(); renderSkillPanel(); if(typeof syncThemeLabel==="function") syncThemeLabel();
+  renderTesti(); renderSkillPanel(); numberSections(); if(typeof syncThemeLabel==="function") syncThemeLabel();
   try{ localStorage.setItem('lang',l); }catch(e){}
 }
 document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>{ applyLang(b.dataset.lang); restartHero(); });
@@ -800,8 +803,16 @@ function renderSkillPanel(){
   p.querySelectorAll('[data-jump]').forEach(a=>a.onclick=()=>{ const el=document.getElementById(a.dataset.jump); el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash'); });
 }
 
+/* =================== section numbers =================== */
+// Numbers visible section headings in order, so hiding a section leaves no gap.
+function numberSections(){
+  let n=0;
+  document.querySelectorAll("section:not([hidden]) .head .no").forEach(el=>{ n++; el.innerHTML = el.innerHTML.replace(/^\d+/, String(n).padStart(2,"0")); });
+}
+
 /* =================== testimonials =================== */
 function renderTesti(){
+  document.getElementById("testimonials").hidden = !SHOW_TESTIMONIALS;
   const t=txt[lang];
   document.getElementById('testi').innerHTML = TESTIMONIALS.map(x=>{
     const q=x.quote[lang]||x.quote.id, name=x.name||t.tn;
