@@ -1,3 +1,91 @@
 {
-  "client": {}
+  "client": {
+    "services": {
+      "kicker": "Services",
+      "title": "What I can build for you",
+      "lead": "My focus: office work that is still manual, repetitive, or scattered across too many files.",
+      "items": {
+        "approval": {
+          "title": "Approval systems & workflows",
+          "desc": "Requests, multi-level approvals, delegation, and automatic reminders. No paper, no chasing signatures.",
+          "example": "Examples: RFA, PED"
+        },
+        "internal": {
+          "title": "Internal business apps",
+          "desc": "Payroll, accounting, staff data: everything in one place, with reports ready whenever you need them.",
+          "example": "Examples: Salary Payment, Accounting App"
+        },
+        "website": {
+          "title": "Websites with an admin panel",
+          "desc": "A website you can update yourself, without calling a developer for every change.",
+          "example": "Example: Trashclean"
+        },
+        "automation": {
+          "title": "Automation & integration",
+          "desc": "Excel imports, bulk emails, scheduled reminders. Repetitive work handled by the system.",
+          "example": "Examples: automatic pay slips, permit reminders"
+        }
+      }
+    },
+    "results": {
+      "kicker": "Results",
+      "title": "Processes I've already cleaned up",
+      "lead": "Click a screenshot for the full gallery. Two of them you can try right here.",
+      "workLabel": "At work",
+      "freelanceLabel": "Freelance",
+      "delivered": "Delivered",
+      "tryIt": "Try it",
+      "screens": "{n} screens",
+      "seeScreens": "See screens",
+      "kinds": {
+        "trashclean": "Website",
+        "smarthome": "Mobile · IoT",
+        "salary": "Internal system",
+        "accounting": "Internal system"
+      },
+      "items": {
+        "trashclean": "Villagers schedule waste pickups online; admins manage all site content themselves.",
+        "smarthome": "Switch plugs on/off and watch power use in real time.",
+        "salary": "Upload one Excel file and every employee gets their pay slip by email.",
+        "accounting": "Transactions for a trading company, recorded and charted."
+      },
+      "iot": {
+        "lamp": "Lamp",
+        "ac": "AC",
+        "heater": "Water heater",
+        "total": "Total power"
+      },
+      "slips": {
+        "send": "Send slips",
+        "again": "Send again",
+        "sending": "sending…",
+        "sent": "sent"
+      }
+    },
+    "process": {
+      "kicker": "Work with me",
+      "title": "Every project goes through clear approvals",
+      "lead": "You approve each step before we move on, so there are no surprises.",
+      "steps": {
+        "consult": { "badge": "Free", "title": "Consultation", "desc": "Tell me what you need; I'll suggest the simplest solution." },
+        "design": { "badge": "Your approval", "title": "Design", "desc": "You see the screens before anything is built." },
+        "build": { "badge": "Updates", "title": "Development", "desc": "Regular progress updates you can try yourself." },
+        "launch": { "badge": "Approved", "title": "Launch & support", "desc": "Go live, with a user guide and support afterwards." }
+      }
+    },
+    "start": {
+      "kicker": "Getting started",
+      "title": "Start with a short, free chat",
+      "lead": "Tell me which process you want to clean up. I usually reply within a day, then we agree on the first step together.",
+      "whatsapp": "Chat on WhatsApp",
+      "form": "Fill in the request form"
+    },
+    "testimonials": {
+      "kicker": "Testimonials",
+      "title": "What they say",
+      "placeholder": "Client testimonial will appear here.",
+      "clientName": "Client Name",
+      "clientRole": "Role, Company"
+    }
+  }
 }

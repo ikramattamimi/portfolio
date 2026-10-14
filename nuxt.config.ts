@@ -5,9 +5,7 @@ export default defineNuxtConfig({
 
   modules: ['@nuxtjs/i18n', '@nuxtjs/color-mode', '@nuxt/fonts', '@tresjs/nuxt'],
 
-  css: ['~/assets/css/tokens.css', '~/assets/css/base.css', '~/assets/css/mode.css'],
-
-  app: {
+  css: ['~/assets/css/tokens.css', '~/assets/css/base.css', '~/assets/css/mode.css'],  app: {
     head: {
       title: 'Ikram Muhammad',
     },
@@ -55,10 +53,9 @@ export default defineNuxtConfig({
         files: ['en/common.json', 'en/recruiter.json', 'en/client.json'],
       },
     ],
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'i18n_locale',
-      redirectOn: 'root',
-    },
+    // Tanpa pengalihan otomatis berdasarkan bahasa browser: di situs statis pengalihan itu baru
+    // terjadi di client, sehingga teks Indonesia sempat tampil lalu berganti (hydration mismatch).
+    // Bahasa dipilih lewat URL (/ atau /en) dan tombol ID/EN.
+    detectBrowserLanguage: false,
   },
 })

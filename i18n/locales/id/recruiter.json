@@ -1,3 +1,151 @@
 {
-  "recruiter": {}
+  "recruiter": {
+    "experience": {
+      "kicker": "Pengalaman",
+      "title": "Jejak persetujuan karier saya",
+      "lead": "Hasil utamanya dulu. Detail teknis tinggal satu klik.",
+      "active": "Aktif",
+      "done": "Selesai",
+      "technical": "Detail teknis",
+      "problem": "Masalah",
+      "solution": "Solusi",
+      "role": "Peran:"
+    },
+    "jobs": {
+      "gdi": {
+        "date": "Des 2023 — sekarang",
+        "company": "PT Global Dinamika Informatika",
+        "role": "Junior IT Consultant",
+        "summary": "Saya membangun aplikasi web internal untuk klien korporat dengan ASP.NET dan Vue.js, dikelola lewat Jira."
+      },
+      "lapi": {
+        "date": "Jul 2022 — Sep 2022",
+        "company": "PT Lapi Divusi",
+        "role": "Full-Stack Developer · Magang"
+      }
+    },
+    "cases": {
+      "rfa": {
+        "title": "RFA — Request for Approval",
+        "meta": "Persetujuan dokumen digital · 6 bulan · 2 fase",
+        "summary": "Dokumen yang dulu diedarkan manual kini disetujui secara online, lengkap dengan pengingat otomatis.",
+        "promoFrom": "Developer (tim 2 orang)",
+        "promoTo": "Lead Developer · PIC tunggal",
+        "wins": [
+          "Tidak ada lagi logout tiba-tiba saat menyetujui",
+          "Dokumen langsung terbuka di browser, tanpa unduh",
+          "Persetujuan bisa didelegasikan saat atasan berhalangan"
+        ],
+        "problems": [
+          "ASP.NET Session sering habis di tengah proses approval",
+          "Approver harus mengunduh file untuk membacanya",
+          "Satu user hanya satu role, tanpa delegasi"
+        ],
+        "solutions": [
+          "Migrasi ke OWIN cookie auth dengan masa berlaku yang bisa diatur",
+          "Penyimpanan AWS S3 + preview Office Live di browser",
+          "RBAC multi-role per user & delegasi",
+          "Pengingat & notifikasi harian terjadwal"
+        ]
+      },
+      "ped": {
+        "title": "PED — Permit Digitalization",
+        "meta": "Pelacakan izin & kepatuhan · 12 bulan · 3 fase · tim 3 orang",
+        "summary": "Semua izin perusahaan terpantau di satu tempat, sehingga perpanjangan tidak lagi terlewat.",
+        "wins": [
+          "Pengingat perpanjangan izin otomatis",
+          "Halaman data jadi jauh lebih cepat dimuat",
+          "Dashboard ketersediaan PIC penanggung jawab"
+        ],
+        "problems": [
+          "Izin dilacak manual, perpanjangan mudah terlewat",
+          "Query data outstanding lambat",
+          "Izin bergantung pada izin prasyarat"
+        ],
+        "solutions": [
+          "Clean Architecture dengan layer terpisah",
+          "Optimasi query database",
+          "Workflow prasyarat dengan banyak referensi",
+          "Perpanjangan & pengingat berkala terjadwal"
+        ]
+      },
+      "lapiApp": {
+        "title": "Manajemen Data Pegawai",
+        "meta": "Institusi pendidikan di Bandung · Semi-Waterfall",
+        "summary": "Aplikasi web untuk mengelola data pegawai, dengan dashboard untuk setiap peran.",
+        "wins": [
+          "Mengubah mockup jadi dashboard multi-peran",
+          "Menghubungkan aplikasi dengan master data",
+          "Membuat laporan & visualisasi data"
+        ]
+      }
+    },
+    "diagram": {
+      "approvalLabel": "Alur persetujuan",
+      "requester": "Pemohon",
+      "approved": "Disetujui",
+      "delegate": "Delegasi",
+      "whenAway": "jika berhalangan",
+      "reminder": "Pengingat",
+      "architectureLabel": "Arsitektur",
+      "businessRules": "aturan bisnis"
+    },
+    "skills": {
+      "kicker": "Keahlian",
+      "title": "Teknologi yang benar-benar saya pakai",
+      "lead": "Klik salah satu untuk melihat di proyek mana saya memakainya.",
+      "select": "Pilih",
+      "pick": "Pilih salah satu teknologi di sebelah kiri.",
+      "usedIn": "Dipakai di",
+      "none": "Belum ada di proyek yang ditampilkan, dipakai untuk proyek pribadi.",
+      "where": {
+        "rfa": "Pekerjaan · GDI",
+        "ped": "Pekerjaan · GDI",
+        "lapiApp": "Magang · Lapi Divusi",
+        "trashclean": "Freelance",
+        "salary": "Freelance",
+        "accounting": "Freelance",
+        "smarthome": "Tugas akhir"
+      },
+      "shortNames": {
+        "rfa": "RFA",
+        "ped": "PED",
+        "lapiApp": "Manajemen Data Pegawai"
+      }
+    },
+    "projects": {
+      "kicker": "Proyek",
+      "title": "Proyek di luar pekerjaan utama",
+      "lead": "Freelance dan tugas akhir: siapa yang memakai, apa yang saya bangun, dan teknologinya.",
+      "items": {
+        "trashclean": "Website Laravel untuk penjadwalan pengambilan sampah warga desa, dengan panel admin untuk mengelola seluruh isi website.",
+        "smarthome": "Aplikasi Flutter untuk mengendalikan colokan pintar lewat MQTT dan memantau pemakaian listrik secara langsung, dengan Firebase sebagai backend.",
+        "salary": "Sistem internal Laravel: satu file Excel diimpor, lalu slip gaji tiap karyawan dikirim otomatis lewat email (SMTP).",
+        "accounting": "Aplikasi Laravel untuk pencatatan transaksi perusahaan dagang, lengkap dengan grafik Chart.js."
+      }
+    },
+    "cv": {
+      "kicker": "CV",
+      "title": "Butuh gambaran lengkap? Ini CV saya.",
+      "lead": "Pengalaman, keahlian, pendidikan, dan sertifikasi dalam satu PDF.",
+      "download": "Unduh CV (PDF)",
+      "stats": {
+        "years": "tahun pengalaman",
+        "systems": "sistem dibangun",
+        "tech": "teknologi"
+      },
+      "educationLabel": "Pendidikan",
+      "education": {
+        "degree": "D3 Teknik Informatika",
+        "school": "Politeknik Negeri Bandung",
+        "date": "2020 — 2023"
+      },
+      "certLabel": "Sertifikat",
+      "cert": {
+        "name": "TOEIC Listening & Reading",
+        "detail": "Listening 390 · Reading 360"
+      },
+      "verified": "Terverifikasi"
+    }
+  }
 }

@@ -1,3 +1,151 @@
 {
-  "recruiter": {}
+  "recruiter": {
+    "experience": {
+      "kicker": "Experience",
+      "title": "Approval trail of my career",
+      "lead": "The key results come first. Technical details are one click away.",
+      "active": "Active",
+      "done": "Completed",
+      "technical": "Technical details",
+      "problem": "Problem",
+      "solution": "Solution",
+      "role": "Role:"
+    },
+    "jobs": {
+      "gdi": {
+        "date": "Dec 2023 — present",
+        "company": "PT Global Dinamika Informatika",
+        "role": "Junior IT Consultant",
+        "summary": "I build internal web apps for enterprise clients with ASP.NET and Vue.js, delivered through Jira."
+      },
+      "lapi": {
+        "date": "Jul 2022 — Sep 2022",
+        "company": "PT Lapi Divusi",
+        "role": "Full-Stack Developer · Internship"
+      }
+    },
+    "cases": {
+      "rfa": {
+        "title": "RFA — Request for Approval",
+        "meta": "Digital document approval · 6 months · 2 phases",
+        "summary": "Documents that used to circulate by hand are now approved online, with automatic reminders.",
+        "promoFrom": "Developer (team of 2)",
+        "promoTo": "Lead Developer · sole PIC",
+        "wins": [
+          "No more random logouts in the middle of approving",
+          "Documents open right in the browser, no downloads",
+          "Approvals can be delegated when someone is away"
+        ],
+        "problems": [
+          "ASP.NET Session expired unexpectedly during approvals",
+          "Approvers had to download files to read them",
+          "One role per user, no delegation"
+        ],
+        "solutions": [
+          "Migrated to OWIN cookie auth with configurable expiration",
+          "AWS S3 storage + Office Live in-browser preview",
+          "RBAC with multiple roles per user & delegation",
+          "Scheduled daily reminders & notifications"
+        ]
+      },
+      "ped": {
+        "title": "PED — Permit Digitalization",
+        "meta": "Permit tracking & compliance · 12 months · 3 phases · team of 3",
+        "summary": "All company permits are tracked in one place, so renewals are never missed.",
+        "wins": [
+          "Automatic renewal reminders",
+          "Data pages load noticeably faster",
+          "Dashboard showing who is available to handle permits"
+        ],
+        "problems": [
+          "Permits tracked manually, renewals easy to miss",
+          "Slow outstanding-data queries",
+          "Permits depend on prerequisite permits"
+        ],
+        "solutions": [
+          "Clean Architecture with separated layers",
+          "Database query optimization",
+          "Prerequisite workflow with multiple references",
+          "Scheduled renewal & periodic reminders"
+        ]
+      },
+      "lapiApp": {
+        "title": "Employee Data Management",
+        "meta": "Educational institution in Bandung · Semi-Waterfall",
+        "summary": "A web app for managing staff data, with dashboards for each role.",
+        "wins": [
+          "Turned mockups into multi-role dashboards",
+          "Connected the app to master data",
+          "Built reports & data visualizations"
+        ]
+      }
+    },
+    "diagram": {
+      "approvalLabel": "Approval flow",
+      "requester": "Requester",
+      "approved": "Approved",
+      "delegate": "Delegate",
+      "whenAway": "when away",
+      "reminder": "Reminder",
+      "architectureLabel": "Architecture",
+      "businessRules": "business rules"
+    },
+    "skills": {
+      "kicker": "Skills",
+      "title": "Tools I actually use",
+      "lead": "Click a skill to see where I've used it.",
+      "select": "Select",
+      "pick": "Pick a technology on the left.",
+      "usedIn": "Used in",
+      "none": "Not in the projects shown, used in personal projects.",
+      "where": {
+        "rfa": "Job · GDI",
+        "ped": "Job · GDI",
+        "lapiApp": "Internship · Lapi Divusi",
+        "trashclean": "Freelance",
+        "salary": "Freelance",
+        "accounting": "Freelance",
+        "smarthome": "Final project"
+      },
+      "shortNames": {
+        "rfa": "RFA",
+        "ped": "PED",
+        "lapiApp": "Employee Data Mgmt"
+      }
+    },
+    "projects": {
+      "kicker": "Projects",
+      "title": "Projects outside my main job",
+      "lead": "Freelance and final-year work: who uses it, what I built, and the stack.",
+      "items": {
+        "trashclean": "A Laravel website where villagers schedule waste pickups, with an admin panel for managing all site content.",
+        "smarthome": "A Flutter app that switches smart plugs over MQTT and shows live power usage, with Firebase as the backend.",
+        "salary": "An internal Laravel system: import one Excel file and every employee's pay slip is emailed automatically (SMTP).",
+        "accounting": "A Laravel app that records a trading company's transactions, with Chart.js charts."
+      }
+    },
+    "cv": {
+      "kicker": "CV",
+      "title": "Need the full picture? Here's my CV.",
+      "lead": "Experience, skills, education and certifications in one PDF.",
+      "download": "Download CV (PDF)",
+      "stats": {
+        "years": "years experience",
+        "systems": "systems built",
+        "tech": "technologies"
+      },
+      "educationLabel": "Education",
+      "education": {
+        "degree": "Diploma in Informatics Engineering",
+        "school": "Politeknik Negeri Bandung",
+        "date": "2020 — 2023"
+      },
+      "certLabel": "Certificate",
+      "cert": {
+        "name": "TOEIC Listening & Reading",
+        "detail": "Listening 390 · Reading 360"
+      },
+      "verified": "Verified"
+    }
+  }
 }

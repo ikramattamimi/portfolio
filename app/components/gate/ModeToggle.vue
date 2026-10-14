@@ -1,7 +1,8 @@
 <script setup lang="ts">
 // Toggle mode berupa teks di topbar. Juga target animasi dari kartu gate (lihat GateModeGate).
 const { t } = useI18n()
-const { mode, setMode } = useMode()
+const { mode } = useMode()
+const switchMode = useModeSwitch()
 const modes = MODES
 </script>
 
@@ -13,7 +14,7 @@ const modes = MODES
       type="button"
       :data-mode-btn="m"
       :aria-pressed="mode === m"
-      @click="setMode(m)"
+      @click="switchMode(m)"
     >
       {{ m === 'rekruter' ? t('mode.recruiter') : t('mode.client') }}
     </button>

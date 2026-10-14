@@ -145,12 +145,15 @@ Migrasi dari situs lama:
 
 Bagian bersama: **kontak** (`#contact`, formulir yang membuka WhatsApp/email) dan **footer**.
 
-- [ ] Komponen section untuk tiap mode, dengan teks dari file locale.
-- [ ] Teks baru: layanan, cara mulai, dan versi "hasil bisnis" dari tiap proyek, dalam ID dan EN.
-- [ ] Galeri screenshot proyek (Trashclean, Smart Home/Jayandra, Salary Payment, Akuntansi).
-- [x] **Konten kedua mode dirender di HTML** (SSR/generate). Yang tidak aktif disembunyikan di client (lihat [Keputusan SEO](#keputusan-seo-konten-mode)). Mekanismenya (`mode.css`, `.view-rekruter`/`.view-klien`) sudah dibuat di Tahap 4. Komponen `ModeRecruiterView`/`ModeClientView` masih placeholder.
-- [ ] Animasi pergantian mode: konten lama keluar dan konten baru masuk dari arah berlawanan, ditambah stagger (GSAP). Setelah berganti, scroll kembali ke awal konten.
-- [ ] `ContactSection` + `LayoutFooter` dipakai di kedua mode.
+- [x] Komponen section untuk tiap mode, dengan teks dari file locale (`recruiter.json`, `client.json`). Data struktur (chip, galeri, pemetaan keahlian, kontak) ada di `app/data/portfolio.ts`.
+  - **Rekruter** (`ModeRecruiter*`): 01 Pengalaman (kasus RFA/PED/Lapi + detail teknis Masalah/Solusi + diagram) → 02 Proyek (sudut teknis + galeri) → 03 Keahlian (klik teknologi → lompat ke kasus/proyek) → 04 CV (statistik, pendidikan & sertifikat dari CV.pdf, unduh PDF).
+  - **Klien** (`ModeClient*`): 01 Layanan (4 layanan, *teks baru*) → 02 Hasil proyek (RFA/PED dari sisi bisnis + bento freelance dengan demo IoT & slip gaji) → 03 Alur kerja sama → 04 Cara mulai (WhatsApp / formulir). Testimoni sudah ada di kode, tapi disembunyikan lewat `SHOW_TESTIMONIALS` sampai ada kutipan sungguhan.
+- [x] Teks baru dalam ID dan EN: layanan, cara mulai, deskripsi teknis tiap proyek. *Perlu ditinjau pemilik.*
+- [x] Galeri screenshot proyek (`UiLightbox` + `useGallery`): Esc menutup, panah kiri/kanan berpindah gambar, dan fokus kembali ke tombol pembuka.
+- [x] **Konten kedua mode dirender di HTML** (SSR/generate). Yang tidak aktif disembunyikan di client (lihat [Keputusan SEO](#keputusan-seo-konten-mode)). Sudah dicek: teks kedua mode ada di `index.html` dan `en/index.html`.
+- [x] Animasi pergantian mode lewat toggle (`useModeSwitch`, GSAP): konten lama keluar dan konten baru masuk dari arah berlawanan, ditambah stagger per section. Setelah berganti, scroll kembali ke awal konten. Tanpa animasi kalau `prefers-reduced-motion`.
+- [x] `SharedContactSection` + `LayoutFooter` dipakai di kedua mode. Jenis permohonan awal mengikuti mode (rekruter → tawaran kerja, klien → proyek freelance).
+- [x] Perbaikan: pengalihan bahasa otomatis (`detectBrowserLanguage`) dimatikan karena menyebabkan hydration mismatch di situs statis.
 
 **Selesai bila:** semua konten situs lama sudah punya tempat di mode yang tepat, dan pergantian mode berjalan mulus tanpa layout melompat.
 

@@ -54,3 +54,57 @@ export function useContactLink() {
     }
   }
 }
+
+/**
+ * Ganti mode lewat toggle di topbar, dengan animasi: konten lama keluar ke satu arah,
+ * konten baru masuk dari arah berlawanan (bertahap per section).
+ * Rekruter → klien bergerak ke kiri, klien → rekruter ke kanan.
+ */
+export function useModeSwitch() {
+  const { setMode } = useMode()
+  let busy = false
+
+  return async function switchMode(next: Mode) {
+    const from = document.documentElement.getAttribute('data-mode')
+    if (busy || from === next) return
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!isMode(from) || reduced) {
+      setMode(next)
+      return
+    }
+
+    busy = true
+    try {
+      const { gsap } = await loadGsap()
+      const dir = next === 'klien' ? 1 : -1
+      const oldView = document.querySelector<HTMLElement>(`.view-${from}`)
+
+      if (oldView) await gsap.to(oldView, { autoAlpha: 0, x: -dir * 40, duration: 0.25, ease: 'power2.in' })
+      setMode(next)
+      await nextTick()
+      if (oldView) gsap.set(oldView, { clearProps: 'all' })
+
+      // Kalau sedang berada di tengah konten, kembali ke awal konten mode baru.
+      const content = document.getElementById('konten')
+      const topbar = document.querySelector('.topbar')?.getBoundingClientRect().height ?? 0
+      if (content) {
+        const top = content.getBoundingClientRect().top + window.scrollY - topbar
+        if (window.scrollY > top) window.scrollTo({ top, behavior: 'instant' })
+      }
+
+      const sections = document.querySelectorAll(`.view-${next} > section`)
+      await gsap.from(sections, {
+        autoAlpha: 0,
+        x: dir * 40,
+        duration: 0.5,
+        stagger: 0.08,
+        ease: 'power2.out',
+        clearProps: 'all',
+      })
+    } catch {
+      setMode(next)
+    } finally {
+      busy = false
+    }
+  }
+}

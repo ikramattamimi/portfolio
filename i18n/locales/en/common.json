@@ -39,5 +39,37 @@
       "title": "Projects & services",
       "desc": "Services, how we would work together, and project results."
     }
+  },
+  "projects": {
+    "trashclean": "Trashclean",
+    "smarthome": "Smart Home",
+    "salary": "Salary Payment",
+    "accounting": "Accounting App"
+  },
+  "contact": {
+    "kicker": "Contact",
+    "title": "Submit a request",
+    "lead": "A job offer, a project, or just a question. I usually reply within a day.",
+    "newRequest": "New request",
+    "draft": "Draft",
+    "type": "Request type",
+    "types": {
+      "job": "Job opportunity",
+      "project": "Freelance project",
+      "question": "Just a question"
+    },
+    "name": "Your name",
+    "namePh": "Full name",
+    "details": "Details",
+    "detailsPh": "Briefly tell me what you need…",
+    "viaWa": "Send via WhatsApp",
+    "viaMail": "Send via Email",
+    "waGreeting": "Hi Ikram, I would like to discuss something."
+  },
+  "gallery": {
+    "label": "{name} gallery",
+    "close": "Close gallery",
+    "prev": "Previous image",
+    "next": "Next image"
   }
 }

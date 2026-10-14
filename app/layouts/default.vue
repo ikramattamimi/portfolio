@@ -13,6 +13,7 @@ const route = useRoute()
     </main>
     <!-- Di halaman dengan gate, footer ikut terkunci sampai mode dipilih. -->
     <LayoutFooter :class="{ 'after-gate': route.meta.gate }" />
+    <UiLightbox />
     <UiCustomCursor />
   </div>
 </template>

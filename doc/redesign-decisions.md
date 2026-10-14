@@ -86,7 +86,8 @@ Paling dekat dengan headline sekarang (kata "persetujuan" dibuat lebih umum), ta
 ## 4. Tech stack
 
 - **Nuxt** (static generate), dipilih demi SEO dan i18n.
-- **i18n ID/EN** lewat `@nuxtjs/i18n`.
+- **i18n ID/EN** lewat `@nuxtjs/i18n`. `/` = Indonesia, `/en` = Inggris.
+  - *Revisi 2026-10-15:* pengalihan otomatis berdasarkan bahasa browser dimatikan. Di situs statis, pengalihan itu baru terjadi di client, sehingga teks Indonesia sempat tampil lalu berganti (hydration mismatch). Bahasa dipilih lewat URL dan tombol ID/EN.
 - **GSAP + plugin Flip** untuk animasi gate → topbar dan pergantian mode.
 - **Three.js (via TresJS)** untuk kubus. **Physics ditulis sendiri** (`app/utils/cubePhysics.ts`).
   - *Revisi 2026-10-15:* Rapier awalnya dipilih, lalu dibatalkan karena ukurannya ±1,65 MB (gzip) hanya untuk efek dekoratif. Physics buatan sendiri cuma beberapa KB, dan untuk kubus ±1 cm hasilnya secara visual praktis sama.

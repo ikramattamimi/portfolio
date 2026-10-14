@@ -5,17 +5,6 @@ const { t } = useI18n()
 const { setMode } = useMode()
 const modes = MODES
 
-type Gsap = typeof import('gsap').gsap
-type FlipPlugin = typeof import('gsap/Flip').Flip
-let gsapLib: Promise<{ gsap: Gsap, Flip: FlipPlugin }> | null = null
-function loadGsap() {
-  gsapLib ??= Promise.all([import('gsap'), import('gsap/Flip')]).then(([g, f]) => {
-    g.gsap.registerPlugin(f.Flip)
-    return { gsap: g.gsap, Flip: f.Flip }
-  })
-  return gsapLib
-}
-
 const gate = ref<HTMLElement | null>(null)
 let busy = false
 

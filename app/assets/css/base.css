@@ -131,3 +131,83 @@ button {
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+
+/* ---------- section ---------- */
+.sec {
+  padding: 96px 0;
+}
+
+.sec.alt {
+  background: var(--paper);
+  border-block: 1px solid var(--line);
+}
+
+@media (max-width: 767.98px) {
+  .sec {
+    padding: 72px 0;
+  }
+}
+
+/* ---------- status & chip ---------- */
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: 700 11px var(--mono);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.status::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.status.green { color: var(--green); background: var(--green-soft); }
+.status.amber { color: var(--amber); background: var(--amber-soft); }
+.status.blue { color: var(--blue); background: var(--blue-soft); }
+.status.gray { color: var(--ink-2); background: var(--soft); }
+.status.live::before { animation: blink 1.6s infinite; }
+
+@keyframes blink {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  display: inline-block;
+  font: 500 12px var(--mono);
+  padding: 4px 9px;
+  border-radius: 7px;
+  background: var(--soft);
+  color: var(--ink-2);
+}
+
+/* Sorotan singkat saat melompat ke sebuah kartu (mis. dari panel keahlian). */
+.flash {
+  animation: flash 1.6s ease;
+}
+
+@keyframes flash {
+  0%,
+  100% {
+    box-shadow: none;
+  }
+
+  25% {
+    box-shadow: 0 0 0 4px var(--red);
+  }
+}

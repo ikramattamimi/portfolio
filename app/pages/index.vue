@@ -12,12 +12,7 @@ definePageMeta({ gate: true })
     <div id="konten" class="after-gate" tabindex="-1">
       <ModeRecruiterView />
       <ModeClientView />
-
-      <!-- Sementara: diganti ContactSection di Tahap 5. -->
-      <section id="kontak" class="wrap placeholder">
-        <p class="mono">Placeholder: kontak (Tahap 5)</p>
-        <input type="text" placeholder="Kolom teks untuk tes kursor bawaan">
-      </section>
+      <SharedContactSection :no="5" />
     </div>
   </div>
 </template>
@@ -25,27 +20,7 @@ definePageMeta({ gate: true })
 <style scoped>
 #konten {
   outline: none;
-}
-
-.placeholder {
-  min-height: 50vh;
-  border: 1px dashed var(--line);
-  border-radius: var(--r);
-  margin: 40px auto;
-  display: grid;
-  place-content: center;
-  gap: 16px;
-  text-align: center;
-  color: var(--ink-3);
-  font-size: 13px;
-}
-
-input {
-  padding: 10px 14px;
-  border-radius: 10px;
-  border: 1px solid var(--line);
-  background: var(--paper);
-  color: var(--ink);
-  font: inherit;
+  /* Animasi ganti mode menggeser section ke samping; jangan sampai muncul scroll horizontal. */
+  overflow-x: clip;
 }
 </style>

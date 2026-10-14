@@ -39,5 +39,37 @@
       "title": "Proyek & layanan",
       "desc": "Layanan, cara kerja sama, dan hasil proyek."
     }
+  },
+  "projects": {
+    "trashclean": "Trashclean",
+    "smarthome": "Smart Home",
+    "salary": "Salary Payment",
+    "accounting": "Aplikasi Akuntansi"
+  },
+  "contact": {
+    "kicker": "Kontak",
+    "title": "Ajukan permohonan",
+    "lead": "Tawaran kerja, proyek, atau sekadar bertanya. Biasanya saya balas dalam sehari.",
+    "newRequest": "Permohonan baru",
+    "draft": "Draf",
+    "type": "Jenis permohonan",
+    "types": {
+      "job": "Tawaran kerja",
+      "project": "Proyek freelance",
+      "question": "Sekadar bertanya"
+    },
+    "name": "Nama Anda",
+    "namePh": "Nama lengkap",
+    "details": "Detail",
+    "detailsPh": "Ceritakan singkat kebutuhan Anda…",
+    "viaWa": "Kirim via WhatsApp",
+    "viaMail": "Kirim via Email",
+    "waGreeting": "Halo Ikram, saya ingin berdiskusi."
+  },
+  "gallery": {
+    "label": "Galeri {name}",
+    "close": "Tutup galeri",
+    "prev": "Gambar sebelumnya",
+    "next": "Gambar berikutnya"
   }
 }

@@ -1,22 +1,9 @@
-<!-- Konten mode klien. Isi lengkap dibuat di Tahap 5. -->
+<!-- Konten mode klien. Selalu dirender (SEO); disembunyikan lewat mode.css saat mode rekruter aktif. -->
 <template>
-  <div class="view-klien">
-    <section class="wrap placeholder">
-      <p class="mono">Mode klien: layanan, alur kerja sama, hasil proyek, testimoni (Tahap 5)</p>
-    </section>
+  <div class="view-klien" data-view="klien">
+    <ModeClientServices :no="1" />
+    <ModeClientResults :no="2" />
+    <ModeClientProcess :no="3" />
+    <ModeClientStart :no="4" />
   </div>
 </template>
-
-<style scoped>
-.placeholder {
-  min-height: 70vh;
-  border: 1px dashed var(--line);
-  border-radius: var(--r);
-  margin: 40px auto;
-  display: grid;
-  place-content: center;
-  text-align: center;
-  color: var(--ink-3);
-  font-size: 13px;
-}
-</style>
