@@ -12,7 +12,7 @@ Rencana ini membagi pekerjaan menjadi **Fase 1 (redesign dual-mode)** dan **Fase
 
 - [x] Catatan keputusan redesign (`doc/redesign-decisions.md`)
 - [x] Scaffold Nuxt 4 di root repo
-- [x] Dependency: `@nuxtjs/i18n`, `gsap`, `@tresjs/nuxt`, `@tresjs/core`, `three`, `@dimforge/rapier3d-compat`
+- [x] Dependency: `@nuxtjs/i18n`, `gsap`, `@tresjs/nuxt`, `@tresjs/core`, `three`, `@nuxtjs/color-mode`, `@nuxt/fonts` (Rapier dihapus, lihat Tahap 3)
 - [x] i18n ID (tanpa prefix) / EN (`/en`) berjalan, `nuxt generate` berhasil
 - [ ] Situs lama (`index.html`, `images/`) masih di root, belum dimigrasi
 
@@ -32,7 +32,7 @@ app/
       Footer.vue
     hero/
       HeroSection.vue
-      CubeField.client.vue   # TresJS + Rapier, hanya di client
+      CubeField.client.vue   # TresJS + physics sendiri, hanya di client
     gate/
       ModeGate.vue      # pilihan Rekruter / Klien satu layar penuh
       ModeToggle.vue    # toggle teks di topbar (target animasi Flip)
@@ -98,16 +98,16 @@ public/
 
 **Tujuan:** hero netral dengan animasi kubus fisik.
 
-- [ ] `HeroSection` dengan headline A dan subjudul (ID/EN).
-- [ ] `CubeField.client.vue`:
-  - [ ] Scene TresJS dengan kamera ortografis/perspektif, kubus wireframe (`EdgesGeometry`) yang berputar.
-  - [ ] Rapier: kubus sebagai rigid body, dinding batas viewport, dan pointer sebagai body *kinematic* yang mendorong kubus. Kubus saling bertabrakan.
-  - [ ] Ukuran ±1 × 1 cm (±38 px). Jumlah: sedikit di mobile, lebih banyak di desktop.
-  - [ ] Mobile: kubus melayang pelan tanpa interaksi pointer.
-  - [ ] `prefers-reduced-motion`: kubus diam (atau tidak dirender).
-  - [ ] Simulasi berhenti saat hero tidak terlihat (IntersectionObserver) dan saat tab disembunyikan.
-  - [ ] Bundle Three.js dan Rapier di-*lazy load* supaya tidak memperlambat render awal.
-- [ ] Warna garis kubus mengikuti tema.
+- [x] `HeroSection` dengan status "Terbuka untuk kerja & freelance", headline A, dan subjudul (ID/EN). Tinggi hero satu layar dikurangi topbar.
+- [x] `HeroCubeField` (`CubeField.client.vue`) + `HeroCubeScene`:
+  - [x] Scene TresJS dengan kamera ortografis (1 unit = 1 px CSS) dan kubus wireframe yang berputar 3D. Garisnya tebal (`LineSegments2`) supaya tidak terlalu tipis di layar retina. Sekitar 1 dari 8 kubus berwarna aksen merah.
+  - [x] ~~Rapier~~ → **physics sendiri** (`utils/cubePhysics.ts`): tabrakan antar-kubus, pantulan di batas hero, dan pointer yang mendorong/melempar kubus. Kubus selalu kembali ke kecepatan melayang. Sudah dites dengan skrip Node.
+  - [x] Ukuran ±1 × 1 cm (38 px). Jumlah: 7 di mobile, 12–28 di desktop (tergantung luas hero).
+  - [x] Mobile/layar sentuh: kubus melayang lebih pelan tanpa interaksi pointer.
+  - [x] `prefers-reduced-motion`: kubus dirender diam (satu frame, lalu loop berhenti).
+  - [x] Simulasi dan render berhenti saat hero tidak terlihat (IntersectionObserver) dan saat tab disembunyikan.
+  - [x] Three.js dimuat lazy setelah browser idle (chunk terpisah ±225 KB gzip, hanya di-*prefetch*), dan kanvas muncul dengan fade-in.
+- [x] Warna garis kubus mengikuti tema (`--ink-3` dan `--red`).
 
 **Selesai bila:** animasi stabil di 60 fps di laptop biasa, tidak ada error di console, dan teks hero sudah tampil di HTML hasil generate.
 
@@ -198,7 +198,7 @@ Dimulai setelah Fase 1 dirilis. Blog baru ditampilkan setelah ada **3–5 artike
 
 | Risiko | Mitigasi |
 |---|---|
-| Three.js + Rapier memperberat halaman | Lazy load, hanya dimuat di client, dan render awal tetap berupa teks |
+| Three.js memperberat halaman | Lazy load, hanya dimuat di client, dan render awal tetap berupa teks |
 | Scroll lock di gate membuat pengunjung frustrasi | Gate jelas dan cepat, deep link untuk rekruter, dan pilihan diingat |
 | Konten mode tersembunyi tidak terbaca mesin pencari | Kedua mode dirender di HTML (lihat [Keputusan SEO](#keputusan-seo-konten-mode)) |
 | Konten mode yang salah sempat berkedip saat halaman dimuat | Script inline kecil di `<head>` menentukan mode sebelum halaman digambar |

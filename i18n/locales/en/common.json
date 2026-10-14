@@ -20,6 +20,7 @@
     "location": "Bandung, Indonesia"
   },
   "hero": {
+    "status": "Open to jobs & freelance",
     "headlineBefore": "I turn manual processes into systems that",
     "headlineAccent": "run themselves",
     "subtitle": "Full-stack developer (ASP.NET · Vue · Laravel) based in Bandung. I build document approval apps, permit tracking, and internal workflows, from business requirements all the way to production."

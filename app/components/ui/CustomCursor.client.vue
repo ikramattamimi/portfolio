@@ -36,7 +36,8 @@ function onMove(e: PointerEvent) {
     curX = x
     curY = y
   }
-  const target = e.target as Element | null
+  // Target bisa berupa window/document (bukan elemen), jadi cek dulu.
+  const target = e.target instanceof Element ? e.target : null
   const inText = !!target?.closest(TEXT_FIELD)
   visible.value = !inText
   hovering.value = !inText && !!target?.closest(INTERACTIVE)

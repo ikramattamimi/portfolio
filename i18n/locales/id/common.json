@@ -20,6 +20,7 @@
     "location": "Bandung, Indonesia"
   },
   "hero": {
+    "status": "Terbuka untuk kerja & freelance",
     "headlineBefore": "Saya mengubah proses manual jadi sistem yang",
     "headlineAccent": "berjalan sendiri",
     "subtitle": "Full-stack developer (ASP.NET · Vue · Laravel) di Bandung. Saya membangun aplikasi persetujuan dokumen, pelacakan izin, dan alur kerja internal, mulai dari kebutuhan bisnis sampai sistem jalan di produksi."
