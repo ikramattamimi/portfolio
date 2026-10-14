@@ -1,0 +1,128 @@
+/* Tipografi isi artikel blog (keluaran <ContentRenderer>). */
+
+.prose {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--ink);
+}
+
+.prose > * + * {
+  margin-top: 1.1em;
+}
+
+.prose h2 {
+  font-size: 26px;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-top: 2em;
+}
+
+.prose h3 {
+  font-size: 20px;
+  line-height: 1.3;
+  margin-top: 1.6em;
+}
+
+.prose h2 a,
+.prose h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.prose p,
+.prose li {
+  color: var(--ink-2);
+}
+
+.prose strong {
+  color: var(--ink);
+}
+
+.prose a {
+  color: var(--red);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.4em;
+}
+
+.prose li + li {
+  margin-top: 0.35em;
+}
+
+.prose li > ul,
+.prose li > ol {
+  margin-top: 0.35em;
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--red);
+  background: var(--paper);
+  padding: 14px 18px;
+  border-radius: 0 12px 12px 0;
+}
+
+.prose blockquote p {
+  color: var(--ink);
+}
+
+.prose :not(pre) > code {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  background: var(--soft);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.prose pre {
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.6;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px 18px;
+  overflow-x: auto;
+}
+
+.prose pre code {
+  font-family: inherit;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  display: block;
+  overflow-x: auto;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid var(--line);
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.prose th {
+  background: var(--soft);
+}
+
+.prose img {
+  border-radius: 12px;
+  border: 1px solid var(--line);
+}
+
+.prose hr {
+  border: none;
+  border-top: 1.5px dashed var(--line);
+  margin: 2.4em 0;
+}
+
+/* Warna kode (Shiki, dua tema): tema gelap memakai variabel --shiki-dark. */
+html.dark .prose pre span {
+  color: var(--shiki-dark) !important;
+}

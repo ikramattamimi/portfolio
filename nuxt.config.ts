@@ -1,9 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { BLOG_ENABLED } from './app/data/portfolio'
 
 // URL publik situs (tanpa garis miring di akhir), mis. https://ikram.dev.
 // Dipakai untuk canonical, hreflang, sitemap, dan Open Graph. Domain belum dipilih:
 // isi lewat variabel lingkungan NUXT_PUBLIC_SITE_URL saat build produksi.
 const siteUrl = process.env.NUXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || undefined
+
+// Halaman blog yang tidak boleh ikut build/sitemap selama blog belum dirilis.
+const blogRoutes = ['/blog', '/blog/**', '/en/blog', '/en/blog/**']
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -16,9 +20,24 @@ export default defineNuxtConfig({
     '@tresjs/nuxt',
     '@nuxtjs/sitemap',
     '@nuxtjs/robots',
+    '@nuxt/content',
   ],
 
-  css: ['~/assets/css/tokens.css', '~/assets/css/base.css', '~/assets/css/mode.css'],
+  // Blog (Fase 2). SQLite bawaan Node (≥ 22.5) supaya tidak perlu modul native better-sqlite3.
+  content: {
+    experimental: { sqliteConnector: 'native' },
+    build: {
+      markdown: {
+        // Blok kode diwarnai saat build (Shiki), dua tema: dipilih lewat class .dark/.light di <html>.
+        highlight: {
+          theme: { default: 'github-light', dark: 'github-dark' },
+          langs: ['ts', 'js', 'vue', 'html', 'css', 'json', 'bash', 'php', 'csharp', 'sql'],
+        },
+      },
+    },
+  },
+
+  css: ['~/assets/css/tokens.css', '~/assets/css/base.css', '~/assets/css/mode.css', '~/assets/css/prose.css'],
   app: {
     head: {
       link: [{ rel: 'icon', href: '/favicon.ico' }],
@@ -32,6 +51,11 @@ export default defineNuxtConfig({
     name: 'Ikram Muhammad',
   },
 
+  // Blog belum dirilis: jangan ikut dibuild (halaman tetap bisa dibuka saat dev).
+  routeRules: BLOG_ENABLED
+    ? {}
+    : Object.fromEntries(blogRoutes.map((r) => [r, { prerender: false }])),
+
   hooks: {
     // Jangan prefetch chunk lazy (Three.js ±225 KB gzip, GSAP): di koneksi lambat prefetch itu
     // berebut bandwidth dengan font & CSS sebelum teks hero tampil. Chunk tetap dimuat saat dibutuhkan.
@@ -43,6 +67,8 @@ export default defineNuxtConfig({
   // Buat salinan .gz/.br untuk setiap file statis, supaya server bisa langsung mengirim versi terkompresi.
   nitro: {
     compressPublicAssets: true,
+    // Blog dirilis: pastikan daftar artikel ikut dibuild (artikel ditemukan lewat link di dalamnya).
+    prerender: { routes: BLOG_ENABLED ? ['/blog', '/en/blog'] : [] },
   },
 
   // Sitemap butuh URL absolut, jadi baru dibuat setelah domain diisi (NUXT_PUBLIC_SITE_URL).
@@ -50,6 +76,7 @@ export default defineNuxtConfig({
   sitemap: {
     enabled: !!siteUrl,
     zeroRuntime: true,
+    exclude: BLOG_ENABLED ? [] : blogRoutes,
   },
 
   // Tema gelap default. Memasang <html data-theme="dark|light"> sebelum halaman digambar (tanpa kedipan).

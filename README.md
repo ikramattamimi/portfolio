@@ -18,7 +18,7 @@ Visitors pick a mode on a full-screen gate below the hero; the chosen card flies
 - Custom square cursor that rotates on interactive elements (mouse only).
 
 ## Tech stack
-Nuxt 4 (static generation) · Vue 3 · `@nuxtjs/i18n` · `@nuxtjs/color-mode` · `@nuxt/fonts` · TresJS + Three.js · GSAP (Flip) · `@nuxtjs/sitemap` + `@nuxtjs/robots`.
+Nuxt 4 (static generation) · Vue 3 · `@nuxtjs/i18n` · `@nuxtjs/color-mode` · `@nuxt/fonts` · TresJS + Three.js · GSAP (Flip) · `@nuxtjs/sitemap` + `@nuxtjs/robots` · `@nuxt/content` (blog).
 
 ## Development
 ```bash
@@ -55,6 +55,7 @@ app/
   assets/css/   tokens.css (theme colors), base.css, mode.css (mode visibility)
 i18n/locales/{id,en}/
   common.json · recruiter.json · client.json — all text
+content/blog/{id,en}/  blog articles (Markdown)
 public/
   images/       project screenshots (WebP)
   doc/CV.pdf
@@ -68,6 +69,21 @@ doc/            design decisions
 - **Structure** (tech chips, galleries, which skill was used where, contact details) lives in `app/data/portfolio.ts`.
 - **Testimonials** are hidden; set `SHOW_TESTIMONIALS = true` in `app/data/portfolio.ts` once there are real quotes.
 - **Screenshots**: add PNGs to `public/images/<project>/`, then run `npm run images` to convert them to WebP.
+
+## Blog
+Articles are Markdown files in `content/blog/id/` (Indonesian, the default) and `content/blog/en/` (translations, same file name). The file name is the URL: `content/blog/id/my-post.md` → `/blog/my-post`.
+
+```md
+---
+title: Article title
+description: One or two sentences for the list and search results.
+date: 2026-10-15
+tags: [approval, laravel]
+draft: false
+---
+```
+
+Drafts (`draft: true`) only show in `npm run dev`. The blog stays hidden from visitors (no links, not built, not in the sitemap) until `BLOG_ENABLED` in `app/data/portfolio.ts` is set to `true`. `content/blog/id/contoh-format.md` is a draft showing the supported formatting.
 
 ## Previous versions
 - The single-file static version is in this repository's history before the Nuxt redesign.

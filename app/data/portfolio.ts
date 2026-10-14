@@ -121,3 +121,11 @@ export const FLOW: Record<'rekruter' | 'klien', { id: string, label: string }[]>
     { id: 'kontak', label: 'contact.kicker' },
   ],
 }
+
+/* ---------- blog (Fase 2) ---------- */
+
+/**
+ * Tampilkan blog ke pengunjung (link di topbar, sidebar, footer + halaman ikut dibuild & masuk sitemap).
+ * Biarkan `false` sampai ada 3–5 artikel. Selama `false`, blog tetap bisa dibuka di mode dev (/blog).
+ */
+export const BLOG_ENABLED = true

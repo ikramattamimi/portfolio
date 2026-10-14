@@ -79,5 +79,19 @@
     "description": "Full-stack developer di Bandung. Saya membangun sistem persetujuan dokumen, pelacakan izin, dan aplikasi internal yang mengubah proses manual jadi otomatis.",
     "ogLocale": "id_ID",
     "jobTitle": "Full-Stack Developer"
+  },
+  "blog": {
+    "nav": "Blog",
+    "kicker": "Blog",
+    "title": "Catatan dari pekerjaan",
+    "lead": "Tulisan tentang digitalisasi proses kantor, sistem persetujuan, dan sisi teknis di balik aplikasi yang saya bangun.",
+    "empty": "Belum ada artikel.",
+    "draft": "Draf",
+    "readMore": "Baca artikel",
+    "allPosts": "Semua artikel",
+    "home": "Beranda",
+    "onlyIndonesian": "Artikel ini baru tersedia dalam bahasa Indonesia.",
+    "idOnlyBadge": "Bahasa Indonesia",
+    "notFound": "Artikel tidak ditemukan."
   }
 }

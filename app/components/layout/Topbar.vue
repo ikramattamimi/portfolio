@@ -1,7 +1,12 @@
 <script setup lang="ts">
-// Desktop: toggle mode di kiri; ID/EN, Hubungi, tema di kanan.
+// Desktop: toggle mode di kiri; Blog, ID/EN, Hubungi, tema di kanan.
 // Mobile: tombol sidebar (kiri), toggle mode (tengah), tema (kanan).
+// Di halaman tanpa gate (mis. blog), posisi toggle mode diganti link kembali ke beranda.
+import { BLOG_ENABLED } from '~/data/portfolio'
+
 const { t } = useI18n()
+const route = useRoute()
+const localePath = useLocalePath()
 const { open: sidebarOpen, show: showSidebar } = useSidebar()
 const onContact = useContactLink()
 
@@ -31,11 +36,13 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
       </button>
 
-      <GateModeToggle class="mode" />
+      <GateModeToggle v-if="route.meta.gate" class="mode" />
+      <NuxtLink v-else :to="localePath('/')" class="mode home mono">← {{ t('blog.home') }}</NuxtLink>
 
       <div class="actions">
+        <NuxtLink v-if="BLOG_ENABLED" :to="localePath('/blog')" class="text-link desktop-only">{{ t('blog.nav') }}</NuxtLink>
         <UiLangSwitch class="desktop-only" />
-        <a href="#kontak" class="btn red sm desktop-only" @click="onContact">{{ t('nav.contact') }}</a>
+        <a :href="route.meta.gate ? '#kontak' : `${localePath('/')}#kontak`" class="btn red sm desktop-only" @click="onContact">{{ t('nav.contact') }}</a>
         <UiThemeToggle />
       </div>
     </div>
@@ -96,6 +103,28 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
 
 .menu-btn {
   display: none;
+}
+
+.home {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-2);
+}
+
+.home:hover,
+.text-link:hover {
+  color: var(--ink);
+}
+
+.text-link {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink-2);
+  padding: 0 4px;
+}
+
+.text-link.router-link-active {
+  color: var(--ink);
 }
 
 @media (max-width: 767.98px) {

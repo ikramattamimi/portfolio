@@ -1,12 +1,15 @@
 <script setup lang="ts">
-// Tampil di kedua mode. Link Blog menyusul di Fase 2.
+// Tampil di kedua mode dan di blog. Link Blog muncul kalau BLOG_ENABLED.
+import { BLOG_ENABLED, CONTACT } from '~/data/portfolio'
+
 const { t } = useI18n()
+const localePath = useLocalePath()
 const year = new Date().getFullYear()
 
 const links = [
-  { label: 'Email', href: 'mailto:attamimiikram@gmail.com' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/ikram-attamimi' },
-  { label: 'GitHub', href: 'https://github.com/ikramattamimi' },
+  { label: 'Email', href: `mailto:${CONTACT.email}` },
+  { label: 'LinkedIn', href: CONTACT.linkedin },
+  { label: 'GitHub', href: CONTACT.github },
 ]
 </script>
 
@@ -15,6 +18,9 @@ const links = [
     <div class="wrap row">
       <p>© {{ year }} Ikram Muhammad · {{ t('footer.location') }}</p>
       <ul>
+        <li v-if="BLOG_ENABLED">
+          <NuxtLink :to="localePath('/blog')">{{ t('blog.nav') }}</NuxtLink>
+        </li>
         <li v-for="l in links" :key="l.label">
           <a
             :href="l.href"

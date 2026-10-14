@@ -79,5 +79,19 @@
     "description": "Full-stack developer in Bandung. I build document approval systems, permit tracking, and internal apps that turn manual processes into automated ones.",
     "ogLocale": "en_US",
     "jobTitle": "Full-Stack Developer"
+  },
+  "blog": {
+    "nav": "Blog",
+    "kicker": "Blog",
+    "title": "Notes from the work",
+    "lead": "Writing about digitalizing office processes, approval systems, and the technical side of the apps I build.",
+    "empty": "No articles yet.",
+    "draft": "Draft",
+    "readMore": "Read article",
+    "allPosts": "All articles",
+    "home": "Home",
+    "onlyIndonesian": "This article is only available in Indonesian for now.",
+    "idOnlyBadge": "Indonesian",
+    "notFound": "Article not found."
   }
 }

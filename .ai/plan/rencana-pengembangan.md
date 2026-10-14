@@ -195,15 +195,20 @@ Bagian bersama: **kontak** (`#contact`, formulir yang membuka WhatsApp/email) da
 
 ## Fase 2 — Blog
 
-Dimulai setelah Fase 1 dirilis. Blog baru ditampilkan setelah ada **3–5 artikel**.
+Blog baru ditampilkan setelah ada **3–5 artikel**. Infrastrukturnya sudah siap, tapi disembunyikan lewat `BLOG_ENABLED = false` di `app/data/portfolio.ts`.
 
-- [ ] Pasang `@nuxt/content` (artikel Markdown di `content/blog/`).
-- [ ] Halaman `/blog` (daftar artikel) dan `/blog/[slug]` (halaman baca).
-- [ ] Artikel berbahasa Indonesia. Halaman EN hanya untuk artikel yang sudah diterjemahkan.
-- [ ] Gate dan scroll lock **tidak** berlaku di halaman blog.
-- [ ] Link Blog: topbar desktop (di kiri ID/EN), sidebar mobile, dan footer.
-- [ ] SEO artikel: schema.org `Article`, gambar OG, masuk sitemap.
+- [x] `@nuxt/content` v3 dengan SQLite bawaan Node (`sqliteConnector: 'native'`, tanpa modul native). Dua koleksi di `content.config.ts`: `blog_id` (`content/blog/id/*.md`) dan `blog_en` (`content/blog/en/*.md`). Frontmatter: `title`, `description`, `date`, `tags`, `draft`.
+- [x] Halaman `/blog` (daftar artikel) dan `/blog/[slug]` (halaman baca). Blok kode diwarnai Shiki saat build, dengan dua tema yang mengikuti tema situs. Tipografi artikel ada di `assets/css/prose.css`.
+- [x] Artikel berbahasa Indonesia dulu. `/en/blog` menampilkan artikel EN, plus artikel yang belum diterjemahkan (versi Indonesia, ditandai "Indonesian"). `/en/blog/<slug>` tanpa terjemahan menampilkan versi Indonesia dengan catatan, canonical ke versi Indonesia, dan `noindex`.
+- [x] Gate dan scroll lock **tidak** berlaku di blog. Di topbar, posisi toggle mode diganti link "← Beranda".
+- [x] Link Blog: topbar desktop (di kiri ID/EN), sidebar mobile, dan footer. Hanya muncul kalau `BLOG_ENABLED`.
+- [x] SEO artikel: judul, deskripsi, `og:type=article`, tanggal terbit, schema.org `BlogPosting`, masuk sitemap. Draf hanya tampil di dev (`noindex`).
+- [x] Selama `BLOG_ENABLED = false`, halaman blog tidak ikut build (`routeRules` prerender off) dan tidak masuk sitemap. Sudah dites di kedua kondisi.
+- [x] Artikel contoh `content/blog/id/contoh-format.md` (draf) berisi panduan format penulisan.
+- [ ] Tulis 3–5 artikel, lalu ubah `BLOG_ENABLED` jadi `true`.
+- [ ] Gambar OG per artikel.
 - [ ] Opsional: RSS feed.
+- [ ] Opsional: kategori/tag sebagai filter (sesuai keputusan, belum dulu).
 
 ---
 

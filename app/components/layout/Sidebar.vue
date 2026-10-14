@@ -1,8 +1,11 @@
 <script setup lang="ts">
-// Sidebar mobile: ID/EN dan Hubungi (Blog menyusul di Fase 2).
+// Sidebar mobile: Blog (kalau BLOG_ENABLED), ID/EN, dan Hubungi.
 // Tutup lewat tombol, klik di luar panel, atau Esc. Fokus keyboard tetap di dalam panel selama terbuka.
+import { BLOG_ENABLED } from '~/data/portfolio'
+
 const { t } = useI18n()
 const route = useRoute()
+const localePath = useLocalePath()
 const { open, hide } = useSidebar()
 const onContact = useContactLink()
 
@@ -89,12 +92,14 @@ onBeforeUnmount(() => {
             </button>
           </div>
 
+          <NuxtLink v-if="BLOG_ENABLED" :to="localePath('/blog')" class="nav-link">{{ t('blog.nav') }} →</NuxtLink>
+
           <div class="group">
             <span class="label mono">{{ t('nav.language') }}</span>
             <UiLangSwitch />
           </div>
 
-          <a href="#kontak" class="btn red contact" @click="(e) => { hide(); onContact(e) }">{{ t('nav.contact') }}</a>
+          <a :href="route.meta.gate ? '#kontak' : `${localePath('/')}#kontak`" class="btn red contact" @click="(e) => { hide(); onContact(e) }">{{ t('nav.contact') }}</a>
         </aside>
       </div>
     </Transition>
@@ -170,6 +175,13 @@ onBeforeUnmount(() => {
 
 .contact {
   width: 100%;
+}
+
+.nav-link {
+  font-size: 18px;
+  font-weight: 700;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line);
 }
 
 /* Animasi buka/tutup */
