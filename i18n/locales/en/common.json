@@ -3,6 +3,22 @@
     "toLight": "Switch to light theme",
     "toDark": "Switch to dark theme"
   },
+  "nav": {
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "menu": "Menu",
+    "skip": "Skip to content",
+    "contact": "Contact",
+    "language": "Language"
+  },
+  "mode": {
+    "label": "View mode",
+    "recruiter": "Recruiter",
+    "client": "Client"
+  },
+  "footer": {
+    "location": "Bandung, Indonesia"
+  },
   "hero": {
     "headlineBefore": "I turn manual processes into systems that",
     "headlineAccent": "run themselves",

@@ -1,65 +1,33 @@
 <script setup lang="ts">
-// Halaman sementara untuk mengecek fondasi desain (token, font, tema, i18n).
+// Halaman sementara untuk mengecek kerangka layout (topbar, sidebar, footer, kursor).
 // Diganti hero, gate, dan konten mode di tahap berikutnya.
-const { t, locale, locales } = useI18n()
-const switchLocalePath = useSwitchLocalePath()
+const { t } = useI18n()
 </script>
 
 <template>
-  <main class="wrap">
-    <div class="bar">
-      <nav class="lang">
-        <NuxtLink
-          v-for="l in locales"
-          :key="l.code"
-          :to="switchLocalePath(l.code)"
-          :class="{ on: l.code === locale }"
-        >
-          {{ l.code.toUpperCase() }}
-        </NuxtLink>
-      </nav>
-      <UiThemeToggle />
-    </div>
+  <div class="wrap">
+    <section class="hero">
+      <h1>
+        {{ t('hero.headlineBefore') }}
+        <em>{{ t('hero.headlineAccent') }}</em>.
+      </h1>
+      <p>{{ t('hero.subtitle') }}</p>
+    </section>
 
-    <h1>
-      {{ t('hero.headlineBefore') }}
-      <em>{{ t('hero.headlineAccent') }}</em>.
-    </h1>
-    <p>{{ t('hero.subtitle') }}</p>
-    <p class="mono">JetBrains Mono · 500 / 700</p>
-  </main>
+    <section class="placeholder">
+      <p class="mono">Placeholder: gate + konten mode (Tahap 4–5)</p>
+    </section>
+
+    <section id="kontak" class="placeholder">
+      <p class="mono">Placeholder: kontak (Tahap 5)</p>
+      <input type="text" placeholder="Kolom teks untuk tes kursor bawaan">
+    </section>
+  </div>
 </template>
 
 <style scoped>
-main {
-  padding-top: 40px;
-  padding-bottom: 40px;
-}
-
-.bar {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-bottom: 48px;
-}
-
-.lang {
-  display: flex;
-  background: var(--soft);
-  border-radius: 10px;
-  padding: 3px;
-}
-
-.lang a {
-  font: 700 12px var(--mono);
-  padding: 6px 10px;
-  border-radius: 8px;
-  color: var(--ink-3);
-}
-
-.lang a.on {
-  background: var(--paper);
-  color: var(--ink);
+.hero {
+  padding: 64px 0 90px;
 }
 
 h1 {
@@ -76,15 +44,31 @@ h1 em {
   color: var(--red);
 }
 
-p {
+.hero p {
   color: var(--ink-2);
   font-size: 17px;
   max-width: 36em;
 }
 
-.mono {
-  margin-top: 24px;
-  font-size: 13px;
+.placeholder {
+  min-height: 70vh;
+  border: 1px dashed var(--line);
+  border-radius: var(--r);
+  margin-bottom: 40px;
+  display: grid;
+  place-content: center;
+  gap: 16px;
+  text-align: center;
   color: var(--ink-3);
+  font-size: 13px;
+}
+
+input {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
 }
 </style>

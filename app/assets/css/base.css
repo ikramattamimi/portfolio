@@ -67,6 +67,62 @@ button {
   font-family: var(--mono);
 }
 
+/* ---------- tombol ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 13px 22px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  border: 1.5px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.btn:hover {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.btn.red {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+}
+
+.btn.red:hover {
+  background: var(--red-hover);
+  border-color: var(--red-hover);
+}
+
+.btn.sm {
+  padding: 9px 15px;
+  font-size: 13px;
+  border-radius: 10px;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: var(--paper);
+  color: var(--ink);
+  font-weight: 700;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: none;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

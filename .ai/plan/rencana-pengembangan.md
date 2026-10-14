@@ -85,11 +85,12 @@ public/
 
 **Tujuan:** topbar, sidebar, dan footer jadi, meskipun kontennya masih kosong.
 
-- [ ] `LayoutTopbar` desktop: toggle mode, ID/EN, Hubungi, tema (tata letak dicoba langsung).
-- [ ] `LayoutTopbar` mobile: kiri tombol sidebar, tengah toggle mode (teks), kanan tema.
-- [ ] `LayoutSidebar` mobile: ID/EN, Hubungi. Tutup dengan klik di luar atau tombol Esc, dan fokus keyboard tetap di dalam sidebar selama terbuka.
-- [ ] `LayoutFooter`.
-- [ ] `CustomCursor`: kotak kecil yang berputar 45° saat hover di elemen interaktif. Nonaktif di perangkat sentuh dan di input teks.
+- [x] `LayoutTopbar` desktop: toggle mode di kiri; ID/EN, Hubungi, tema di kanan. Tanpa logo/nama, sesuai keputusan topbar.
+- [x] `LayoutTopbar` mobile (< 768 px): kiri tombol sidebar, tengah toggle mode (teks), kanan tema.
+- [x] `LayoutSidebar` mobile: ID/EN, Hubungi. Tutup dengan tombol, klik di luar, atau Esc. Fokus keyboard tetap di dalam sidebar, lalu kembali ke tombol menu saat ditutup. Scroll halaman dikunci selama terbuka, dan sidebar otomatis tertutup saat layar melebar ke desktop.
+- [x] `LayoutFooter`: © tahun, lokasi, Email/LinkedIn/GitHub.
+- [x] `UiCustomCursor`: kotak kecil merah yang berputar 45° saat hover di elemen interaktif. Nonaktif di perangkat sentuh dan di kolom teks. Tanpa jeda gerak bila `prefers-reduced-motion`.
+- [x] Pendukung: layout `default.vue`, skip link "Lewati ke konten", `UiLangSwitch`, `GateModeToggle` + `useMode` (versi state saja; `?mode`, `localStorage`, dan gate ditambahkan di Tahap 4), `useSidebar`.
 
 **Selesai bila:** layout responsif di 375 px, 768 px, dan 1440 px, dan sidebar bisa dioperasikan dengan keyboard.
 
