@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { CONTACT } from '~/data/portfolio'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
+
+// Gambar preview saat link dibagikan (LinkedIn, WhatsApp, X). Dibuat sekali, satu per bahasa.
+const siteUrl = useSiteConfig().url?.replace(/\/$/, '') ?? ''
+const ogImage = computed(() => `${siteUrl}/og-${locale.value === 'en' ? 'en' : 'id'}.png`)
 
 // Atribut lang di <html> + link hreflang/canonical mengikuti bahasa aktif
 // (canonical & hreflang absolut baru lengkap setelah NUXT_PUBLIC_SITE_URL diisi).
@@ -20,7 +24,13 @@ useSeoMeta({
   ogType: 'website',
   ogSiteName: 'Ikram Muhammad',
   ogLocale: () => t('meta.ogLocale'),
-  twitterCard: 'summary',
+  ogImage: () => ogImage.value,
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
+  ogImageType: 'image/png',
+  ogImageAlt: () => t('meta.title'),
+  twitterCard: 'summary_large_image',
+  twitterImage: () => ogImage.value,
 })
 
 // Data terstruktur schema.org untuk mesin pencari.

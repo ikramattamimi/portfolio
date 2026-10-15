@@ -23,6 +23,9 @@ const { data: posts } = await useAsyncData(
   { watch: [locale] },
 )
 
+// Selama belum ada artikel, halaman ini jangan diindeks (konten tipis). Otomatis terindeks lagi begitu ada artikel.
+useRobotsRule(() => (posts.value?.length ? true : 'noindex, follow'))
+
 useSeoMeta({
   title: () => `${t('blog.title')} — Ikram Muhammad`,
   description: () => t('blog.lead'),
