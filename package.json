@@ -5,7 +5,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "generate": "nuxt generate --target static",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "images": "node scripts/optimize-images.mjs"
