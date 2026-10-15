@@ -4,6 +4,8 @@
   "compatibility_date": "2026-10-01",
   "assets": {
     "directory": "./.output/public",
-    "not_found_handling": "404-page"
+    "not_found_handling": "404-page",
+    // Serve /en and /blog directly so URLs match the canonical links (no trailing slash).
+    "html_handling": "drop-trailing-slash"
   }
 }
