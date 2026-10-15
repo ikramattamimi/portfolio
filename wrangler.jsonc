@@ -1,0 +1,9 @@
+{
+  // Cloudflare Workers static assets deploy for the `nuxt generate` output.
+  "name": "portfolio",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./.output/public",
+    "not_found_handling": "404-page"
+  }
+}
