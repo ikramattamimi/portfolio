@@ -6,7 +6,7 @@
 export const CONTACT = {
   whatsapp: '6287778328502',
   whatsappLabel: '+62 8777 832 8502',
-  email: 'attamimiikram@gmail.com',
+  email: 'halo@ikrm.dev',
   linkedin: 'https://www.linkedin.com/in/ikram-attamimi',
   linkedinLabel: 'ikram-attamimi',
   github: 'https://github.com/ikramattamimi',
