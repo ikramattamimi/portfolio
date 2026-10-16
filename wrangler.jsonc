@@ -7,5 +7,10 @@
     "not_found_handling": "404-page",
     // Serve /en and /blog directly so URLs match the canonical links (no trailing slash).
     "html_handling": "drop-trailing-slash"
+  },
+  "previews": {
+    "assets": {
+      "directory": "./.output/public"
+    }
   }
 }

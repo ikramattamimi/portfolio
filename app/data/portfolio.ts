@@ -75,4 +75,4 @@ export const FLOW: { id: string, label: string }[] = [
  * Tampilkan blog ke pengunjung (link di topbar, sidebar, footer + halaman ikut dibuild & masuk sitemap).
  * Biarkan `false` sampai ada 3–5 artikel. Selama `false`, blog tetap bisa dibuka di mode dev (/blog).
  */
-export const BLOG_ENABLED = true
+export const BLOG_ENABLED = false
