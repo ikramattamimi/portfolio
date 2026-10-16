@@ -13,8 +13,22 @@ Mode rekruter/klien digabung jadi satu alur: Hero → 01 Tentang → 02 Pengalam
 
 - [x] Branch `redesign/single-flow` dibuat dari `main`
 - [x] Catatan keputusan + draf teks ID (`doc/single-flow-decisions.md`)
+- [x] Tahap 1–8 dikerjakan (2026-10-16)
 - [ ] Draf teks ditinjau pemilik
 - [ ] Data Inventory Management dari pemilik
+
+**Konten yang perlu diisi pemilik:**
+
+| Apa | File | Kunci / field |
+|---|---|---|
+| Deskripsi Inventory Management | `i18n/locales/{id,en}/home.json` | `home.projects.items.inventory.desc` |
+| Teknologi Inventory | `app/data/portfolio.ts` | `FEATURED` → `inventory.chips` (sekarang kosong) |
+| Screenshot RFA/PED/Inventory | `public/images/<proyek>/` + `app/data/portfolio.ts` | `visual: 'image'`, `images: [...]` |
+| Link demo / repo | `app/data/portfolio.ts` | `FEATURED` → `links: { demo, repo }` |
+| Status proyek (kalau sudah bisa dicoba) | `app/data/portfolio.ts` | `status: 'live'` |
+| Angka pencapaian (mis. waktu muat PED) | `i18n/locales/{id,en}/home.json` | `home.jobs.gdi.points` |
+| Foto diri (opsional) | `public/images/` + `app/data/portfolio.ts` | `PHOTO` |
+| Teknologi di section Tentang | `app/data/portfolio.ts` | `TECH` |
 
 ---
 
@@ -51,11 +65,11 @@ Dihapus: `components/gate/`, `components/mode/`, `composables/useMode.ts`, `plug
 
 **Tujuan:** halaman tampil satu alur tanpa gate, meskipun isinya masih konten lama.
 
-- [ ] Hapus `GateModeGate`, `GateModeToggle`, `useMode`, `plugins/mode.client.ts`, `MODE_INIT_SCRIPT` di `app.vue`, dan `mode.css`.
-- [ ] Hapus `definePageMeta({ gate: true })` dan semua cabang `route.meta.gate` (Topbar, Sidebar, layout, `useContactLink`). Link "Hubungi" selalu ke `#kontak`.
-- [ ] `?mode=` lama diabaikan: parameter dihapus dari URL dan kunci `localStorage` `mode` dibersihkan (script kecil di plugin client).
-- [ ] `FLOW` di `data/portfolio.ts` jadi satu daftar: `tentang`, `pengalaman`, `proyek`, `kontak`.
-- [ ] `NavSideFlow` tampil setelah hero (bukan setelah gate).
+- [x] Hapus `GateModeGate`, `GateModeToggle`, `useMode`, `plugins/mode.client.ts`, `MODE_INIT_SCRIPT` di `app.vue`, dan `mode.css`.
+- [x] Hapus `definePageMeta({ gate: true })` dan semua cabang `route.meta.gate` (Topbar, Sidebar, layout, `useContactLink`). Link "Hubungi" selalu ke `#kontak`.
+- [x] `?mode=` lama diabaikan: parameter dihapus dari URL dan kunci `localStorage` `mode` dibersihkan (`INIT_SCRIPT` di `<head>` + `plugins/legacy-mode.client.ts`). Sudah dites: `/?mode=rekruter` → `/`.
+- [x] `FLOW` di `data/portfolio.ts` jadi satu daftar: `tentang`, `pengalaman`, `proyek`, `kontak`.
+- [x] `NavSideFlow` tampil setelah hero (bukan setelah gate).
 
 **Selesai bila:** halaman bisa di-scroll dari hero sampai footer tanpa memilih apa pun, tidak ada error di console, dan `nuxt generate` berhasil.
 
@@ -63,65 +77,65 @@ Dihapus: `components/gate/`, `components/mode/`, `composables/useMode.ts`, `plug
 
 **Tujuan:** pengunjung langsung tahu siapa saya dalam satu layar pertama.
 
-- [ ] Topbar kiri: nama "Ikram Muhammad" (desktop) / "IM" (mobile), klik untuk scroll ke atas.
-- [ ] Topbar kanan desktop: Blog, ID/EN, tombol CV (garis, buka `CV.pdf`), Hubungi (merah), tema. Sidebar mobile: tambah link CV.
-- [ ] Hero: status → "Halo, saya" → **nama** (`h1`) → headline → paragraf → tombol "Lihat proyek" (ke `#proyek`) dan "Unduh CV".
-- [ ] Headline pindah dari `h1` ke elemen biasa; `h1` jadi nama (lebih baik untuk SEO nama).
-- [ ] Teks hero baru sesuai draf.
+- [x] Topbar kiri: nama "Ikram Muhammad" (desktop) / "IM" (mobile), klik untuk scroll ke atas.
+- [x] Topbar kanan desktop: Blog, ID/EN, tombol CV (garis, buka `CV.pdf`), Hubungi (merah), tema. Sidebar mobile: tambah link CV.
+- [x] Hero: status → "Halo, saya" → **nama** (`h1`) → headline → paragraf → tombol "Lihat proyek" (ke `#proyek`) dan "Unduh CV".
+- [x] Headline pindah dari `h1` ke elemen biasa; `h1` jadi nama (lebih baik untuk SEO nama).
+- [x] Teks hero baru sesuai draf.
 
 **Selesai bila:** layout rapi di 375 / 768 / 1440 px dan kubus tetap jalan.
 
 ## Tahap 3. 01 Tentang
 
-- [ ] `SectionsAbout`: 2–3 paragraf, daftar teknologi dua kolom (gaya ▹ seperti Brittany), baris pendidikan singkat (D3 Teknik Informatika, Polban 2020–2023).
-- [ ] Slot foto di kanan (kalau pemilik memutuskan pakai foto; kalau tidak, kolom teks melebar).
-- [ ] Hapus `ModeRecruiterSkills` dan `ModeRecruiterCv`. Statistik CV ("2+ tahun", "7 sistem") tidak dipakai lagi.
+- [x] `SectionsAbout`: 2–3 paragraf, daftar teknologi dua kolom (gaya ▹ seperti Brittany), baris pendidikan singkat (D3 Teknik Informatika, Polban 2020–2023).
+- [x] Slot foto di kanan (kalau pemilik memutuskan pakai foto; kalau tidak, kolom teks melebar).
+- [x] Hapus `ModeRecruiterSkills` dan `ModeRecruiterCv`. Statistik CV ("2+ tahun", "7 sistem") tidak dipakai lagi.
 
 **Selesai bila:** section terbaca dalam < 30 detik dan tidak ada elemen interaktif yang wajib diklik.
 
 ## Tahap 4. 02 Pengalaman
 
-- [ ] `SectionsExperience`: tab per perusahaan (GDI, Lapi Divusi). Desktop: daftar tab vertikal di kiri, isi di kanan. Mobile: tab horizontal yang bisa digeser.
-- [ ] Isi tiap tab: peran · perusahaan, tanggal, 2–3 poin pencapaian, daftar teknologi satu baris.
-- [ ] Aksesibilitas tab: `role="tablist"`, panah kiri/kanan/atas/bawah, `aria-selected`, panel `role="tabpanel"`. Semua panel tetap ada di HTML (SEO), yang tidak aktif `hidden`.
-- [ ] Hapus kartu kasus, baris promosi, kotak "wins", dan "Detail teknis" (masalah/solusi/diagram). Komponen diagram disimpan untuk Tahap 5.
+- [x] `SectionsExperience`: tab per perusahaan (GDI, Lapi Divusi). Desktop: daftar tab vertikal di kiri, isi di kanan. Mobile: tab horizontal yang bisa digeser.
+- [x] Isi tiap tab: peran · perusahaan, tanggal, 2–3 poin pencapaian, daftar teknologi satu baris.
+- [x] Aksesibilitas tab: `role="tablist"`, panah kiri/kanan/atas/bawah, `aria-selected`, panel `role="tabpanel"`. Semua panel tetap ada di HTML (SEO), yang tidak aktif `hidden`.
+- [x] Hapus kartu kasus, baris promosi, kotak "wins", dan "Detail teknis" (masalah/solusi/diagram). Komponen diagram disimpan untuk Tahap 5.
 
 **Selesai bila:** tab bisa dioperasikan dengan keyboard dan teks semua perusahaan ada di HTML hasil generate.
 
 ## Tahap 5. 03 Proyek pilihan
 
-- [ ] Data `FEATURED` di `data/portfolio.ts`: `rfa`, `ped`, `inventory` dengan `chips`, `links` (demo, repo — opsional), `visual` (`diagram-approval` | `diagram-architecture` | `image` | `placeholder`), `status` (`live` | `dev`).
-- [ ] `SectionsProjects`: layout ala Brittany. Visual besar di satu sisi, kartu teks yang menumpuk sedikit di atasnya, posisi selang-seling kiri/kanan. Mobile: visual jadi latar redup di belakang teks.
-- [ ] Isi kartu: label kecil ("Proyek unggulan" / "Sedang dikembangkan"), nama, deskripsi, teknologi, ikon link.
-- [ ] Visual sementara: diagram alur persetujuan (RFA), diagram arsitektur (PED), placeholder (Inventory). Siap diganti screenshot lewat `UiLightbox` yang sudah ada.
-- [ ] Hapus `ModeRecruiterProjects`, `ModeClientResults`, `IotDemo`, `SalaryDemo`, dan folder gambar proyek lama (termasuk screenshot akuntansi yang memuat data rekening).
+- [x] Data `FEATURED` di `data/portfolio.ts`: `rfa`, `ped`, `inventory` dengan `chips`, `links` (demo, repo — opsional), `visual` (`diagram-approval` | `diagram-architecture` | `image` | `placeholder`), `status` (`live` | `dev`).
+- [x] `SectionsProjects`: layout ala Brittany. Visual besar di satu sisi, kartu teks yang menumpuk sedikit di atasnya, posisi selang-seling kiri/kanan. Mobile: visual jadi latar redup di belakang teks.
+- [x] Isi kartu: label kecil ("Proyek unggulan" / "Sedang dikembangkan"), nama, deskripsi, teknologi, ikon link.
+- [x] Visual sementara: diagram alur persetujuan (RFA), diagram arsitektur (PED), placeholder (Inventory). Siap diganti screenshot lewat `UiLightbox` yang sudah ada.
+- [x] Hapus `ModeRecruiterProjects`, `ModeClientResults`, `IotDemo`, `SalaryDemo`, dan folder gambar proyek lama (termasuk screenshot akuntansi yang memuat data rekening).
 
 **Selesai bila:** tiga proyek tampil rapi di 375 / 768 / 1440 px dan tidak ada sisa referensi ke proyek lama (`grep trashclean|smarthome|salary|accounting` kosong).
 
 ## Tahap 6. 04 Kontak + footer
 
-- [ ] Judul dan pengantar baru, baris layanan freelance.
-- [ ] Formulir: hapus label "Permohonan baru" / "DRAF", "Jenis permohonan" → "Jenis pesan". Jenis default: "Sekadar bertanya" (tidak lagi mengikuti mode).
-- [ ] Hapus `ModeClientServices`, `ModeClientProcess`, `ModeClientStart`, dan testimoni (`SHOW_TESTIMONIALS`).
+- [x] Judul dan pengantar baru, baris layanan freelance.
+- [x] Formulir: hapus label "Permohonan baru" / "DRAF", "Jenis permohonan" → "Jenis pesan". Jenis default: "Sekadar bertanya" (tidak lagi mengikuti mode).
+- [x] Hapus `ModeClientServices`, `ModeClientProcess`, `ModeClientStart`, dan testimoni (`SHOW_TESTIMONIALS`).
 
 ## Tahap 7. Animasi masuk + scroll reveal
 
-- [ ] `useReveal` (GSAP, sudah ada di `utils/gsap.ts`): animasi pembuka topbar + hero dengan stagger ±100 ms, total < 1,2 detik.
-- [ ] Scroll reveal per section dan per item (IntersectionObserver, sekali jalan).
-- [ ] Status awal tersembunyi hanya lewat `html.js` supaya tanpa JS konten tetap tampil, dan teks hero (LCP) tidak tertunda lebih dari animasinya.
-- [ ] `prefers-reduced-motion`: semua langsung tampil.
+- [x] ~~`useReveal` (GSAP)~~ → **tanpa GSAP**. Animasi pembuka topbar + hero memakai CSS keyframes (`intro-down` / `intro-up` di `base.css`, stagger 70/90 ms, total ±1,2 detik), jadi teks hero tidak menunggu chunk JavaScript. `useReveal` hanya IntersectionObserver + transisi CSS. GSAP tidak dipakai lagi dan dihapus dari dependency.
+- [x] Scroll reveal per section dan per item (IntersectionObserver, sekali jalan).
+- [x] Status awal tersembunyi hanya lewat `html.js` supaya tanpa JS konten tetap tampil, dan teks hero (LCP) tidak tertunda lebih dari animasinya.
+- [x] `prefers-reduced-motion`: semua langsung tampil.
 
 **Selesai bila:** tidak ada kedipan konten saat dimuat, CLS tetap 0, LCP tidak naik lebih dari 0,2 detik dibanding sekarang.
 
 ## Tahap 8. Teks EN, SEO, pembersihan
 
-- [ ] Gabung `recruiter.json` + `client.json` → `home.json` (ID & EN). Hapus kunci yang tidak dipakai.
-- [ ] Terjemahan EN untuk semua teks baru, setelah versi ID disetujui.
-- [ ] Meta description baru di `common.json`. Data terstruktur `Person` tetap.
-- [ ] Hapus kode mode di `useActiveSection`, `SideFlow`, `utils/gsap.ts` yang tidak terpakai.
-- [ ] Perbarui `README.md` (bagian fitur & cara mengubah konten) dan tandai `doc/redesign-decisions.md` sebagai digantikan.
-- [ ] Lighthouse mobile: target sama seperti sebelumnya (Performance ≥ 92, A11y/BP/SEO 100).
-- [ ] Tes manual di 375 / 768 / 1440 px, tema gelap & terang, ID & EN, tanpa JS.
+- [x] Gabung `recruiter.json` + `client.json` → `home.json` (ID & EN). Hapus kunci yang tidak dipakai.
+- [x] Terjemahan EN untuk semua teks baru. *Dibuat sebelum versi ID ditinjau; ikut disesuaikan kalau teks ID berubah.*
+- [x] Meta description baru di `common.json`. Data terstruktur `Person` tetap.
+- [x] Hapus kode mode di `useActiveSection`, `SideFlow`, `utils/gsap.ts` yang tidak terpakai.
+- [x] Perbarui `README.md` (bagian fitur & cara mengubah konten) dan tandai `doc/redesign-decisions.md` sebagai digantikan.
+- [ ] Lighthouse mobile: target sama seperti sebelumnya (Performance ≥ 92, A11y/BP/SEO 100). *Belum dijalankan.*
+- [ ] Tes manual di 375 / 768 / 1440 px, tema gelap & terang, ID & EN, tanpa JS. **Sudah:** build statis di panel browser (Chromium) lebar ±1024 px dan 375 px, tema gelap & terang, keyboard tab pengalaman, tanpa scroll horizontal, tanpa error console; teks ID & EN dicek di HTML hasil generate. **Belum:** 768 px, 1440 px, tampilan EN di browser, tanpa JS, Firefox/Safari.
 
 ## Tahap 9. Rilis
 

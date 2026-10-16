@@ -1,16 +1,15 @@
 # Ikram Muhammad — Portfolio
 
-Personal portfolio built around a **workflow / approval** theme, the kind of systems I build at work. It serves two audiences, with **completely separate content**:
+Personal portfolio told as **one story, top to bottom**, for recruiters and clients alike:
 
-- **Recruiters** — experience as case studies, freelance projects (technical view), skills linked to proof, CV.
-- **Clients** — services, project results (business view) with two live mini-demos, how we'd work together, how to start.
-
-Visitors pick a mode on a full-screen gate below the hero; the chosen card flies into the top bar and becomes the mode toggle.
+Hero → 01 About → 02 Experience → 03 Projects → 04 Contact.
 
 ## Features
-- **Mode gate** — scrolling stops at the gate until a mode is chosen. The choice is remembered (`localStorage`).
-- **Deep links** — `?mode=rekruter` / `?mode=klien` (also `recruiter` / `client`) skip the gate. Use these in job applications.
-- **Both modes are in the HTML** for search engines; the inactive one is hidden with CSS before first paint (no flash).
+- **Intro animation** — top bar items drop in and hero lines rise one after another (pure CSS, no loader screen, so the hero text is never delayed by JavaScript).
+- **Scroll reveal** — sections fade in once as they enter the screen (`useReveal`). Only applied when JavaScript runs; without it everything is visible.
+- **Experience tabs** — one tab per company (ARIA tab pattern, arrow keys). All panels are in the HTML for search engines.
+- **Featured projects** — large visual with an overlapping text card, alternating sides; the visual becomes a dimmed background on small screens.
+- **Old links** — `?mode=rekruter` / `?mode=klien` links from the earlier dual-mode version still open the page normally (the parameter is removed).
 - **Hero** — wireframe cubes (Three.js via TresJS) with lightweight custom physics: they collide and get pushed by the mouse; float slowly on touch devices; static with `prefers-reduced-motion`.
 - **Side flow navigation** — approval-style stepper on the right (≥ 1280 px), thin reading-progress line on smaller screens.
 - **Bilingual** — Indonesian at `/`, English at `/en`.
@@ -18,7 +17,7 @@ Visitors pick a mode on a full-screen gate below the hero; the chosen card flies
 - Custom square cursor that rotates on interactive elements (mouse only).
 
 ## Tech stack
-Nuxt 4 (static generation) · Vue 3 · `@nuxtjs/i18n` · `@nuxtjs/color-mode` · `@nuxt/fonts` · TresJS + Three.js · GSAP (Flip) · `@nuxtjs/sitemap` + `@nuxtjs/robots` · `@nuxt/content` (blog).
+Nuxt 4 (static generation) · Vue 3 · `@nuxtjs/i18n` · `@nuxtjs/color-mode` · `@nuxt/fonts` · TresJS + Three.js · `@nuxtjs/sitemap` + `@nuxtjs/robots` · `@nuxt/content` (blog).
 
 ## Development
 ```bash
@@ -43,21 +42,21 @@ Every file is also written as `.gz` and `.br`; serve those if the host supports 
 app/
   components/
     hero/       HeroSection, CubeField (Three.js scene), CubeScene
-    gate/       ModeGate (mode choice), ModeToggle (top bar)
-    mode/       RecruiterView, ClientView + their sections (recruiter/, client/)
+    sections/   About, Experience, Projects
+    diagram/    Approval, Architecture (project visuals until screenshots exist)
     nav/        SideFlow (stepper / progress line)
     layout/     Topbar, Sidebar (mobile), Footer
     shared/     ContactSection
     ui/         ThemeToggle, LangSwitch, Lightbox, CustomCursor, SectionHead
-  composables/  useMode (mode state, init script, animated switch), useActiveSection, useGallery, …
-  data/         portfolio.ts — structure: jobs, projects, skills, contact, flow steps
-  utils/        cubePhysics.ts, gsap.ts
-  assets/css/   tokens.css (theme colors), base.css, mode.css (mode visibility)
+  composables/  useReveal, useActiveSection, useGallery, …
+  data/         portfolio.ts — structure: tech list, jobs, featured projects, contact, flow steps
+  utils/        cubePhysics.ts, initScript.ts
+  assets/css/   tokens.css (theme colors), base.css (incl. intro & reveal animation)
 i18n/locales/{id,en}/
-  common.json · recruiter.json · client.json — all text
+  common.json (hero, layout, contact, blog) · home.json (sections) — all text
 content/blog/{id,en}/  blog articles (Markdown)
 public/
-  images/       project screenshots (WebP)
+  images/       project screenshots (WebP), create when needed
   doc/CV.pdf
 scripts/optimize-images.mjs
 .ai/plan/       development plan
@@ -66,8 +65,9 @@ doc/            design decisions
 
 ## Editing content
 - **Text** lives in `i18n/locales/{id,en}/*.json`, keyed by the same ids as `app/data/portfolio.ts`.
-- **Structure** (tech chips, galleries, which skill was used where, contact details) lives in `app/data/portfolio.ts`.
-- **Testimonials** are hidden; set `SHOW_TESTIMONIALS = true` in `app/data/portfolio.ts` once there are real quotes.
+- **Structure** lives in `app/data/portfolio.ts`: `TECH` (about), `JOBS` (experience tabs + tech chips), `FEATURED` (projects: chips, status, visual, links), `PHOTO`, contact details.
+- **Project visuals**: set `visual: 'image'` and `images: ['/images/<project>/1.webp', …]` on a `FEATURED` item; the first image is the cover and a click opens the gallery. Add `links: { demo, repo }` to show link icons.
+- **Photo**: put it in `public/images/` and set `PHOTO` to its path.
 - **Screenshots**: add PNGs to `public/images/<project>/`, then run `npm run images` to convert them to WebP.
 
 ## Blog
