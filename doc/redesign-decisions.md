@@ -3,6 +3,8 @@
 Tanggal: 2026-10-14
 Branch: `redesign/nuxt-dual-mode`
 
+> **Digantikan (2026-10-16)** oleh [`single-flow-decisions.md`](single-flow-decisions.md): mode rekruter dan klien digabung jadi satu alur. Dokumen ini disimpan sebagai arsip.
+
 Konten untuk rekruter dan calon klien dipisah sepenuhnya. Pengunjung memilih mode dulu, lalu hanya konten untuk mode itu yang ditampilkan.
 
 ---
