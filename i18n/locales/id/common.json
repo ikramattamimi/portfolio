@@ -9,52 +9,30 @@
     "menu": "Menu",
     "skip": "Lewati ke konten",
     "contact": "Hubungi",
+    "cv": "CV",
+    "brand": "Ikram Muhammad, kembali ke atas",
     "language": "Bahasa",
     "sections": "Navigasi bagian",
     "progress": "Progres membaca"
-  },
-  "mode": {
-    "label": "Mode tampilan",
-    "recruiter": "Rekruter",
-    "client": "Klien"
   },
   "footer": {
     "location": "Bandung, Indonesia"
   },
   "hero": {
     "status": "Terbuka untuk kerja & freelance",
+    "hello": "Halo, saya",
     "headlineBefore": "Saya mengubah proses manual jadi sistem yang",
     "headlineAccent": "berjalan sendiri",
-    "subtitle": "Full-stack developer (ASP.NET · Vue · Laravel) di Bandung. Saya membangun aplikasi persetujuan dokumen, pelacakan izin, dan alur kerja internal, mulai dari kebutuhan bisnis sampai sistem jalan di produksi."
-  },
-  "gate": {
-    "kicker": "Pilih jalur",
-    "title": "Apa yang Anda cari?",
-    "subtitle": "Pilih salah satu, tampilan halaman akan menyesuaikan. Anda bisa menggantinya kapan saja lewat tombol di bagian atas.",
-    "rekruter": {
-      "kicker": "Untuk rekruter",
-      "title": "Pengalaman & CV",
-      "desc": "Riwayat kerja, keahlian teknis, studi kasus, dan CV."
-    },
-    "klien": {
-      "kicker": "Untuk klien",
-      "title": "Proyek & layanan",
-      "desc": "Layanan, cara kerja sama, dan hasil proyek."
-    }
-  },
-  "projects": {
-    "trashclean": "Trashclean",
-    "smarthome": "Smart Home",
-    "salary": "Salary Payment",
-    "accounting": "Aplikasi Akuntansi"
+    "subtitle": "Saya full-stack developer di Bandung. Sehari-hari saya membangun aplikasi internal untuk perusahaan, seperti persetujuan dokumen, pelacakan izin, dan alur kerja kantor lainnya.",
+    "ctaProjects": "Lihat proyek",
+    "ctaCv": "Unduh CV"
   },
   "contact": {
     "kicker": "Kontak",
-    "title": "Ajukan permohonan",
-    "lead": "Tawaran kerja, proyek, atau sekadar bertanya. Biasanya saya balas dalam sehari.",
-    "newRequest": "Permohonan baru",
-    "draft": "Draf",
-    "type": "Jenis permohonan",
+    "title": "Ada yang ingin dibicarakan?",
+    "lead": "Punya tawaran kerja, proyek freelance, atau sekadar pertanyaan? Silakan kirim pesan. Biasanya saya balas dalam sehari.",
+    "freelance": "Untuk freelance, saya membantu membuat aplikasi internal kantor, dashboard, dan otomasi pekerjaan berulang.",
+    "type": "Jenis pesan",
     "types": {
       "job": "Tawaran kerja",
       "project": "Proyek freelance",
@@ -76,7 +54,7 @@
   },
   "meta": {
     "title": "Ikram Muhammad — Full-Stack Developer (ASP.NET · Vue · Laravel)",
-    "description": "Full-stack developer di Bandung. Saya membangun sistem persetujuan dokumen, pelacakan izin, dan aplikasi internal yang mengubah proses manual jadi otomatis.",
+    "description": "Ikram Muhammad, full-stack developer di Bandung. Saya membangun aplikasi internal perusahaan seperti persetujuan dokumen dan pelacakan izin dengan ASP.NET, Vue, dan Laravel.",
     "ogLocale": "id_ID",
     "jobTitle": "Full-Stack Developer"
   },
@@ -89,7 +67,6 @@
     "draft": "Draf",
     "readMore": "Baca artikel",
     "allPosts": "Semua artikel",
-    "home": "Beranda",
     "onlyIndonesian": "Artikel ini baru tersedia dalam bahasa Indonesia.",
     "idOnlyBadge": "Bahasa Indonesia",
     "notFound": "Artikel tidak ditemukan."

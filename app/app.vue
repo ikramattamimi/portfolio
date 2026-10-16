@@ -56,9 +56,9 @@ useHead(() => ({
   ],
 }))
 
-// Tentukan mode (rekruter/klien) sebelum halaman digambar. Lihat MODE_INIT_SCRIPT.
+// Tandai <html class="js"> sebelum halaman digambar. Lihat INIT_SCRIPT.
 useHead({
-  script: [{ key: 'mode-init', innerHTML: MODE_INIT_SCRIPT, tagPosition: 'head' }],
+  script: [{ key: 'init', innerHTML: INIT_SCRIPT, tagPosition: 'head' }],
 })
 </script>
 

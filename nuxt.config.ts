@@ -37,7 +37,7 @@ export default defineNuxtConfig({
     },
   },
 
-  css: ['~/assets/css/tokens.css', '~/assets/css/base.css', '~/assets/css/mode.css', '~/assets/css/prose.css'],
+  css: ['~/assets/css/tokens.css', '~/assets/css/base.css','~/assets/css/prose.css'],
   app: {
     head: {
       link: [{ rel: 'icon', href: '/favicon.ico' }],
@@ -57,7 +57,7 @@ export default defineNuxtConfig({
     : Object.fromEntries(blogRoutes.map((r) => [r, { prerender: false }])),
 
   hooks: {
-    // Jangan prefetch chunk lazy (Three.js ±225 KB gzip, GSAP): di koneksi lambat prefetch itu
+    // Jangan prefetch chunk lazy (Three.js ±225 KB gzip):di koneksi lambat prefetch itu
     // berebut bandwidth dengan font & CSS sebelum teks hero tampil. Chunk tetap dimuat saat dibutuhkan.
     'build:manifest': (manifest) => {
       for (const chunk of Object.values(manifest)) chunk.prefetch = false
@@ -104,7 +104,7 @@ export default defineNuxtConfig({
   },
 
   // Bahasa default Indonesia tanpa prefix (/), Inggris di /en.
-  // Teks dipecah per bagian: common (hero, layout, kontak), recruiter, client.
+  // Teks dipecah per bagian: common (hero, layout, kontak, blog) dan home (section beranda).
   i18n: {
     baseUrl: siteUrl,
     defaultLocale: 'id',
@@ -114,13 +114,13 @@ export default defineNuxtConfig({
         code: 'id',
         language: 'id-ID',
         name: 'Bahasa Indonesia',
-        files: ['id/common.json', 'id/recruiter.json', 'id/client.json'],
+        files: ['id/common.json', 'id/home.json'],
       },
       {
         code: 'en',
         language: 'en-US',
         name: 'English',
-        files: ['en/common.json', 'en/recruiter.json', 'en/client.json'],
+        files: ['en/common.json', 'en/home.json'],
       },
     ],
     // Tanpa pengalihan otomatis berdasarkan bahasa browser: di situs statis pengalihan itu baru

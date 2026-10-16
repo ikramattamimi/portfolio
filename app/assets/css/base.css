@@ -196,18 +196,59 @@ button {
   color: var(--ink-2);
 }
 
-/* Sorotan singkat saat melompat ke sebuah kartu (mis. dari panel keahlian). */
-.flash {
-  animation: flash 1.6s ease;
+/* ---------- animasi masuk ---------- */
+
+/*
+ * Pembuka halaman: item topbar turun (`intro-down`), baris hero naik (`intro-up`), bergantian
+ * menurut `--i`. Murni CSS (tanpa menunggu JavaScript), jadi teks hero langsung ikut dirender.
+ * Total ±1,2 detik.
+ */
+.intro-down {
+  animation: intro-down 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: calc(var(--i, 0) * 70ms);
 }
 
-@keyframes flash {
-  0%,
-  100% {
-    box-shadow: none;
+.intro-up {
+  animation: intro-up 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: calc(150ms + var(--i, 0) * 90ms);
+}
+
+@keyframes intro-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes intro-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+/* Scroll reveal (lihat useReveal). Hanya disembunyikan kalau JavaScript aktif. */
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--d, 0ms);
+}
+
+html.js [data-reveal].revealed {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-down,
+  .intro-up {
+    animation: none;
   }
 
-  25% {
-    box-shadow: 0 0 0 4px var(--red);
+  html.js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }

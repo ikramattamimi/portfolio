@@ -1,13 +1,12 @@
 <script setup lang="ts">
-// Sidebar mobile: Blog (kalau BLOG_ENABLED), ID/EN, dan Hubungi.
+// Sidebar mobile: Blog (kalau BLOG_ENABLED), ID/EN, CV, dan Hubungi.
 // Tutup lewat tombol, klik di luar panel, atau Esc. Fokus keyboard tetap di dalam panel selama terbuka.
-import { BLOG_ENABLED } from '~/data/portfolio'
+import { BLOG_ENABLED, CV_URL } from '~/data/portfolio'
 
 const { t } = useI18n()
 const route = useRoute()
 const localePath = useLocalePath()
 const { open, hide } = useSidebar()
-const onContact = useContactLink()
 
 const panel = ref<HTMLElement | null>(null)
 const closeBtn = ref<HTMLButtonElement | null>(null)
@@ -99,7 +98,10 @@ onBeforeUnmount(() => {
             <UiLangSwitch />
           </div>
 
-          <a :href="route.meta.gate ? '#kontak' : `${localePath('/')}#kontak`" class="btn red contact" @click="(e) => { hide(); onContact(e) }">{{ t('nav.contact') }}</a>
+          <div class="buttons">
+            <a :href="CV_URL" target="_blank" rel="noopener" class="btn">{{ t('nav.cv') }}</a>
+            <a :href="`${localePath('/')}#kontak`" class="btn red" @click="hide">{{ t('nav.contact') }}</a>
+          </div>
         </aside>
       </div>
     </Transition>
@@ -173,8 +175,9 @@ onBeforeUnmount(() => {
   gap: 10px;
 }
 
-.contact {
-  width: 100%;
+.buttons {
+  display: grid;
+  gap: 10px;
 }
 
 .nav-link {

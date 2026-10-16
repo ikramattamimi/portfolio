@@ -9,52 +9,30 @@
     "menu": "Menu",
     "skip": "Skip to content",
     "contact": "Contact",
+    "cv": "CV",
+    "brand": "Ikram Muhammad, back to top",
     "language": "Language",
     "sections": "Section navigation",
     "progress": "Reading progress"
-  },
-  "mode": {
-    "label": "View mode",
-    "recruiter": "Recruiter",
-    "client": "Client"
   },
   "footer": {
     "location": "Bandung, Indonesia"
   },
   "hero": {
     "status": "Open to jobs & freelance",
+    "hello": "Hi, my name is",
     "headlineBefore": "I turn manual processes into systems that",
     "headlineAccent": "run themselves",
-    "subtitle": "Full-stack developer (ASP.NET · Vue · Laravel) based in Bandung. I build document approval apps, permit tracking, and internal workflows, from business requirements all the way to production."
-  },
-  "gate": {
-    "kicker": "Choose a path",
-    "title": "What are you looking for?",
-    "subtitle": "Pick one and the page adapts. You can switch anytime from the top bar.",
-    "rekruter": {
-      "kicker": "For recruiters",
-      "title": "Experience & CV",
-      "desc": "Work history, technical skills, case studies, and CV."
-    },
-    "klien": {
-      "kicker": "For clients",
-      "title": "Projects & services",
-      "desc": "Services, how we would work together, and project results."
-    }
-  },
-  "projects": {
-    "trashclean": "Trashclean",
-    "smarthome": "Smart Home",
-    "salary": "Salary Payment",
-    "accounting": "Accounting App"
+    "subtitle": "I'm a full-stack developer in Bandung, Indonesia. I build internal applications for companies, such as document approval, permit tracking, and other office workflows.",
+    "ctaProjects": "See my projects",
+    "ctaCv": "Download CV"
   },
   "contact": {
     "kicker": "Contact",
-    "title": "Submit a request",
-    "lead": "A job offer, a project, or just a question. I usually reply within a day.",
-    "newRequest": "New request",
-    "draft": "Draft",
-    "type": "Request type",
+    "title": "Got something to talk about?",
+    "lead": "A job offer, a freelance project, or just a question? Send me a message. I usually reply within a day.",
+    "freelance": "For freelance work, I help build internal office apps, dashboards, and automation for repetitive tasks.",
+    "type": "Message type",
     "types": {
       "job": "Job opportunity",
       "project": "Freelance project",
@@ -76,7 +54,7 @@
   },
   "meta": {
     "title": "Ikram Muhammad — Full-Stack Developer (ASP.NET · Vue · Laravel)",
-    "description": "Full-stack developer in Bandung. I build document approval systems, permit tracking, and internal apps that turn manual processes into automated ones.",
+    "description": "Ikram Muhammad, full-stack developer in Bandung. I build internal company apps such as document approval and permit tracking with ASP.NET, Vue, and Laravel.",
     "ogLocale": "en_US",
     "jobTitle": "Full-Stack Developer"
   },
@@ -89,7 +67,6 @@
     "draft": "Draft",
     "readMore": "Read article",
     "allPosts": "All articles",
-    "home": "Home",
     "onlyIndonesian": "This article is only available in Indonesian for now.",
     "idOnlyBadge": "Indonesian",
     "notFound": "Article not found."

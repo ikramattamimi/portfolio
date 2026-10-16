@@ -1,10 +1,8 @@
 /**
- * Melacak posisi baca di dalam konten mode (#konten):
+ * Melacak posisi baca di dalam konten setelah hero (#konten):
  * - `active`: id section yang sedang melewati tengah layar
  * - `progress`: 0–1, seberapa jauh konten sudah dibaca
  * - `inContent`: konten sudah mencapai tengah layar (navigasi flow ditampilkan)
- *
- * Section mode yang tersembunyi (display: none) tidak punya ukuran, jadi otomatis dilewati.
  */
 export function useActiveSection(ids: MaybeRefOrGetter<string[]>) {
   const active = ref<string | null>(null)
@@ -42,9 +40,6 @@ export function useActiveSection(ids: MaybeRefOrGetter<string[]>) {
     window.removeEventListener('scroll', measure)
     window.removeEventListener('resize', measure)
   })
-
-  // Daftar section berubah saat mode diganti.
-  watch(() => toValue(ids), () => nextTick(measure))
 
   return { active, progress, inContent, refresh: measure }
 }

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const { t } = useI18n()
-const route = useRoute()
 </script>
 
 <template>
@@ -11,8 +10,7 @@ const route = useRoute()
     <main id="main" tabindex="-1">
       <slot />
     </main>
-    <!-- Di halaman dengan gate, footer ikut terkunci sampai mode dipilih. -->
-    <LayoutFooter :class="{ 'after-gate': route.meta.gate }" />
+    <LayoutFooter />
     <UiLightbox />
     <UiCustomCursor />
   </div>

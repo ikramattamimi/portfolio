@@ -1,7 +1,10 @@
 <script setup lang="ts">
-// Hero netral untuk rekruter maupun klien (headline A).
+// Hero: perkenalan singkat (nama, headline, satu paragraf, dua tombol).
+// Baris-barisnya muncul bergantian saat halaman dibuka (`intro-up`, lihat base.css).
 // Kubus (Three.js, ±225 KB gzip) baru dimuat setelah halaman selesai dimuat dan browser idle,
 // supaya tidak berebut bandwidth dengan font dan teks hero (elemen LCP).
+import { CV_URL } from '~/data/portfolio'
+
 const { t } = useI18n()
 
 const showCubes = ref(false)
@@ -20,11 +23,17 @@ onMounted(() => {
   <section class="hero">
     <LazyHeroCubeField v-if="showCubes" />
     <div class="wrap content">
-      <span class="status">{{ t('hero.status') }}</span>
-      <h1>
+      <span class="status intro-up">{{ t('hero.status') }}</span>
+      <p class="hello mono intro-up" style="--i: 1">{{ t('hero.hello') }}</p>
+      <h1 class="intro-up" style="--i: 2">Ikram Muhammad.</h1>
+      <p class="headline intro-up" style="--i: 3">
         {{ t('hero.headlineBefore') }} <em>{{ t('hero.headlineAccent') }}</em>.
-      </h1>
-      <p>{{ t('hero.subtitle') }}</p>
+      </p>
+      <p class="sub intro-up" style="--i: 4">{{ t('hero.subtitle') }}</p>
+      <div class="cta intro-up" style="--i: 5">
+        <a href="#proyek" class="btn red">{{ t('hero.ctaProjects') }}</a>
+        <a :href="CV_URL" target="_blank" rel="noopener" class="btn">{{ t('hero.ctaCv') }}</a>
+      </div>
     </div>
   </section>
 </template>
@@ -74,23 +83,45 @@ onMounted(() => {
   }
 }
 
-h1 {
-  font-size: clamp(38px, 5.4vw, 62px);
-  line-height: 1.04;
-  letter-spacing: -0.04em;
-  font-weight: 800;
-  max-width: 14em;
-  margin: 18px 0 20px;
+.hello {
+  margin: 22px 0 6px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--red);
 }
 
-h1 em {
+h1 {
+  font-size: clamp(42px, 7vw, 80px);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  font-weight: 800;
+}
+
+.headline {
+  font-size: clamp(28px, 4.6vw, 54px);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+  color: var(--ink-2);
+  max-width: 15em;
+  margin: 8px 0 22px;
+}
+
+.headline em {
   font-style: normal;
   color: var(--red);
 }
 
-p {
+.sub {
   color: var(--ink-2);
   font-size: 17px;
-  max-width: 36em;
+  max-width: 34em;
+}
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
 }
 </style>

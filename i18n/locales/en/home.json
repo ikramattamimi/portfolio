@@ -1,0 +1,79 @@
+{
+  "home": {
+    "about": {
+      "kicker": "About",
+      "title": "About me",
+      "paragraphs": [
+        "I got serious about building web applications while studying for my associate degree in Informatics Engineering at Politeknik Negeri Bandung. I now work as a Junior IT Consultant at PT Global Dinamika Informatika, building internal applications for corporate clients.",
+        "What I enjoy most is taking work that has always been done by hand, like documents passed from desk to desk or permits tracked in Excel, and turning it into a tidy system that runs on its own.",
+        "Outside of work, I also take on freelance projects."
+      ],
+      "techLabel": "Technologies I use most:",
+      "educationLabel": "Education",
+      "education": "Associate Degree (D3) in Informatics Engineering · Politeknik Negeri Bandung (2020–2023)"
+    },
+    "experience": {
+      "kicker": "Experience",
+      "title": "Where I've worked",
+      "tabs": "Companies"
+    },
+    "jobs": {
+      "gdi": {
+        "tab": "Global Dinamika Informatika",
+        "role": "Junior IT Consultant",
+        "company": "PT Global Dinamika Informatika",
+        "date": "Dec 2023 – present",
+        "points": [
+          "Led development of RFA, an online document approval app, as lead developer and sole person in charge, after joining as a developer on a two-person team.",
+          "Built a multi-level approval flow with delegation and automatic reminders, replacing documents that used to be passed around by hand.",
+          "Developed PED, a company permit tracking app, with a three-person team over 12 months, including automatic renewal reminders and faster-loading data pages."
+        ]
+      },
+      "lapi": {
+        "tab": "Lapi Divusi",
+        "role": "Full-Stack Developer (Intern)",
+        "company": "PT Lapi Divusi",
+        "date": "Jul – Sep 2022",
+        "points": [
+          "Built an employee data management app for an educational institution in Bandung.",
+          "Turned interface designs into dashboards for each user role, complete with reports and charts."
+        ]
+      }
+    },
+    "projects": {
+      "kicker": "Projects",
+      "title": "Selected projects",
+      "lead": "Three projects I'm developing further.",
+      "featured": "Featured project",
+      "dev": "In development",
+      "soon": "Screenshots coming soon",
+      "screens": "View {name} screenshots",
+      "demo": "Open {name} demo",
+      "repo": "{name} code on GitHub",
+      "items": {
+        "rfa": {
+          "title": "RFA — Request for Approval",
+          "desc": "An online document approval app. Requesters submit documents, managers approve them step by step right in the browser, and can assign a stand-in when they're away. Automatic reminders make sure no document gets stuck."
+        },
+        "ped": {
+          "title": "PED — Permit Digitalization",
+          "desc": "One place to track every company permit and its expiry date. The system reminds the person in charge before a permit expires, so renewals no longer slip through."
+        },
+        "inventory": {
+          "title": "Inventory Management",
+          "desc": "Details for this project are being prepared and will be added soon."
+        }
+      }
+    },
+    "diagram": {
+      "approvalLabel": "Approval flow",
+      "requester": "Requester",
+      "approved": "Approved",
+      "delegate": "Delegate",
+      "whenAway": "when away",
+      "reminder": "Reminders",
+      "architectureLabel": "Architecture",
+      "businessRules": "business rules"
+    }
+  }
+}

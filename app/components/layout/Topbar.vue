@@ -1,14 +1,21 @@
 <script setup lang="ts">
-// Desktop: toggle mode di kiri; Blog, ID/EN, Hubungi, tema di kanan.
-// Mobile: tombol sidebar (kiri), toggle mode (tengah), tema (kanan).
-// Di halaman tanpa gate (mis. blog), posisi toggle mode diganti link kembali ke beranda.
-import { BLOG_ENABLED } from '~/data/portfolio'
+// Desktop: nama di kiri; Blog, ID/EN, CV, Hubungi, tema di kanan.
+// Mobile: tombol sidebar (kiri), monogram "IM" (tengah), tema (kanan).
+// Item muncul bergantian saat halaman pertama dibuka (`intro-down`, lihat base.css).
+import { BLOG_ENABLED, CV_URL } from '~/data/portfolio'
 
 const { t } = useI18n()
 const route = useRoute()
 const localePath = useLocalePath()
 const { open: sidebarOpen, show: showSidebar } = useSidebar()
-const onContact = useContactLink()
+
+// Nama di kiri: di beranda kembali ke atas, di halaman lain pindah ke beranda.
+function onBrand(e: MouseEvent) {
+  if (route.path !== localePath('/')) return
+  e.preventDefault()
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' })
+}
 
 const scrolled = ref(false)
 function onScroll() {
@@ -27,7 +34,7 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
       <button
         id="sidebar-trigger"
         type="button"
-        class="icon-btn menu-btn"
+        class="icon-btn menu-btn intro-down"
         :aria-label="t('nav.openMenu')"
         :aria-expanded="sidebarOpen"
         aria-controls="sidebar"
@@ -36,14 +43,17 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
       </button>
 
-      <GateModeToggle v-if="route.meta.gate" class="mode" />
-      <NuxtLink v-else :to="localePath('/')" class="mode home mono">← {{ t('blog.home') }}</NuxtLink>
+      <NuxtLink :to="localePath('/')" class="brand intro-down" :aria-label="t('nav.brand')" @click="onBrand">
+        <span class="full">Ikram Muhammad</span>
+        <span class="short mono" aria-hidden="true">IM</span>
+      </NuxtLink>
 
       <div class="actions">
-        <NuxtLink v-if="BLOG_ENABLED" :to="localePath('/blog')" class="text-link desktop-only">{{ t('blog.nav') }}</NuxtLink>
-        <UiLangSwitch class="desktop-only" />
-        <a :href="route.meta.gate ? '#kontak' : `${localePath('/')}#kontak`" class="btn red sm desktop-only" @click="onContact">{{ t('nav.contact') }}</a>
-        <UiThemeToggle />
+        <NuxtLink v-if="BLOG_ENABLED" :to="localePath('/blog')" class="text-link desktop-only intro-down" style="--i: 1">{{ t('blog.nav') }}</NuxtLink>
+        <UiLangSwitch class="desktop-only intro-down" style="--i: 2" />
+        <a :href="CV_URL" target="_blank" rel="noopener" class="btn sm desktop-only intro-down" style="--i: 3">{{ t('nav.cv') }}</a>
+        <a :href="`${localePath('/')}#kontak`" class="btn red sm desktop-only intro-down" style="--i: 4">{{ t('nav.contact') }}</a>
+        <UiThemeToggle class="intro-down" style="--i: 5" />
       </div>
     </div>
   </header>
@@ -105,13 +115,25 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
   display: none;
 }
 
-.home {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--ink-2);
+.brand {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
-.home:hover,
+.brand .short {
+  display: none;
+  font-size: 15px;
+  padding: 4px 8px;
+  border: 1.5px solid var(--red);
+  border-radius: 8px;
+  color: var(--red);
+}
+
+.brand:hover {
+  color: var(--red);
+}
+
 .text-link:hover {
   color: var(--ink);
 }
@@ -137,8 +159,16 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
     display: grid;
   }
 
-  .mode {
+  .brand {
     justify-self: center;
+  }
+
+  .brand .full {
+    display: none;
+  }
+
+  .brand .short {
+    display: inline-block;
   }
 
   .desktop-only {

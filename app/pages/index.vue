@@ -1,32 +1,29 @@
 <script setup lang="ts">
-// `gate: true`: halaman ini punya gate pilihan mode (footer & link Hubungi ikut terkunci).
-definePageMeta({ gate: true })
+// Beranda: satu alur cerita dari atas ke bawah (Hero → Tentang → Pengalaman → Proyek → Kontak).
+useReveal()
 </script>
 
 <template>
   <div>
     <HeroSection />
-    <GateModeGate />
 
-    <!-- Kedua mode selalu dirender; yang tidak aktif disembunyikan lewat CSS (mode.css). -->
-    <div id="konten" class="after-gate" tabindex="-1">
-      <ModeRecruiterView />
-      <ModeClientView />
-      <SharedContactSection :no="5" />
+    <div id="konten">
+      <SectionsAbout :no="1" />
+      <SectionsExperience :no="2" />
+      <SectionsProjects :no="3" />
+      <SharedContactSection :no="4" />
     </div>
 
-    <!-- Di luar #konten: animasi di #konten tidak boleh ikut menggeser elemen fixed ini. -->
-    <!-- ClientOnly: navigasi ini murni UI client dan bergantung pada mode, jadi tidak dirender di server. -->
+    <!-- Di luar #konten supaya elemen fixed ini tidak ikut bergeser. ClientOnly: murni UI client. -->
     <ClientOnly>
-      <NavSideFlow class="after-gate" />
+      <NavSideFlow />
     </ClientOnly>
   </div>
 </template>
 
 <style scoped>
 #konten {
-  outline: none;
-  /* Animasi ganti mode menggeser section ke samping; jangan sampai muncul scroll horizontal. */
+  /* Scroll reveal menggeser elemen sedikit; jangan sampai muncul scroll horizontal. */
   overflow-x: clip;
 }
 </style>

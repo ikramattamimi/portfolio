@@ -1,6 +1,6 @@
 /**
- * Kunci untuk tiap item array di file locale, mis. `recruiter.cases.rfa.wins` →
- * ['recruiter.cases.rfa.wins.0', …]. Dipakai dengan `t(key)` supaya teks dalam array
+ * Kunci untuk tiap item array di file locale, mis. `home.jobs.gdi.points` →
+ * ['home.jobs.gdi.points.0', …]. Dipakai dengan `t(key)` supaya teks dalam array
  * tetap diterjemahkan lewat jalur biasa.
  */
 export function useI18nList() {

@@ -15,112 +15,59 @@ export const CONTACT = {
 
 export const CV_URL = '/doc/CV.pdf'
 
-/* ---------- pengalaman kerja ---------- */
+/* ---------- tentang ---------- */
 
-export type CaseId = 'rfa' | 'ped' | 'lapiApp'
+/** Teknologi yang paling sering dipakai (daftar di section Tentang). */
+export const TECH = ['ASP.NET', 'Vue.js', 'Laravel', 'SQL Server', 'PostgreSQL', 'AWS S3']
+
+/** Foto diri di section Tentang, mis. '/images/ikram.webp'. Kosong: kolom teks melebar. */
+export const PHOTO = ''
+
+/* ---------- pengalaman kerja ---------- */
 
 export interface Job {
   id: 'gdi' | 'lapi'
-  active: boolean
-  cases: CaseId[]
+  chips: string[]
 }
 
 export const JOBS: Job[] = [
-  { id: 'gdi', active: true, cases: ['rfa', 'ped'] },
-  { id: 'lapi', active: false, cases: ['lapiApp'] },
+  { id: 'gdi', chips: ['ASP.NET', 'Vue 3', 'Kendo UI', 'SQL Server', 'AWS S3'] },
+  { id: 'lapi', chips: ['Laravel', 'Bootstrap', 'PostgreSQL'] },
 ]
 
-export interface WorkCase {
+/* ---------- proyek pilihan ---------- */
+
+export type FeaturedId = 'rfa' | 'ped' | 'inventory'
+
+export interface Featured {
+  id: FeaturedId
   chips: string[]
-  /** Punya bagian "Detail teknis" (masalah/solusi + diagram). */
-  diagram?: 'approval' | 'architecture'
-  /** Punya baris perubahan peran (promosi). */
-  promo?: boolean
+  /** `dev` = sedang dikembangkan (ditandai di kartu), `live` = sudah bisa dicoba. */
+  status: 'live' | 'dev'
+  /**
+   * Visual besar di samping kartu teks. `image` memakai `images[0]` sebagai sampul,
+   * dan klik membuka galeri semua `images`.
+   */
+  visual: 'approval' | 'architecture' | 'image' | 'placeholder'
+  images?: string[]
+  links?: { demo?: string, repo?: string }
 }
 
-export const CASES: Record<CaseId, WorkCase> = {
-  rfa: { chips: ['ASP.NET 4.8', 'Vue 3', 'Kendo Vue', 'SQL Server', 'AWS S3', 'OWIN'], diagram: 'approval', promo: true },
-  ped: { chips: ['ASP.NET 4.8', 'Vue 3', 'Kendo Vue', 'SQL Server', 'Clean Architecture', 'Kanban'], diagram: 'architecture' },
-  lapiApp: { chips: ['Laravel', 'Bootstrap', 'PostgreSQL'] },
-}
-
-/* ---------- proyek freelance ---------- */
-
-export type ProjectId = 'trashclean' | 'smarthome' | 'salary' | 'accounting'
-
-export interface Project {
-  id: ProjectId
-  chips: string[]
-  gallery: { dir: string, files: (number | string)[] }
-  /** Gambar sampul (nama file di folder galeri). Tanpa sampul: kartu tanpa gambar. */
-  cover?: number | string
-  /** Demo interaktif di mode klien. */
-  demo?: 'iot' | 'salary'
-  /** Lebar kolom di grid 6 kolom (mode klien). */
-  span: 2 | 3 | 4
-}
-
-export const PROJECTS: Project[] = [
-  { id: 'trashclean', chips: ['Laravel', 'Bootstrap', 'MySQL'], gallery: { dir: 'trashclean', files: [1, 9, 2, 3, 4, 5, 6, 7, 8] }, cover: 1, span: 4 },
-  { id: 'smarthome', chips: ['Flutter', 'MQTT', 'Firebase'], gallery: { dir: 'jayandra', files: [1, 2, 3, 4, 5, 6, 7, 8, 9] }, demo: 'iot', span: 2 },
-  { id: 'salary', chips: ['Laravel', 'Excel', 'SMTP'], gallery: { dir: 'salary-payment', files: [1, 2, 3, 4, 5] }, demo: 'salary', span: 3 },
-  { id: 'accounting', chips: ['Laravel', 'Chart.js', 'MySQL'], gallery: { dir: 'accounting', files: [0, 1, 2, 3, 4, 5, 6, 7, 8] }, cover: 0, span: 3 },
+export const FEATURED: Featured[] = [
+  { id: 'rfa', chips: ['ASP.NET', 'Vue 3', 'SQL Server', 'AWS S3'], status: 'dev', visual: 'approval' },
+  { id: 'ped', chips: ['ASP.NET', 'Vue 3', 'SQL Server', 'Clean Architecture'], status: 'dev', visual: 'architecture' },
+  { id: 'inventory', chips: [], status: 'dev', visual: 'placeholder' },
 ]
-
-export function galleryImages(p: Project) {
-  return p.gallery.files.map((f) => `/images/${p.gallery.dir}/${f}.webp`)
-}
-
-/* ---------- keahlian ---------- */
-
-/** Tempat sebuah teknologi dipakai: kasus kerja atau proyek freelance. */
-export type UsedIn = CaseId | ProjectId
-
-export const SKILLS: { group: string, items: [string, UsedIn[]][] }[] = [
-  { group: 'Frontend', items: [['Vue.js', ['rfa', 'ped']], ['Kendo Vue', ['rfa', 'ped']], ['Bootstrap', ['trashclean', 'lapiApp']], ['Chart.js', ['accounting']], ['HTML/CSS/JS', ['rfa', 'ped', 'trashclean', 'salary', 'accounting', 'lapiApp']]] },
-  { group: 'Backend', items: [['ASP.NET', ['rfa', 'ped']], ['Laravel', ['trashclean', 'salary', 'accounting', 'lapiApp']], ['PHP', ['trashclean', 'salary', 'accounting', 'lapiApp']], ['Node.js', []]] },
-  { group: 'Mobile', items: [['Flutter', ['smarthome']], ['Dart', ['smarthome']]] },
-  { group: 'Database', items: [['SQL Server', ['rfa', 'ped']], ['PostgreSQL', ['lapiApp']], ['MySQL', ['trashclean', 'accounting']]] },
-  { group: 'Cloud & Tools', items: [['AWS S3', ['rfa', 'ped']], ['Firebase', ['smarthome']], ['MQTT', ['smarthome']], ['Jira', ['rfa', 'ped']], ['Git', ['rfa', 'ped', 'trashclean', 'salary', 'accounting', 'smarthome']]] },
-]
-
-/** Id elemen tujuan di mode rekruter untuk sebuah kasus/proyek. */
-export function recruiterAnchor(id: UsedIn) {
-  return id in CASES ? `kasus-${id}` : `r-${id}`
-}
-
-/* ---------- CV ---------- */
-
-export const CV_STATS = [
-  { value: '2+', key: 'years' },
-  { value: '7', key: 'systems' },
-  { value: '15+', key: 'tech' },
-] as const
-
-/* ---------- testimoni ---------- */
-
-/** Ubah ke true kalau sudah ada testimoni sungguhan (teks di client.json → testimonials.items). */
-export const SHOW_TESTIMONIALS = false
 
 /* ---------- navigasi flow (sisi kanan) ---------- */
 
-/** Urutan section per mode untuk navigasi flow: id elemen + kunci label (kicker section). */
-export const FLOW: Record<'rekruter' | 'klien', { id: string, label: string }[]> = {
-  rekruter: [
-    { id: 'pengalaman', label: 'recruiter.experience.kicker' },
-    { id: 'proyek', label: 'recruiter.projects.kicker' },
-    { id: 'keahlian', label: 'recruiter.skills.kicker' },
-    { id: 'cv', label: 'recruiter.cv.kicker' },
-    { id: 'kontak', label: 'contact.kicker' },
-  ],
-  klien: [
-    { id: 'layanan', label: 'client.services.kicker' },
-    { id: 'hasil', label: 'client.results.kicker' },
-    { id: 'alur', label: 'client.process.kicker' },
-    { id: 'mulai', label: 'client.start.kicker' },
-    { id: 'kontak', label: 'contact.kicker' },
-  ],
-}
+/** Urutan section untuk navigasi flow: id elemen + kunci label (kicker section). */
+export const FLOW: { id: string, label: string }[] = [
+  { id: 'tentang', label: 'home.about.kicker' },
+  { id: 'pengalaman', label: 'home.experience.kicker' },
+  { id: 'proyek', label: 'home.projects.kicker' },
+  { id: 'kontak', label: 'contact.kicker' },
+]
 
 /* ---------- blog (Fase 2) ---------- */
 

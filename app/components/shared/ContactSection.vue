@@ -1,22 +1,16 @@
 <script setup lang="ts">
-// Kontak, tampil di kedua mode. Formulir tidak dikirim ke server: membuka WhatsApp atau aplikasi email.
+// 04 Kontak. Formulir tidak dikirim ke server: membuka WhatsApp atau aplikasi email.
 import { CONTACT } from '~/data/portfolio'
 
 defineProps<{ no: number }>()
 
 const { t } = useI18n()
-const { mode } = useMode()
 
-type RequestType = 'job' | 'project' | 'question'
-const type = ref<RequestType>('job')
+type MessageType = 'job' | 'project' | 'question'
+const type = ref<MessageType>('question')
 const name = ref('')
 const details = ref('')
 let via: 'wa' | 'mail' = 'wa'
-
-// Jenis permohonan awal mengikuti mode: rekruter → tawaran kerja, klien → proyek.
-watch(mode, (m) => {
-  if (m) type.value = m === 'klien' ? 'project' : 'job'
-}, { immediate: true })
 
 const links = computed(() => [
   { label: 'WhatsApp', value: CONTACT.whatsappLabel, href: `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(t('contact.waGreeting'))}` },
@@ -44,10 +38,12 @@ function submit() {
         :kicker="t('contact.kicker')"
         :title="t('contact.title')"
         :lead="t('contact.lead')"
+        data-reveal
       />
 
-      <div class="contact">
+      <div class="contact" data-reveal style="--d: 100ms">
         <div class="links">
+          <p class="freelance">{{ t('contact.freelance') }}</p>
           <a
             v-for="l in links"
             :key="l.label"
@@ -62,10 +58,6 @@ function submit() {
         </div>
 
         <form class="form" @submit.prevent="submit">
-          <div class="form-top mono">
-            <span>{{ t('contact.newRequest') }}</span>
-            <span class="status gray">{{ t('contact.draft') }}</span>
-          </div>
           <div class="form-body">
             <div class="fld">
               <label for="req-type" class="mono">{{ t('contact.type') }}</label>
@@ -140,17 +132,12 @@ function submit() {
   box-shadow: var(--shadow);
 }
 
-.form-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 22px;
-  border-bottom: 1.5px dashed var(--line);
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--ink-3);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+.freelance {
+  color: var(--ink-2);
+  font-size: 15px;
+  margin-bottom: 8px;
+  padding-left: 14px;
+  border-left: 2px solid var(--red);
 }
 
 .form-body {

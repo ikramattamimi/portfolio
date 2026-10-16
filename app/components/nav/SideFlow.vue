@@ -4,13 +4,11 @@
 import { FLOW } from '~/data/portfolio'
 
 const { t } = useI18n()
-const { mode } = useMode()
 
-const steps = computed(() => (mode.value ? FLOW[mode.value] : []))
-const ids = computed(() => steps.value.map((s) => s.id))
-const { active, progress, inContent } = useActiveSection(ids)
+const steps = FLOW
+const { active, progress, inContent } = useActiveSection(FLOW.map((s) => s.id))
 
-const activeIndex = computed(() => steps.value.findIndex((s) => s.id === active.value))
+const activeIndex = computed(() => steps.findIndex((s) => s.id === active.value))
 
 function go(id: string) {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -19,7 +17,7 @@ function go(id: string) {
 </script>
 
 <template>
-  <div v-if="steps.length" class="side-flow" :class="{ shown: inContent }">
+  <div class="side-flow" :class="{ shown: inContent }">
     <!-- Desktop lebar: stepper. -->
     <nav class="stepper" :aria-label="t('nav.sections')">
       <ol>
