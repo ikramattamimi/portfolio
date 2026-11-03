@@ -45,11 +45,11 @@ export interface Featured {
   /** `dev` = sedang dikembangkan (ditandai di kartu), `live` = sudah bisa dicoba. */
   status: 'live' | 'dev'
   /**
-   * Visual besar di samping kartu teks. `image` memakai `images[0]` sebagai sampul,
-   * dan klik membuka galeri semua `images`.
+   * Visual besar di samping kartu teks. `image` menampilkan satu gambar sesuai mode
+   * terang/gelap, dan klik membukanya besar di lightbox.
    */
   visual: 'approval' | 'architecture' | 'image' | 'placeholder'
-  images?: string[]
+  images?: { dark: string, light: string }
   links?: { demo?: string, repo?: string }
 }
 
@@ -58,14 +58,16 @@ export const FEATURED: Featured[] = [
     id: 'finance',
     chips: ['Nuxt 4', 'TypeScript', 'Supabase', 'Cloudflare Workers', 'Claude API'],
     status: 'live',
-    visual: 'placeholder',
+    visual: 'image',
+    images: { dark: '/images/finance/composite-dark.webp', light: '/images/finance/composite-light.webp' },
     links: { demo: 'https://money.ikrm.dev', repo: 'https://github.com/ikramattamimi/money-manager' },
   },
   {
     id: 'opnamix',
     chips: ['React 19', 'TypeScript', 'Supabase', 'Tailwind CSS'],
     status: 'live',
-    visual: 'placeholder',
+    visual: 'image',
+    images: { dark: '/images/opnamix/composite-dark.webp', light: '/images/opnamix/composite-light.webp' },
     links: { demo: 'https://opnamix.ikrm.dev', repo: 'https://github.com/ikramattamimi/opnamix' },
   },
 ]

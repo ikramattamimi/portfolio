@@ -43,7 +43,7 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
         <button v-if="state.images.length > 1" type="button" class="p" :aria-label="t('gallery.prev')" @click="step(-1)">‹</button>
         <img :src="state.images[state.index]" :alt="`${state.title} ${state.index + 1}`">
         <button v-if="state.images.length > 1" type="button" class="nx" :aria-label="t('gallery.next')" @click="step(1)">›</button>
-        <span class="cnt mono">{{ state.index + 1 }} / {{ state.images.length }}</span>
+        <span v-if="state.images.length > 1" class="cnt mono">{{ state.index + 1 }} / {{ state.images.length }}</span>
       </div>
     </Transition>
   </Teleport>

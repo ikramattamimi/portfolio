@@ -7,6 +7,7 @@ defineProps<{ no: number }>()
 
 const { t } = useI18n()
 const gallery = useGallery()
+const colorMode = useColorMode()
 
 const title = (p: Featured) => t(`home.projects.items.${p.id}.title`)
 </script>
@@ -32,13 +33,15 @@ const title = (p: Featured) => t(`home.projects.items.${p.id}.title`)
           data-reveal
         >
           <button
-            v-if="p.visual === 'image' && p.images?.length"
+            v-if="p.visual === 'image' && p.images"
             type="button"
             class="visual"
             :aria-label="t('home.projects.screens', { name: title(p) })"
-            @click="gallery.open(title(p), p.images)"
+            @click="gallery.open(title(p), [colorMode.value === 'light' ? p.images.light : p.images.dark])"
           >
-            <img :src="p.images[0]" alt="" loading="lazy">
+            <!-- Dua gambar, yang tampil dipilih CSS dari data-theme, jadi benar sejak render pertama. -->
+            <img class="dark" :src="p.images.dark" alt="" loading="lazy">
+            <img class="light" :src="p.images.light" alt="" loading="lazy">
           </button>
           <div v-else class="visual" :class="p.visual">
             <DiagramApproval v-if="p.visual === 'approval'" />
@@ -130,6 +133,15 @@ button.visual {
 
 button.visual:hover img {
   transform: scale(1.03);
+}
+
+.visual img.light,
+:root[data-theme='light'] .visual img.dark {
+  display: none;
+}
+
+:root[data-theme='light'] .visual img.light {
+  display: block;
 }
 
 .soon {
@@ -234,35 +246,32 @@ h3 {
   justify-content: flex-start;
 }
 
-/* ---------- layar kecil: visual jadi latar redup ---------- */
+/* ---------- layar kecil: gambar di atas, teks di bawah ---------- */
 @media (max-width: 860px) {
   .featured {
-    gap: 32px;
+    gap: 48px;
   }
 
   .project {
-    border-radius: var(--r);
-    overflow: hidden;
-    border: 1px solid var(--line);
+    gap: 20px;
   }
 
   .visual,
   .flip .visual {
-    position: absolute;
-    inset: 0;
     grid-column: 1 / -1;
-    aspect-ratio: auto;
-    border: none;
-    border-radius: 0;
-    opacity: 0.18;
-    pointer-events: none;
+    grid-row: 1;
+  }
+
+  /* Placeholder tanpa gambar tidak perlu kotak kosong di atas teks. */
+  div.visual {
+    display: none;
   }
 
   .content,
   .flip .content {
     grid-column: 1 / -1;
+    grid-row: 2;
     text-align: left;
-    padding: 32px 24px;
   }
 
   .top,
