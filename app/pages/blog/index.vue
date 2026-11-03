@@ -27,9 +27,9 @@ const { data: posts } = await useAsyncData(
 useRobotsRule(() => (posts.value?.length ? true : 'noindex, follow'))
 
 useSeoMeta({
-  title: () => `${t('blog.title')} — Ikram Muhammad`,
+  title: () => `${t('blog.title')} — Ikram Attamimi`,
   description: () => t('blog.lead'),
-  ogTitle: () => `${t('blog.title')} — Ikram Muhammad`,
+  ogTitle: () => `${t('blog.title')} — Ikram Attamimi`,
   ogDescription: () => t('blog.lead'),
 })
 </script>

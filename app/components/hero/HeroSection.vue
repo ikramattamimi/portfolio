@@ -25,7 +25,7 @@ onMounted(() => {
     <div class="wrap content">
       <span class="status intro-up">{{ t('hero.status') }}</span>
       <p class="hello mono intro-up" style="--i: 1">{{ t('hero.hello') }}</p>
-      <h1 class="intro-up" style="--i: 2">Ikram Muhammad.</h1>
+      <h1 class="intro-up" style="--i: 2">Ikram Attamimi.</h1>
       <p class="headline intro-up" style="--i: 3">
         {{ t('hero.headlineBefore') }} <em>{{ t('hero.headlineAccent') }}</em>.
       </p>

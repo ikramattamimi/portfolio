@@ -7,7 +7,7 @@ import { BLOG_ENABLED } from './app/data/portfolio'
 const siteUrl = process.env.NUXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || undefined
 
 // Halaman blog yang tidak boleh ikut build/sitemap selama blog belum dirilis.
-const blogRoutes = ['/blog', '/blog/**', '/en/blog', '/en/blog/**']
+const blogRoutes = ['/blog', '/blog/**', '/id/blog', '/id/blog/**']
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -48,7 +48,7 @@ export default defineNuxtConfig({
   // Dibaca sitemap, robots, dan i18n.
   site: {
     url: siteUrl,
-    name: 'Ikram Muhammad',
+    name: 'Ikram Attamimi',
   },
 
   // Blog belum dirilis: jangan ikut dibuild (halaman tetap bisa dibuka saat dev).
@@ -68,7 +68,7 @@ export default defineNuxtConfig({
   nitro: {
     compressPublicAssets: true,
     // Blog dirilis: pastikan daftar artikel ikut dibuild (artikel ditemukan lewat link di dalamnya).
-    prerender: { routes: BLOG_ENABLED ? ['/blog', '/en/blog'] : [] },
+    prerender: { routes: BLOG_ENABLED ? ['/blog', '/id/blog'] : [] },
   },
 
   // Sitemap butuh URL absolut, jadi baru dibuat setelah domain diisi (NUXT_PUBLIC_SITE_URL).
@@ -103,11 +103,11 @@ export default defineNuxtConfig({
     ],
   },
 
-  // Bahasa default Indonesia tanpa prefix (/), Inggris di /en.
+  // Bahasa default Inggris tanpa prefix (/), Indonesia di /id (tombol bahasa disembunyikan, lihat LANG_SWITCH_ENABLED).
   // Teks dipecah per bagian: common (hero, layout, kontak, blog) dan home (section beranda).
   i18n: {
     baseUrl: siteUrl,
-    defaultLocale: 'id',
+    defaultLocale: 'en',
     strategy: 'prefix_except_default',
     locales: [
       {
@@ -125,7 +125,7 @@ export default defineNuxtConfig({
     ],
     // Tanpa pengalihan otomatis berdasarkan bahasa browser: di situs statis pengalihan itu baru
     // terjadi di client, sehingga teks Indonesia sempat tampil lalu berganti (hydration mismatch).
-    // Bahasa dipilih lewat URL (/ atau /en) dan tombol ID/EN.
+    // Bahasa dipilih lewat URL (/ atau /id) dan tombol ID/EN (kalau ditampilkan).
     detectBrowserLanguage: false,
   },
 })

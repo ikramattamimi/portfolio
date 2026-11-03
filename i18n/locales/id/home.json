@@ -4,13 +4,16 @@
       "kicker": "Tentang",
       "title": "Tentang saya",
       "paragraphs": [
-        "Saya mulai serius membuat aplikasi web saat kuliah D3 Teknik Informatika di Politeknik Negeri Bandung. Sekarang saya bekerja sebagai Junior IT Consultant di PT Global Dinamika Informatika, membangun aplikasi internal untuk klien korporat.",
+        "Saya mulai serius membuat aplikasi web saat kuliah D3 Teknik Informatika di Politeknik Negeri Bandung. Sekarang saya bekerja sebagai Middle IT Consultant di PT Global Dinamika Informatika, membangun aplikasi internal untuk klien korporat.",
         "Bagian yang paling saya nikmati adalah mengambil pekerjaan yang selama ini dilakukan manual, misalnya dokumen yang diedarkan dari meja ke meja atau izin yang dicatat di Excel, lalu mengubahnya jadi sistem yang rapi dan berjalan otomatis.",
-        "Di luar pekerjaan, saya juga menerima proyek freelance."
+        "Di luar pekerjaan, saya menerima proyek freelance dan membangun produk sendiri, seperti dua proyek di bawah."
       ],
       "techLabel": "Teknologi yang sering saya pakai:",
       "educationLabel": "Pendidikan",
-      "education": "D3 Teknik Informatika · Politeknik Negeri Bandung (2020–2023)"
+      "education": [
+        "S1 Teknik Informatika · Universitas Jenderal Achmad Yani (2025–2026)",
+        "D3 Teknik Informatika · Politeknik Negeri Bandung (2020–2023)"
+      ]
     },
     "experience": {
       "kicker": "Pengalaman",
@@ -20,13 +23,14 @@
     "jobs": {
       "gdi": {
         "tab": "Global Dinamika Informatika",
-        "role": "Junior IT Consultant",
+        "role": "Middle IT Consultant",
         "company": "PT Global Dinamika Informatika",
         "date": "Des 2023 – sekarang",
         "points": [
-          "Memimpin pengembangan RFA, aplikasi persetujuan dokumen online, sebagai lead developer dan penanggung jawab tunggal. Awalnya saya bergabung sebagai developer di tim 2 orang.",
+          "Naik jabatan dari Junior ke Middle IT Consultant pada Maret 2026.",
+          "Bergabung sebagai developer di tim dua orang yang membangun aplikasi persetujuan dokumen online, lalu memegangnya sebagai lead developer dan penanggung jawab tunggal.",
           "Membangun alur persetujuan bertingkat dengan delegasi dan pengingat otomatis, menggantikan dokumen yang sebelumnya diedarkan manual.",
-          "Mengembangkan PED, aplikasi pelacakan izin perusahaan, bersama tim 3 orang selama 12 bulan, termasuk pengingat perpanjangan otomatis dan halaman data yang dimuat lebih cepat."
+          "Mengembangkan aplikasi pelacakan izin perusahaan bersama tim tiga orang selama 12 bulan, termasuk pengingat perpanjangan otomatis dan halaman data yang dimuat lebih cepat."
         ]
       },
       "lapi": {
@@ -43,7 +47,7 @@
     "projects": {
       "kicker": "Proyek",
       "title": "Proyek pilihan",
-      "lead": "Tiga proyek yang sedang saya kembangkan lebih jauh.",
+      "lead": "Dua produk yang saya bangun sendiri.",
       "featured": "Proyek unggulan",
       "dev": "Sedang dikembangkan",
       "soon": "Tampilan segera hadir",
@@ -51,17 +55,13 @@
       "demo": "Buka demo {name}",
       "repo": "Kode {name} di GitHub",
       "items": {
-        "rfa": {
-          "title": "RFA — Request for Approval",
-          "desc": "Aplikasi persetujuan dokumen online. Pemohon mengajukan dokumen, atasan menyetujuinya bertahap langsung dari browser, dan bisa menunjuk pengganti saat berhalangan. Pengingat otomatis memastikan tidak ada dokumen yang tertahan."
+        "finance": {
+          "title": "Pencatat Keuangan Pribadi",
+          "desc": "Aplikasi pencatat keuangan untuk iPhone yang saya buat karena aplikasi lama saya memaksa input manual dan tidak bisa impor di iOS. Ketik \"kopi 25rb gopay\" dan langsung tercatat. Data lama, mutasi bank PDF, dan foto struk bisa diimpor. Dikembangkan dengan Claude Code: spesifikasi, arsitektur, dan peninjauan tiap perubahan dari saya."
         },
-        "ped": {
-          "title": "PED — Permit Digitalization",
-          "desc": "Satu tempat untuk memantau semua izin perusahaan beserta tanggal kedaluwarsanya. Sistem mengingatkan penanggung jawab sebelum izin habis, jadi perpanjangan tidak lagi terlewat."
-        },
-        "inventory": {
-          "title": "Inventory Management",
-          "desc": "Detail proyek ini sedang disiapkan dan akan segera ditambahkan."
+        "opnamix": {
+          "title": "Opnamix",
+          "desc": "Sistem inventaris untuk klinik dan apotek kecil, dibangun ulang dari proyek freelance dengan tampilan baru dan fitur lebih lengkap. Mencakup stok masuk, stok keluar, dan stock opname. Transaksi stok dikunci selama penghitungan berjalan, dan akses tiap role dijaga langsung di database. Dikembangkan dengan Claude Code: spesifikasi, arsitektur, dan peninjauan tiap perubahan dari saya."
         }
       }
     },

@@ -1,0 +1,3 @@
+# English is now the default at /. Keep old /en links working.
+/en / 301
+/en/* /:splat 301

@@ -10,7 +10,7 @@
     "skip": "Lewati ke konten",
     "contact": "Hubungi",
     "cv": "CV",
-    "brand": "Ikram Muhammad, kembali ke atas",
+    "brand": "Ikram Attamimi, kembali ke atas",
     "language": "Bahasa",
     "sections": "Navigasi bagian",
     "progress": "Progres membaca"
@@ -22,7 +22,7 @@
     "status": "Terbuka untuk kerja & freelance",
     "hello": "Halo, saya",
     "headlineBefore": "Saya mengubah proses manual jadi sistem yang",
-    "headlineAccent": "berjalan sendiri",
+    "headlineAccent": "mengingatkan sebelum ada yang terlewat",
     "subtitle": "Saya full-stack developer di Bandung. Sehari-hari saya membangun aplikasi internal untuk perusahaan, seperti persetujuan dokumen, pelacakan izin, dan alur kerja kantor lainnya.",
     "ctaProjects": "Lihat proyek",
     "ctaCv": "Unduh CV"
@@ -53,8 +53,8 @@
     "next": "Gambar berikutnya"
   },
   "meta": {
-    "title": "Ikram Muhammad — Full-Stack Developer (ASP.NET · Vue · Laravel)",
-    "description": "Ikram Muhammad, full-stack developer di Bandung. Saya membangun aplikasi internal perusahaan seperti persetujuan dokumen dan pelacakan izin dengan ASP.NET, Vue, dan Laravel.",
+    "title": "Ikram Attamimi — Full-Stack Developer (ASP.NET · Vue · React)",
+    "description": "Ikram Attamimi, full-stack developer di Bandung. Saya membangun aplikasi internal perusahaan dan produk sendiri dengan ASP.NET, Vue, React, dan Supabase.",
     "ogLocale": "id_ID",
     "jobTitle": "Full-Stack Developer"
   },

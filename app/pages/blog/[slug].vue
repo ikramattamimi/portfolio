@@ -38,7 +38,7 @@ const siteUrl = useSiteConfig().url?.replace(/\/$/, '')
 const indonesianUrl = computed(() => `${siteUrl ?? ''}/blog/${slug.value}`)
 
 useSeoMeta({
-  title: () => `${post.value.title} — Ikram Muhammad`,
+  title: () => `${post.value.title} — Ikram Attamimi`,
   description: () => post.value.description,
   ogTitle: () => post.value.title,
   ogDescription: () => post.value.description,
@@ -63,7 +63,7 @@ useHead(() => ({
         datePublished: post.value.date,
         inLanguage: fallback.value ? 'id-ID' : language.value,
         keywords: post.value.tags.join(', '),
-        author: { '@type': 'Person', name: 'Ikram Muhammad', sameAs: [CONTACT.linkedin, CONTACT.github] },
+        author: { '@type': 'Person', name: 'Ikram Attamimi', sameAs: [CONTACT.linkedin, CONTACT.github] },
       }),
     },
   ],

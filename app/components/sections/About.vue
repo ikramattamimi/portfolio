@@ -30,12 +30,12 @@ const list = useI18nList()
 
           <p class="edu">
             <span class="mono">{{ t('home.about.educationLabel') }}</span>
-            {{ t('home.about.education') }}
+            <span v-for="k in list('home.about.education')" :key="k" class="edu-item">{{ t(k) }}</span>
           </p>
         </div>
 
         <div v-if="PHOTO" class="photo" data-reveal style="--d: 120ms">
-          <img :src="PHOTO" alt="Ikram Muhammad" width="300" height="300" loading="lazy">
+          <img :src="PHOTO" alt="Ikram Attamimi" width="300" height="300" loading="lazy">
         </div>
       </div>
     </div>
@@ -105,6 +105,14 @@ const list = useI18nList()
   text-transform: uppercase;
   color: var(--ink-3);
   margin-bottom: 4px;
+}
+
+.edu .edu-item {
+  display: block;
+}
+
+.edu .edu-item + .edu-item {
+  margin-top: 4px;
 }
 
 .photo img {

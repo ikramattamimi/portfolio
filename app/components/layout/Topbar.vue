@@ -1,8 +1,8 @@
 <script setup lang="ts">
 // Desktop: nama di kiri; Blog, ID/EN, CV, Hubungi, tema di kanan.
-// Mobile: tombol sidebar (kiri), monogram "IM" (tengah), tema (kanan).
+// Mobile: tombol sidebar (kiri), monogram "IA" (tengah), tema (kanan).
 // Item muncul bergantian saat halaman pertama dibuka (`intro-down`, lihat base.css).
-import { BLOG_ENABLED, CV_URL } from '~/data/portfolio'
+import { BLOG_ENABLED, CV_URL, LANG_SWITCH_ENABLED } from '~/data/portfolio'
 
 const { t } = useI18n()
 const route = useRoute()
@@ -44,13 +44,13 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
       </button>
 
       <NuxtLink :to="localePath('/')" class="brand intro-down" :aria-label="t('nav.brand')" @click="onBrand">
-        <span class="full">Ikram Muhammad</span>
-        <span class="short mono" aria-hidden="true">IM</span>
+        <span class="full">Ikram Attamimi</span>
+        <span class="short mono" aria-hidden="true">IA</span>
       </NuxtLink>
 
       <div class="actions">
         <NuxtLink v-if="BLOG_ENABLED" :to="localePath('/blog')" class="text-link desktop-only intro-down" style="--i: 1">{{ t('blog.nav') }}</NuxtLink>
-        <UiLangSwitch class="desktop-only intro-down" style="--i: 2" />
+        <UiLangSwitch v-if="LANG_SWITCH_ENABLED" class="desktop-only intro-down" style="--i: 2" />
         <a :href="CV_URL" target="_blank" rel="noopener" class="btn sm desktop-only intro-down" style="--i: 3">{{ t('nav.cv') }}</a>
         <a :href="`${localePath('/')}#kontak`" class="btn red sm desktop-only intro-down" style="--i: 4">{{ t('nav.contact') }}</a>
         <UiThemeToggle class="intro-down" style="--i: 5" />

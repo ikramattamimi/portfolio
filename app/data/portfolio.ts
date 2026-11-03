@@ -18,7 +18,7 @@ export const CV_URL = '/doc/CV.pdf'
 /* ---------- tentang ---------- */
 
 /** Teknologi yang paling sering dipakai (daftar di section Tentang). */
-export const TECH = ['ASP.NET', 'Vue.js', 'Laravel', 'SQL Server', 'PostgreSQL', 'AWS S3']
+export const TECH = ['ASP.NET', 'Vue.js', 'Nuxt', 'React', 'TypeScript', 'Laravel', 'SQL Server', 'PostgreSQL', 'Supabase', 'AWS S3']
 
 /** Foto diri di section Tentang, mis. '/images/ikram.webp'. Kosong: kolom teks melebar. */
 export const PHOTO = ''
@@ -37,7 +37,7 @@ export const JOBS: Job[] = [
 
 /* ---------- proyek pilihan ---------- */
 
-export type FeaturedId = 'rfa' | 'ped' | 'inventory'
+export type FeaturedId = 'finance' | 'opnamix'
 
 export interface Featured {
   id: FeaturedId
@@ -54,9 +54,20 @@ export interface Featured {
 }
 
 export const FEATURED: Featured[] = [
-  { id: 'rfa', chips: ['ASP.NET', 'Vue 3', 'SQL Server', 'AWS S3'], status: 'dev', visual: 'approval' },
-  { id: 'ped', chips: ['ASP.NET', 'Vue 3', 'SQL Server', 'Clean Architecture'], status: 'dev', visual: 'architecture' },
-  { id: 'inventory', chips: [], status: 'dev', visual: 'placeholder' },
+  {
+    id: 'finance',
+    chips: ['Nuxt 4', 'TypeScript', 'Supabase', 'Cloudflare Workers', 'Claude API'],
+    status: 'live',
+    visual: 'placeholder',
+    links: { demo: 'https://money.ikrm.dev', repo: 'https://github.com/ikramattamimi/money-manager' },
+  },
+  {
+    id: 'opnamix',
+    chips: ['React 19', 'TypeScript', 'Supabase', 'Tailwind CSS'],
+    status: 'live',
+    visual: 'placeholder',
+    links: { demo: 'https://opnamix.ikrm.dev', repo: 'https://github.com/ikramattamimi/opnamix' },
+  },
 ]
 
 /* ---------- navigasi flow (sisi kanan) ---------- */
@@ -68,6 +79,14 @@ export const FLOW: { id: string, label: string }[] = [
   { id: 'proyek', label: 'home.projects.kicker' },
   { id: 'kontak', label: 'contact.kicker' },
 ]
+
+/* ---------- bahasa ---------- */
+
+/**
+ * Tampilkan tombol ganti bahasa (topbar + sidebar). Selama `false`, situs tampil dalam bahasa
+ * default (Inggris); versi Indonesia tetap ada di /id dan bisa dibuka lewat URL.
+ */
+export const LANG_SWITCH_ENABLED = false
 
 /* ---------- blog (Fase 2) ---------- */
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // Sidebar mobile: Blog (kalau BLOG_ENABLED), ID/EN, CV, dan Hubungi.
 // Tutup lewat tombol, klik di luar panel, atau Esc. Fokus keyboard tetap di dalam panel selama terbuka.
-import { BLOG_ENABLED, CV_URL } from '~/data/portfolio'
+import { BLOG_ENABLED, CV_URL, LANG_SWITCH_ENABLED } from '~/data/portfolio'
 
 const { t } = useI18n()
 const route = useRoute()
@@ -93,7 +93,7 @@ onBeforeUnmount(() => {
 
           <NuxtLink v-if="BLOG_ENABLED" :to="localePath('/blog')" class="nav-link">{{ t('blog.nav') }} →</NuxtLink>
 
-          <div class="group">
+          <div v-if="LANG_SWITCH_ENABLED" class="group">
             <span class="label mono">{{ t('nav.language') }}</span>
             <UiLangSwitch />
           </div>

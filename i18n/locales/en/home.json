@@ -4,13 +4,16 @@
       "kicker": "About",
       "title": "About me",
       "paragraphs": [
-        "I got serious about building web applications while studying for my associate degree in Informatics Engineering at Politeknik Negeri Bandung. I now work as a Junior IT Consultant at PT Global Dinamika Informatika, building internal applications for corporate clients.",
+        "I got serious about building web applications while studying for my associate degree in Informatics Engineering at Politeknik Negeri Bandung. I now work as a Mid-Level IT Consultant at PT Global Dinamika Informatika, building internal applications for corporate clients.",
         "What I enjoy most is taking work that has always been done by hand, like documents passed from desk to desk or permits tracked in Excel, and turning it into a tidy system that runs on its own.",
-        "Outside of work, I also take on freelance projects."
+        "Outside of work, I take on freelance projects and build products of my own, like the two below."
       ],
       "techLabel": "Technologies I use most:",
       "educationLabel": "Education",
-      "education": "Associate Degree (D3) in Informatics Engineering · Politeknik Negeri Bandung (2020–2023)"
+      "education": [
+        "Bachelor's Degree (S1) in Informatics Engineering · Universitas Jenderal Achmad Yani (2025–2026)",
+        "Associate Degree (D3) in Informatics Engineering · Politeknik Negeri Bandung (2020–2023)"
+      ]
     },
     "experience": {
       "kicker": "Experience",
@@ -20,13 +23,14 @@
     "jobs": {
       "gdi": {
         "tab": "Global Dinamika Informatika",
-        "role": "Junior IT Consultant",
+        "role": "Mid-Level IT Consultant",
         "company": "PT Global Dinamika Informatika",
         "date": "Dec 2023 – present",
         "points": [
-          "Led development of RFA, an online document approval app, as lead developer and sole person in charge, after joining as a developer on a two-person team.",
+          "Promoted from Junior to Mid-Level IT Consultant in March 2026.",
+          "Joined a two-person team building an online document approval app and now run it as lead developer and sole owner.",
           "Built a multi-level approval flow with delegation and automatic reminders, replacing documents that used to be passed around by hand.",
-          "Developed PED, a company permit tracking app, with a three-person team over 12 months, including automatic renewal reminders and faster-loading data pages."
+          "Developed a company permit tracking app with a three-person team over 12 months, including automatic renewal reminders and faster-loading data pages."
         ]
       },
       "lapi": {
@@ -43,7 +47,7 @@
     "projects": {
       "kicker": "Projects",
       "title": "Selected projects",
-      "lead": "Three projects I'm developing further.",
+      "lead": "Two products I'm building on my own.",
       "featured": "Featured project",
       "dev": "In development",
       "soon": "Screenshots coming soon",
@@ -51,17 +55,13 @@
       "demo": "Open {name} demo",
       "repo": "{name} code on GitHub",
       "items": {
-        "rfa": {
-          "title": "RFA — Request for Approval",
-          "desc": "An online document approval app. Requesters submit documents, managers approve them step by step right in the browser, and can assign a stand-in when they're away. Automatic reminders make sure no document gets stuck."
+        "finance": {
+          "title": "Personal Finance Tracker",
+          "desc": "I built this finance tracker for my iPhone because my old app made me enter every transaction by hand and couldn't import on iOS. Type \"kopi 25rb gopay\" and it logs the transaction. Bring in your old export, a bank statement PDF, or a receipt photo. Built with Claude Code: I wrote the specs, set the architecture, and reviewed every change."
         },
-        "ped": {
-          "title": "PED — Permit Digitalization",
-          "desc": "One place to track every company permit and its expiry date. The system reminds the person in charge before a permit expires, so renewals no longer slip through."
-        },
-        "inventory": {
-          "title": "Inventory Management",
-          "desc": "Details for this project are being prepared and will be added soon."
+        "opnamix": {
+          "title": "Opnamix",
+          "desc": "An inventory system for clinics and small pharmacies, rebuilt from a freelance project with a new interface and more features. It covers stock in, stock out, and stock opname. Transactions lock while a count is running, and the database enforces what each role can see. Built with Claude Code: I wrote the specs, set the architecture, and reviewed every change."
         }
       }
     },

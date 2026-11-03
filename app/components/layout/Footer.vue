@@ -16,7 +16,7 @@ const links = [
 <template>
   <footer class="footer">
     <div class="wrap row">
-      <p>© {{ year }} Ikram Muhammad · {{ t('footer.location') }}</p>
+      <p>© {{ year }} Ikram Attamimi · {{ t('footer.location') }}</p>
       <ul>
         <li v-if="BLOG_ENABLED">
           <NuxtLink :to="localePath('/blog')">{{ t('blog.nav') }}</NuxtLink>

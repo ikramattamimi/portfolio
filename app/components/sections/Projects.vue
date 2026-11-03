@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// 03 Proyek pilihan: tiga proyek unggulan. Visual besar di satu sisi, kartu teks menumpuk
+// 03 Proyek pilihan: dua proyek unggulan. Visual besar di satu sisi, kartu teks menumpuk
 // sedikit di atasnya, posisinya selang-seling kiri/kanan. Di layar kecil visual jadi latar redup.
 import { FEATURED, type Featured } from '~/data/portfolio'
 

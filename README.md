@@ -1,4 +1,4 @@
-# Ikram Muhammad — Portfolio
+# Ikram Attamimi — Portfolio
 
 Personal portfolio told as **one story, top to bottom**, for recruiters and clients alike:
 
