@@ -72,6 +72,12 @@ export const FEATURED: Featured[] = [
   },
 ]
 
+/**
+ * Tampilkan tombol demo dan GitHub di kartu proyek. Selama `false`, tombolnya disembunyikan
+ * (data `links` di atas tetap disimpan, tinggal ubah jadi `true` untuk menampilkannya lagi).
+ */
+export const PROJECT_LINKS_ENABLED = false
+
 /* ---------- navigasi flow (sisi kanan) ---------- */
 
 /** Urutan section untuk navigasi flow: id elemen + kunci label (kicker section). */

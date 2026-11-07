@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // 03 Proyek pilihan: dua proyek unggulan. Visual besar di satu sisi, kartu teks menumpuk
 // sedikit di atasnya, posisinya selang-seling kiri/kanan. Di layar kecil visual jadi latar redup.
-import { FEATURED, type Featured } from '~/data/portfolio'
+import { FEATURED, PROJECT_LINKS_ENABLED, type Featured } from '~/data/portfolio'
 
 defineProps<{ no: number }>()
 
@@ -61,7 +61,7 @@ const title = (p: Featured) => t(`home.projects.items.${p.id}.title`)
             <ul v-if="p.chips.length" class="tech mono">
               <li v-for="c in p.chips" :key="c">{{ c }}</li>
             </ul>
-            <div v-if="p.links?.repo || p.links?.demo" class="links">
+            <div v-if="PROJECT_LINKS_ENABLED && (p.links?.repo || p.links?.demo)" class="links">
               <a
                 v-if="p.links.repo"
                 :href="p.links.repo"
