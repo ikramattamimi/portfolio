@@ -44,8 +44,8 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
       </button>
 
       <NuxtLink :to="localePath('/')" class="brand intro-down" :aria-label="t('nav.brand')" @click="onBrand">
+        <img class="mark" src="/favicon.svg" width="28" height="28" alt="" aria-hidden="true">
         <span class="full">Ikram Attamimi</span>
-        <span class="short mono" aria-hidden="true">IA</span>
       </NuxtLink>
 
       <div class="actions">
@@ -116,22 +116,32 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
 }
 
 .brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
   font-size: 16px;
   font-weight: 800;
   letter-spacing: -0.02em;
 }
 
-.brand .short {
-  display: none;
-  font-size: 15px;
-  padding: 4px 8px;
-  border: 1.5px solid var(--red);
-  border-radius: 8px;
-  color: var(--red);
+.brand .mark {
+  flex: none;
+  display: block;
+  transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.brand:hover {
-  color: var(--red);
+.brand:active .mark {
+  transform: scale(0.97);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .brand:hover {
+    color: var(--red);
+  }
+
+  .brand:hover .mark {
+    transform: scale(1.06);
+  }
 }
 
 .text-link:hover {
@@ -165,10 +175,6 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
 
   .brand .full {
     display: none;
-  }
-
-  .brand .short {
-    display: inline-block;
   }
 
   .desktop-only {

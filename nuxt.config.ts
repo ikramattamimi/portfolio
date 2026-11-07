@@ -40,7 +40,11 @@ export default defineNuxtConfig({
   css: ['~/assets/css/tokens.css', '~/assets/css/base.css','~/assets/css/prose.css'],
   app: {
     head: {
-      link: [{ rel: 'icon', href: '/favicon.ico' }],
+      link: [
+        { rel: 'icon', href: '/favicon.ico', sizes: '48x48' },
+        { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml', sizes: 'any' },
+        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+      ],
       meta: [{ name: 'theme-color', content: '#0f0f0f' }],
     },
   },
